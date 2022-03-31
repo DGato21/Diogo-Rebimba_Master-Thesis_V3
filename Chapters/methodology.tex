@@ -19,12 +19,12 @@
 \label{sub:if_you_use_this_template} 
 In order to advance, and better prepare the study of this thesis, a specific study on CGI RMS data and research was developed, to get a starting point on the variables data and algorithms.
 
-As presented before, this study will use a data-driven based method that involves less restriction in knowing all the details of the underlying fault process and the technical knowledge of all the components [OLD 15]. With the large amount of historical data that is available in the CGI RMS, all the conditions are reunited to start developing the work with this method.
+As presented before, this study will use a data-driven based method that involves less restriction in knowing all the details of the underlying fault process and the technical knowledge of all the components \cite{OLD_19_WIND}. With the large amount of historical data that is available in the CGI RMS, all the conditions are reunited to start developing the work with this method.
 
 Since our goal is to build an generic experiment in Azure Machine Learning Studio that may be used as a foundation for the Failure Prediction tool, and due to the limitations of the signals that we have available and the built-in modules available in Azure Machine Learning Studio, we have to analyze our literature and confront with the modules available in order to obtain the best experiment possible to build the best model to predict the failures of the wind turbines that are being studied.
 
 % DEPRECATED
-%With several studies like [OLD 2] [OLD 16] [OLD 17], we can understand %and select the machine learning algorithms that should be used and %compared to obtain the best model for failure prediction.
+%With several studies like [OLD 2] \cite{40_WIND} \cite{OLD_36_SOLAR}, we can understand %and select the machine learning algorithms that should be used and %compared to obtain the best model for failure prediction.
 
 %these studies [XXX] analyzed several fault types, with major highlight on %(TO SEE COM REFERENCIAS). The signals that were used on these studies, %depend on the data that each one have available, but in all of them %[XXXX] there were used general data like XXXX. In [Y], vibration data %were used. These types of signals are one of the best signals to %understand possible failures as said by CGI experts. In [Z] were also %used these signals XXX.
 
@@ -99,11 +99,11 @@ As presented earlier in the Data Structure section and in image Figure 5.1, we s
 \subsection{How can we predict the failure with the available monitoring data} 
 \label{sub:if_you_use_this_template} 
 
-To predict a failure, as any machine learning algorithm, we will provide samples of the dataset to train the algorithm. From all the signals available in the system, we selected a subset of some of the features that we will use as a starting point to train our model. The selection of each feature was supported by articles like [XXX], [XXX], [XXX] [OLD (19)] and by the opinion of CGI experts of renewable energy sources.
+To predict a failure, as any machine learning algorithm, we will provide samples of the dataset to train the algorithm. From all the signals available in the system, we selected a subset of some of the features that we will use as a starting point to train our model. The selection of each feature was supported by articles like \cite{OLD_41_WIND} [...] and by the opinion of CGI experts of renewable energy sources.
 
 Each signal available depends on the manufacturer and model associated with the fault that is being study. So, to support the study of each fault, the features for each one might not be all the same and so this might be a factor that affects the performance of the model for the fault being predicted.
 
-Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table X (Figure 5.3) and mentioned in [ARTIGOS] [OLD(19)], are general information about the environment and the wind turbine.
+Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table X (Figure 5.3) and mentioned in \cite{OLD_41_WIND} [...], are general information about the environment and the wind turbine.
 
 \begin{table}[!ht]
     \centering
@@ -121,7 +121,7 @@ Despite this particularity of each model, a set of general features is selected 
 \end{table}
 
 We then selected some signals that are specific of each component of the fault itself. These features presented in Table X2 (Figure 5.4), are features that exist for the majority of the manufacturers and models of the subset of faults and provide information specific of the component that they are connected to.
-Some of these signals are mentioned by some articles like [ARTIGOS] that studied failures that affect some of these components also.
+Some of these signals are mentioned by some articles like [...] that studied failures that affect some of these components also.
 
 % DEPRECATED
 %We then selected some signals that are specific of each component of the fault itself. These %features are specific for each manufacturer and model available, and provide us information %about the behaviour of the component associated with the fault.
@@ -152,7 +152,7 @@ Some of the signals available are signals that have information about the curren
 
 %TODO COLOCAR LISTA NO APPENDIX1!!!
 
-Some signals that are mentioned in our literature and by CGI experts as important for the prediction of problems in wind turbines are vibration signals. Due to the fact that the wind turbine manufacturers don't provide them, we have to use other signals data that we have available, like temperature signals (gearbox oil temperature, etc.), that are considered to be one of the best alternatives to the vibration signals to predict failures in components, as said by CGI experts and in [19 (WIND)].
+Some signals that are mentioned in our literature and by CGI experts as important for the prediction of problems in wind turbines are vibration signals. Due to the fact that the wind turbine manufacturers don't provide them, we have to use other signals data that we have available, like temperature signals (gearbox oil temperature, etc.), that are considered to be one of the best alternatives to the vibration signals to predict failures in components, as said by CGI experts and in \cite{OLD_19_WIND}.
 
 %MENTIONED IN THE PARAGRAPH ABOVE
 %Some of these signals are considered key according to CGI experts of the %area, that indicate that some of these signals, specially the temperature %of the oil of a component, are fundamental to follow the state of a %component of the wind turbine and are the main candidates to replace the %subset of vibration signals, mentioned previosuly, and which the CGI RMS %have not available in their portfolio of signals.
@@ -292,9 +292,9 @@ For each of the faults presented in Table3 and Table4, we did an analysis on its
 \section{Machine Learning Algorithms} 
 \label{sub:if_you_use_this_template} 
 
-In [OLD 3] [OLD 16] [OLD 17], it was studied, in a theoretical way, several possibilities of machine learning algorithms that are more adequate to achieve our main goal: the prediction and classification of failures that may occur in a wind turbine asset.
+In \cite{OLD_15_WIND} \cite{40_WIND} \cite{OLD_36_SOLAR}, it was studied, in a theoretical way, several possibilities of machine learning algorithms that are more adequate to achieve our main goal: the prediction and classification of failures that may occur in a wind turbine asset.
 
-In terms of wind turbine faults, using [OLD 3] [OLD 7] [OLD 16] [OLD 20], [OLD 21] and according to the recommendation from the CGI Machine Learning experts and the limitations of the algorithms already provided to us by the Azure Machine Learning Studio, the machine learning algorithms that we will focus our thesis are: Two-Class Logistic Regression, Two-Class Support Vector Machine (SVM), Two-Class Neural Network, Two-Class Boosted Decision Tree, Two-Class Decision Forest.
+In terms of wind turbine faults, using \cite{OLD_15_WIND} \cite{OLD_53_WIND} \cite{40_WIND} \cite{ML_Alg_Analysis}, \cite{ML_Data_processing} and according to the recommendation from the CGI Machine Learning experts and the limitations of the algorithms already provided to us by the Azure Machine Learning Studio, the machine learning algorithms that we will focus our thesis are: Two-Class Logistic Regression, Two-Class Support Vector Machine (SVM), Two-Class Neural Network, Two-Class Boosted Decision Tree, Two-Class Decision Forest.
 
 The machine learning algorithms will be used, with a dataset that contains the measures mentioned before for each fault and the other columns mentioned previously in the Dataset section. The target feature that will be used to fit our model is the column fault, mentioned earlier in the dataset section.
 The main idea with this master thesis is to investigate and implement several machine learning models, each one with the function of predicting a single fault type of a wind turbine and being fitted for particular sliding time window parameter (explained later in this section), so that it can provide to the client which component of the specific wind turbine will fail and anticipate a preventive maintenance to minor the damage of a potential failure.
@@ -305,23 +305,23 @@ Another important goal of our models performance is to prioritize the minimizati
 \label{sub:if_you_use_this_template} 
 
 \subsubsection{Two-Class Logistic Regression}
-The logistic regression is, at heart, a regression model. Logistic regression can be used as a classifier with the "purpose of obtaining a decision hyperplane that separates different classes". [OLD 22]
+The logistic regression is, at heart, a regression model. Logistic regression can be used as a classifier with the "purpose of obtaining a decision hyperplane that separates different classes" \cite{FCT_AA}.
 The logistic regression, uses a function, denominated as a cost function, that takes value between 0 and 1 and that tell us the probability of a certain value being from one class or another. Thus, it is more applicable to binary problems.
 This classification algorithm is the simplest to implement of all four and so, and because it is more advised to be used in binary classifiers, it is a good candidate to be an algorithm used to investigate single failures instead of a combination of failures from the same component.
 
 In terms of its implementation in Azure Machine Learning Studio, we have available two parameters:
 \begin{enumerate}
     \item{Optimization tolerance}
-"Specify a threshold value to use when optimizing the model. If the improvement between iterations falls below the specified threshold, the algorithm is considered to have converged on a solution, and training stops" [Azure Machine Learning]
+"Specify a threshold value to use when optimizing the model. If the improvement between iterations falls below the specified threshold, the algorithm is considered to have converged on a solution, and training stops" \cite{AZURE_MACHINE_LEARNING}
     \item{L2 Regularization Weight}
-"Regularization is a method for preventing overfitting by penalizing models with extreme coefficient values. Regularization works by adding the penalty that is associated with coefficient values to the error of the hypothesis" [Azure Machine Learning]
+"Regularization is a method for preventing overfitting by penalizing models with extreme coefficient values. Regularization works by adding the penalty that is associated with coefficient values to the error of the hypothesis" \cite{AZURE_MACHINE_LEARNING}
 \end{enumerate}
 
 
 \subsubsection{Two-Class SVM (Support Vector Machine)}
-It is a binary classification learning algorithm where each data item is a point in a n-dimensional space (where n is the number of features provided) and the classification is performed by finding the hyperplane that differentiates the two classes. The support vectors are data points that are closer to the hyperplane and influence the position and orientation of this hyperplane. Using the support vectors, we maximize the margin of the classifier. [OLD 25]
+It is a binary classification learning algorithm where each data item is a point in a n-dimensional space (where n is the number of features provided) and the classification is performed by finding the hyperplane that differentiates the two classes. The support vectors are data points that are closer to the hyperplane and influence the position and orientation of this hyperplane. Using the support vectors, we maximize the margin of the classifier. \cite{SVM}
 
-One of the key parameters of the SVM classifier is the kernel function that is used. The kernel function is a function that "give us the inner product of the transformed vectors as a function of the original vectors" [OLD 22], meaning that it is the function that converts the input data space into a higher-dimensional space. The kernel function "takes two data points and calculates a distance score be-tween those. This score is higher for closer data points and vice versa." [OLD  25]. The more popular and the kernel functions that we are going to study are Linear Function, Polynomial Function, Radial Basic Function (RBF) and Sigmoid Function.
+One of the key parameters of the SVM classifier is the kernel function that is used. The kernel function is a function that "give us the inner product of the transformed vectors as a function of the original vectors" \cite{FCT_AA}, meaning that it is the function that converts the input data space into a higher-dimensional space. The kernel function "takes two data points and calculates a distance score be-tween those. This score is higher for closer data points and vice versa." \cite{SVM}. The more popular and the kernel functions that we are going to study are Linear Function, Polynomial Function, Radial Basic Function (RBF) and Sigmoid Function.
 
 The key parameters that should be study in order to find out the values that are more adequate to our dataset is gamma, that defines how far the influence of a single training example reaches and C, that behaves as a regularization parameter in the SVM, in terms of margin of acceptance for the decision surface (lower C values lead to allowing more errors).
 It is a good algorithm when we have a high number of features having a disadvantage of being slow. It is suited for extreme case binary classification and when the classes are separable.
@@ -331,61 +331,61 @@ In terms of its implementation in Azure Machine Learning Studio, we don not have
 For configuration of the hyperparameters of this module, we have available two parameters:
 \begin{enumerate}
     \item{Number of Iterations}
-"Denotes the number of iterations used when building the model. This parameter can be used to control trade-off between training speed and accuracy." [Azure Machine Learning]
+"Denotes the number of iterations used when building the model. This parameter can be used to control trade-off between training speed and accuracy." \cite{AZURE_MACHINE_LEARNING}
     \item{Lambda}
-"Value to use as the weight for L1 regularization. This regularization coefficient can be used to tune the model. Larger values penalize more complex models." [Azure Machine Learning]
+"Value to use as the weight for L1 regularization. This regularization coefficient can be used to tune the model. Larger values penalize more complex models." \cite{AZURE_MACHINE_LEARNING}
     \item{Normalize Features}
-"Before training, data points are centered at 0 and scaled to have one unit of standard deviation." [Azure Machine Learning]
+"Before training, data points are centered at 0 and scaled to have one unit of standard deviation." \cite{AZURE_MACHINE_LEARNING}
 \end{enumerate}
 
 \subsubsection{Two-Class Neural Network}
-A neural network, is an algorithm based in deep learning, as presented before in the background section. As presented in the Azure Machine Learning Studio documentation [Azure Machine Learning], "a neural network is a set of interconnected layers. The inputs are the first layer, and are connected to an output layer by an acyclic graph comprised of weighted edges and nodes. Between the input and output layers you can insert multiple hidden layers. (...) The relationship between inputs and outputs is learned from training the neural network on the input data. The direction of the graph proceeds from the inputs through the hidden layer and to the output layer. All nodes in a layer are connected by the weighted edges to nodes in the next layer.
+A neural network, is an algorithm based in deep learning, as presented before in the background section. As presented in the Azure Machine Learning Studio documentation \cite{AZURE_MACHINE_LEARNING}, "a neural network is a set of interconnected layers. The inputs are the first layer, and are connected to an output layer by an acyclic graph comprised of weighted edges and nodes. Between the input and output layers you can insert multiple hidden layers. (...) The relationship between inputs and outputs is learned from training the neural network on the input data. The direction of the graph proceeds from the inputs through the hidden layer and to the output layer. All nodes in a layer are connected by the weighted edges to nodes in the next layer.
 To compute the output of the network for a particular input, a value is calculated at each node in the hidden layers and in the output layer. The value is set by calculating the weighted sum of the values of the nodes from the previous layer".
 
 In terms of its implementation in Azure Machine Learning Studio, we have available two parameters:
 \begin{enumerate}
     \item{Hidden Layer Specification}
-"Type of network architecture to create." [Azure Machine Learning]. It value can only be a Fully connected layer, where we have one hidden layer, being connected with the output layer and the input layer.
+"Type of network architecture to create." \cite{AZURE_MACHINE_LEARNING}. It value can only be a Fully connected layer, where we have one hidden layer, being connected with the output layer and the input layer.
     \item{Learning Rate}
-"Define the size of the step taken at each iteration, before correction. A larger value for learning rate can cause the model to converge faster, but it can overshoot local minimal." [Azure Machine Learning]
+"Define the size of the step taken at each iteration, before correction. A larger value for learning rate can cause the model to converge faster, but it can overshoot local minimal." \cite{AZURE_MACHINE_LEARNING}
     \item{Number of learning iterations}
-"specify the maximum number of times the algorithm should process the training cases." [Azure Machine Learning]
+"specify the maximum number of times the algorithm should process the training cases." \cite{AZURE_MACHINE_LEARNING}
     \item{The momentum}
-"specify a weight to apply during learning to nodes from previous iterations" [Azure Machine Learning]
+"specify a weight to apply during learning to nodes from previous iterations" \cite{AZURE_MACHINE_LEARNING}
     \item{Shuffle Examples}
-"shuffle cases between iterations" [Azure Machine Learning]
+"shuffle cases between iterations" \cite{AZURE_MACHINE_LEARNING}
 \end{enumerate}
 
 \subsubsection{Two-Class Decision Forest Classifier}
 Decision Forest algorithm is based on Decision Tree. Decision Tree is a type of supervised algorithm that starts with a node that receives all the input features and that splits recursively based on those features. It predicts the value of a variable by extracting simple rules from data properties and learning those rules. Each split at a node is chosen to maximize information gain minimize entropy.
  
-In terms of the decision forest, it is an ensemble learning method, thus meaning, that relies on multiple models, fixing in each iteration the mistakes from the previous build model. "This particular implementation of a decision forest works by building multiple decision trees and then voting on the most popular output class" [Azure Machine Learning]. This module implementation, use in each iteration the same complete dataset but with different starting points.
+In terms of the decision forest, it is an ensemble learning method, thus meaning, that relies on multiple models, fixing in each iteration the mistakes from the previous build model. "This particular implementation of a decision forest works by building multiple decision trees and then voting on the most popular output class" \cite{AZURE_MACHINE_LEARNING}. This module implementation, use in each iteration the same complete dataset but with different starting points.
 
 In terms of its implementation in Azure Machine Learning Studio, we have available two parameters:
 \begin{enumerate}
     \item{Resampling Method}
-"Method used to create the individual trees". The methods available are Bagging, in which "each tree is grown on a new sample, created by randomly sampling the original dataset with replacement until you have a dataset the size of the original" and Replicate in which "each tree is trained on exactly the same input data. The determination of which split predicate is used for each tree node remains random and the trees will be diverse" [Azure Machine Learning Studio].
+"Method used to create the individual trees". The methods available are Bagging, in which "each tree is grown on a new sample, created by randomly sampling the original dataset with replacement until you have a dataset the size of the original" and Replicate in which "each tree is trained on exactly the same input data. The determination of which split predicate is used for each tree node remains random and the trees will be diverse" \cite{AZURE_MACHINE_LEARNING}.
     \item{Number of Decision Trees}
-"Maximum number of decision trees that can be created in the ensemble" [Azure Machine Learning Studio].
+"Maximum number of decision trees that can be created in the ensemble" \cite{AZURE_MACHINE_LEARNING}.
     \item{Maximum depth of the decision trees}
-"Number to limit the maximum depth of any decision tree". It allows to increase the precision of the model, with the risk of leading to overfit. [Azure Machine Learning Studio]
+"Number to limit the maximum depth of any decision tree". It allows to increase the precision of the model, with the risk of leading to overfit. \cite{AZURE_MACHINE_LEARNING}
     \item{Minimum number of samples per leaf node}
-"Indicate the minimum number of cases that are required to create any terminal node (leaf) in a tree". This way, it allows to control the threshold for creating new rules. [Azure Machine Learning Studio].
+"Indicate the minimum number of cases that are required to create any terminal node (leaf) in a tree". This way, it allows to control the threshold for creating new rules. \cite{AZURE_MACHINE_LEARNING}.
 \end{enumerate}
 
 \subsubsection{Two-Class Boosted Decision Tree}
-As the two-class decision forest classifier, boosted decision tree is also a type of decision tree classifier. Boosting, is a method that combines many weak learners tree, by each tree learning from the previous one, thus making a strong classifier. "Predictions are based on the entire ensemble of trees together that makes the prediction" [Azure Machine Learning Studio].
+As the two-class decision forest classifier, boosted decision tree is also a type of decision tree classifier. Boosting, is a method that combines many weak learners tree, by each tree learning from the previous one, thus making a strong classifier. "Predictions are based on the entire ensemble of trees together that makes the prediction" \cite{AZURE_MACHINE_LEARNING}.
 
 In terms of its implementation in Azure Machine Learning Studio, we have available two parameters:
 \begin{enumerate}
     \item{Maximum number of leaves per tree}
-"Indicate the maximum number of terminal nodes (leaves) that can be created in any tree". It allows to increase the precision of the model, with the risk of leading to overfit. [Azure Machine Learning Studio]
+"Indicate the maximum number of terminal nodes (leaves) that can be created in any tree". It allows to increase the precision of the model, with the risk of leading to overfit. \cite{AZURE_MACHINE_LEARNING}
     \item{Minimum number of samples per leaf node}
-"Indicate the number of cases required to create any terminal node (leaf) in a tree". This way, it allows to control the threshold for creating new rules [Azure Machine Learning Studio].
+"Indicate the number of cases required to create any terminal node (leaf) in a tree". This way, it allows to control the threshold for creating new rules \cite{AZURE_MACHINE_LEARNING}.
     \item{Learning Rate}
-"Number between 0 and 1 that defines the step size while learning. (...) Determines how fast or slow the learner converges on the optimal solution" [Azure Machine Learning Studio].
+"Number between 0 and 1 that defines the step size while learning. (...) Determines how fast or slow the learner converges on the optimal solution" \cite{AZURE_MACHINE_LEARNING}.
     \item{Number of trees constructed}
-"Indicate the total number of decision trees to create in the ensemble". [Azure Machine Learning Studio]
+"Indicate the total number of decision trees to create in the ensemble". \cite{AZURE_MACHINE_LEARNING}
 \end{enumerate}
 
 \subsubsection{Configurable Parameters}
@@ -435,28 +435,28 @@ As presented previously, our main goal is to analyze the features transformation
 
 \subsection{Data Pre-Processing Procedures}
 
-In order to prepare our data, some pre-processing on the measures data that we have available from the signals described in Table 1 must be done. The procedures that we selected to build our experience were based in our literature like [ML Data processing] [39 (WIND)] [N3 (WIND)] [41 (WIND)] [N4 (WIND)] [MED (1)] [N7 (GENERAL)] [VER MAIS] and according to the modules available in the Azure Machine Learning Studio [Azure Machine Learning].
+In order to prepare our data, some pre-processing on the measures data that we have available from the signals described in Table 1 must be done. The procedures that we selected to build our experience were based in our literature like \cite{ML_Data_processing} \cite{39_WIND} \cite{N_3_WIND} \cite{41_WIND} \cite{N_4_WIND} \cite{MED_1} \cite{N_7_GENERAL} and according to the modules available in the Azure Machine Learning Studio \cite{AZURE_MACHINE_LEARNING}.
 
 First, in our acquisition of the data we analyze if a feature have a high percentage of null values for the entire dataset. If that is the case, we remove the feature because it means that it doesn't have enough quality data and the machine learning algorithm can't have null rows. The next step is to remove the remaining rows that contain any feature with a null value. These steps guarantee that we have a dataset with no invalid rows or features so that the process of training and fitting the model have no errors.
 
-Then we proceed to the feature engineering step, by "create new features from the given dataset or tweak existing features to extract more valuable information" [ML Data processing], as stated also in [N7 (GENERAL)] [MED(1)]. This procedure is called running summaries as named in [MED(1)].
+Then we proceed to the feature engineering step, by "create new features from the given dataset or tweak existing features to extract more valuable information" \cite{ML_Data_processing}, as stated also in \cite{N_7_GENERAL} \cite{MED_1}. This procedure is called running summaries as named in \cite{MED_1}.
 
-Other step that was already mentioned before is the use of a sliding time window. This is a procedure that is made "to expand the failure or target window. That is, make the dependent variable, not just the day the equipment failed but the (...) appropriate interval leading up to the failure" [MED(1)]. This mechanism is also mentioned in Table 2 of [N7 (GENERAL)], with the column Failure and in [19 (WIND)] and [TDC(1)] were is explained how this new column is generated. As stated in this last article, "one usually does not need to predict the lifetime very accurate, far in the future. Often the maintenance team only needs to know if the machine will fail ‘soon'". So in order to do this and as presented in next figure 12, we will use a sliding time window (presented in the figure as 'Z' in the x axis) and we will going to label it as 1 to represent a failure. This way, our model will be fitted to learn that Z time before a failure occur, the values of each feature may represent a behaviour that will lead to the failure of the wind turbine.
+Other step that was already mentioned before is the use of a sliding time window. This is a procedure that is made "to expand the failure or target window. That is, make the dependent variable, not just the day the equipment failed but the (...) appropriate interval leading up to the failure" \cite{MED_1}. This mechanism is also mentioned in Table 2 of \cite{N_7_GENERAL}, with the column Failure and in \cite{OLD_19_WIND} and \cite{TDC_1} were is explained how this new column is generated. As stated in this last article, "one usually does not need to predict the lifetime very accurate, far in the future. Often the maintenance team only needs to know if the machine will fail ‘soon'". So in order to do this and as presented in next figure 12, we will use a sliding time window (presented in the figure as 'Z' in the x axis) and we will going to label it as 1 to represent a failure. This way, our model will be fitted to learn that Z time before a failure occur, the values of each feature may represent a behaviour that will lead to the failure of the wind turbine.
 
 %CHECK IF THAT IMAGE SHOULD BE REPLACED
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=1.0]{Chapters/Figures/methodology_fig13.png}
 	\caption{Sliding Time Window ...
-	        [TDC(1)]}
+	        \cite{TDC_1}}
 	\label{fig:Figuras_Tree_silhouettes-vectorial}
 \end{figure}
 
 %METER O PORQUE DE TERMOS USADO O CHI-SQUARED BASEADO NUM SITE QUE VIMOS
 
-The next refereed in [ML Data processing], [N4 (WIND)] and [39 (WIND)] is the feature selection process where we extract only the useful and relevant features. This step "remove the problem of overfitting from your classification model". To do this procedure, we will use the Filter Based Feature Selection module available in Azure Machine Learning Studio, using the two-way chi-squared test. This is a "statistical method that measures how close expected values are to actual results (...) and indicates how far results are from the expected (random) result" [Azure Machine Learning Studio]. "The (...) higher the Chi-Square value the feature is more dependent on the response and it can be selected for model training" [TDC - ChiSquared]. The number of features that we choose to be selected was 30, and it was chosen by selecting on some of the best faults, several number of features and analyzing the results to check which number of features we obtained the best results of the model.
+The next refereed in \cite{ML_Data_processing}, \cite{N_4_WIND} and \cite{39_WIND} is the feature selection process where we extract only the useful and relevant features. This step "remove the problem of overfitting from your classification model". To do this procedure, we will use the Filter Based Feature Selection module available in Azure Machine Learning Studio, using the two-way chi-squared test. This is a "statistical method that measures how close expected values are to actual results (...) and indicates how far results are from the expected (random) result" \cite{AZURE_MACHINE_LEARNING}. "The (...) higher the Chi-Square value the feature is more dependent on the response and it can be selected for model training" \cite{TDC_ChiSquared}. The number of features that we choose to be selected was 30, and it was chosen by selecting on some of the best faults, several number of features and analyzing the results to check which number of features we obtained the best results of the model.
 
-The next procedure is to split our dataset into the train, validation and test dataset, as mentioned in [TDC - Train Test Split] [TDC - TrainValidationTest]. In other articles in our literature, like [Machine Learning Mistery - Train-Test Split] [ML Data Processing] [N4 (WIND)] [41 (WIND)] only use two-splits, the train and test dataset.
+The next procedure is to split our dataset into the train, validation and test dataset, as mentioned in \cite{TDC_Train_Test_Split} \cite{TDC_TrainValidationTest}. In other articles in our literature, like \cite{Machine_Learning_Mistery_Train-Test-Split} \cite{ML_Data_processing} \cite{N_4_WIND} \cite{41_WIND} only use two-splits, the train and test dataset.
 In our case, we will use a more custom split. In the beginning of the experiment we will use split our dataset from March 2021 to the 1st October 2021 and from that day to the end of the year of 2021. The first split will be used to train, fit and do a first evaluation of the model and the second split will be to get a total new dataset and simulate the behaviour of the model after being train and fitted, to understand it real score and real capacity for predicting faults.
 In our first split (March 2021 to 1st October 2021), we will apply the Split Data module available in Azure Machine Learning Studio twice, so that we can achieve the three datasets that we pretend. We pretend to obtain 60\% for train, 30\% for validation and 10\% for testing. To obtain that, since we have to use the Split Data module twice, first we split with a fraction of 60\%, obtaining the train dataset, and on the remaining 40\%, we will split it into 70\%, thus giving approximately the percentages mentioned earlier for validation and test.
 
@@ -468,7 +468,7 @@ Since we still have a second not used dataset to obtain our final results (data 
 %MAYBE PRESENT A CHART
 
 If we do an analysis on the fault column for one of our faults that have the more number of fault events, and with the higher sliding time window of 72 hours (meaning that for each failure event, we will have 72*6 = 432 rows with fault = 1), for the column fault we have 9663 negatives (represented as 0, that means that the wind turbine was working correctly in that timestamp) and only 1996 positives, demonstrating that we have class imbalance since even with the sliding time window of 72 hours, only approximately 20\% of our rows represent a failure condition of the wind turbine.
-"Class imbalance means one class is dominating and there are very few instances of the other class" [ML Data processing]. This is normal in problems like the one that is being studied in this master thesis, since a wind turbine should stay most of it time running correctly and not with a specific type of failure.
+"Class imbalance means one class is dominating and there are very few instances of the other class" \cite{ML_Data_processing}. This is normal in problems like the one that is being studied in this master thesis, since a wind turbine should stay most of it time running correctly and not with a specific type of failure.
 In order to address this problem in our train dataset, we will synthesize new examples of the minority class, than in our case is the fault event. To do that, we will use the SMOTE (Synthetic Minority Oversampling Technique) module that exists in Azure Machine Learning Studio. SMOTE uses the k-nearest neighbor logic to build examples: "A randomly selected neighbor is chosen and a synthetic example is created at a randomly selected point between the two examples in feature space." [SMOTE].
 After this process, we have a more balanced training dataset, having for the same fault mentioned before and after the SMOTE module, X negatives and Y positives.
 
@@ -481,8 +481,8 @@ The values selected for each parameter that were introduced were a varied list o
 In the previous presented Table 5.5, we can see for each algorithm which values were introduced for each parameter.
 
 \subsection{Evaluation of the Model}
-In terms of evaluating the model we based our evaluation in some standard metrics that are used in classification problems and that are mentioned in [41 (WIND)] [N4(WIND)] [MED(1)] [Classification]. These metrics are the Confusion Matrix, precision, recall and F1 Score.
-To evaluate the dataset that simulates the behaviour of the dataset with a complete new dataset (with data since October 1st 2021 until the end of December 2021) which allow us to understand the true prediction power of our model, we use the metrics introduced earlier and we build a python script that evaluates the score model and evaluates if the failure events were correctly predicted inside the time window. This built metric is based according to [MED(1)] and the opinion of the CGI experts and is going to be explained later on.
+In terms of evaluating the model we based our evaluation in some standard metrics that are used in classification problems and that are mentioned in \cite{41_WIND} \cite{N_4_WIND} \cite{MED_1} [Classification]. These metrics are the Confusion Matrix, precision, recall and F1 Score.
+To evaluate the dataset that simulates the behaviour of the dataset with a complete new dataset (with data since October 1st 2021 until the end of December 2021) which allow us to understand the true prediction power of our model, we use the metrics introduced earlier and we build a python script that evaluates the score model and evaluates if the failure events were correctly predicted inside the time window. This built metric is based according to \cite{MED_1} and the opinion of the CGI experts and is going to be explained later on.
 
 Our standard metrics will be available by combining the Score Model module, which provides an table with the score of the model in each row, and the Evaluate Model module, that analysis the results of the Score Model and provide several metrics, in which are included all the ones mentioned.
 The standard metrics will compare the Fault column from our dataset (the column that contains the failure event and the sliding time window rows) and the prediction output from our model.
@@ -514,7 +514,7 @@ Is calculated from the precision and recall. It's called the Harmonic Mean betwe
 \end{enumerate}
 
 \subsubsection{Final Evaluation Metric}
-As presented in [MED(1)] and explained by the CGI experts, by using the column 'Fault', created in the data pre-processing step, to evaluate the performance of our model does not provide the correct result. This column reflects the failure event represented the Sliding Time Window multiplied by 6 (because each hour have 6*10 minute rows). For example, for a Sliding Time Window of 12 hours, we have each failure event represented 72 times. This may lead to cases where our model does not predict every single 1's in the fault column, but in the sliding time window interval, detects the amount of 1's enough to consider that in that interval it was detected the pattern that will lead to a failure of that fault type in that wind turbine. To understand and evaluate this capacity of the model, the most important column is the Failure Time column, that really indicates the timestamp where a fault occurred and the output from the python script that takes also into consideration the sliding time window interval of the dataset.
+As presented in \cite{MED_1} and explained by the CGI experts, by using the column 'Fault', created in the data pre-processing step, to evaluate the performance of our model does not provide the correct result. This column reflects the failure event represented the Sliding Time Window multiplied by 6 (because each hour have 6*10 minute rows). For example, for a Sliding Time Window of 12 hours, we have each failure event represented 72 times. This may lead to cases where our model does not predict every single 1's in the fault column, but in the sliding time window interval, detects the amount of 1's enough to consider that in that interval it was detected the pattern that will lead to a failure of that fault type in that wind turbine. To understand and evaluate this capacity of the model, the most important column is the Failure Time column, that really indicates the timestamp where a fault occurred and the output from the python script that takes also into consideration the sliding time window interval of the dataset.
 
 %TO CHECK THE COLUMN NAME
 Our evaluation metrics, and considering our score model dataset which contains the structure presented in the first step of Figure X, with the score of the model column, named Scored Model, is build following the presented steps:
