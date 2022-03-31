@@ -60,7 +60,7 @@ In terms of the process of data acquisition, it involves all the entities repres
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.7]{Chapters/Figures/methodology_fig10.png}
-	\caption{Data Model ...}
+	\caption{RMS Data Model of Data Acquisiton Entities: It represents all the entities that are involved in the data acquisition process and the storage of failure events.}
 	\label{fig:Figuras_Tree_silhouettes-vectorial}
 \end{figure}
 
@@ -73,7 +73,7 @@ To help in better structuring the signals comprehension, in RMS we use a term of
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.7]{Chapters/Figures/methodology_fig11.png}
-	\caption{Data Model ...}
+	\caption{RMS Data Model of Storage of Data: It represents all the entities that are involved in the data acquisition, storage and statistical calculation of the data from the wind turbines.}
 	\label{fig:Figuras_Tree_silhouettes-vectorial}
 \end{figure}
 
@@ -103,7 +103,7 @@ To predict a failure, as any machine learning algorithm, we will provide samples
 
 Each signal available depends on the manufacturer and model associated with the fault that is being study. So, to support the study of each fault, the features for each one might not be all the same and so this might be a factor that affects the performance of the model for the fault being predicted.
 
-Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table X (Figure 5.3) and mentioned in \cite{OLD_41_WIND} [...], are general information about the environment and the wind turbine.
+Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table 5.2 and mentioned in \cite{OLD_41_WIND} [...], are general information about the environment and the wind turbine.
 
 \begin{table}[!ht]
     \centering
@@ -116,12 +116,12 @@ Despite this particularity of each model, a set of general features is selected 
         WNAC\_EXTMP & DEGC & External Temperature / Temp outside / Temp. Ambient & GENERAL / NACELLE \\ \hline
         AIR\_DENSITY & KGM3 & Air Density & GENERAL \\ \hline
     \end{tabular}
-    \caption{General Signals}
+    \caption{Wind Turbine General Information Signals. This signals exists for every wind turbines in the system.}
     \label{GeneralSignals}
 \end{table}
 
-We then selected some signals that are specific of each component of the fault itself. These features presented in Table X2 (Figure 5.4), are features that exist for the majority of the manufacturers and models of the subset of faults and provide information specific of the component that they are connected to.
-Some of these signals are mentioned by some articles like [...] that studied failures that affect some of these components also.
+We then selected some signals that are specific of each component of the fault itself. These features presented in Table 1, are features that exist for the majority of the manufacturers and models of the subset of faults and provide information specific of the component that they are connected to.
+Some of these signals are mentioned by some articles of our literature that studied failures that affect some of these components also.
 
 % DEPRECATED
 %We then selected some signals that are specific of each component of the fault itself. These %features are specific for each manufacturer and model available, and provide us information %about the behaviour of the component associated with the fault.
@@ -142,7 +142,7 @@ Some of these signals are mentioned by some articles like [...] that studied fai
         WROT\_PTAGVALBL & DEG & Blade 1, actual value & ALL & ALL \\ \hline
         WROT\_ROTSPD & RPM & Rotor Speed & ALL & ALL \\ \hline
     \end{tabular}
-    \caption{Component Signals}
+    \caption{Wind Turbine Component Signals. These signals are specific for some manufacturers and models, and only exists for a subset of wind turbines. Provide information about a specific component.}
     \label{ComponentSignals}
 \end{table}
 
@@ -180,7 +180,7 @@ Fault Category (String): it was built to identify each failure event and to grou
 
 \end{enumerate}
 
-Each row of the dataset represents one timestamp of the wind turbine, and the correspondent values of the features and the fault state for that particular timestamp. In Figure 5.5, we can see an example of the dataset, with a set of rows starting in the 1st October 2021 at 07:20 to 10:30, with the values of the features ('WNAC EXTMP avg' and 'WGEN W avg'), the fault column that have the sliding time window of 72h in this case, and the failure event that occurred in the 08:50.
+Each row of the dataset represents one timestamp of the wind turbine, and the correspondent values of the features and the fault state for that particular timestamp. In Figure 5.3, we can see an example of the dataset, with a set of rows starting in the 1st October 2021 at 07:20 to 10:30, with the values of the features ('WNAC EXTMP avg' and 'WGEN W avg'), the fault column that have the sliding time window of 72h in this case, and the failure event that occurred in the 08:50.
 
 \begin{figure}[htbp]
 	\centering
@@ -201,7 +201,9 @@ Initially when we start to analyze our approach of the best way to predict a spe
 
 So considering this point of view and the opinion of a client of CGI RMS, our final approach in terms of the range of variety that each model should be built, and justified by what has been told previously, was to build each model dataset and fit each model to predict a single failure of a specific wind turbine. This way our model will be more fitted to a wind turbine and the particular fault, thus resulting a prediction that will direct the client maintenance team to the particular component of the failure and to a particular wind turbine.
 
-So, according to the filter and order criteria specified before, we obtain the following results presented in Table X (Figure 5.6), that represent the top failures of the portfolio of parks that are going to be studied in this master thesis, in order to understand the correct approach to predict a failure in a wind turbine and thus, being these models the base model for the implementation of the Failure Prediction tool in CGI RMS.
+So, according to the filter and order criteria specified before, we obtain the following results presented in Table 5.3, that represent the top failures of the portfolio of parks that are going to be studied in this master thesis, in order to understand the correct approach to predict a failure in a wind turbine and thus, being these models the base model for the implementation of the Failure Prediction tool in CGI RMS.
+
+The column 'Park', represents the id of a wind park. The column 'Asset', represents the id of the wind turbine for that park and the column 'FaultId', represents an id for the fault.
 
 \begin{table}[!ht]
     \centering
@@ -228,8 +230,6 @@ After selecting the top faults, while the analysis was being made we decide to i
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
         Park & Asset & faultId & nrEvents & energyLosses & duration \\ \hline
-        CHF & 24 & 434 & 44 & 5749.3527 & 742969,343 \\ \hline
-        PAP & 22 & 8749 & 46 & 1609.7019 & 889843 \\ \hline
         PLS & 9 & 140 & 45 & 635.9669 & 556990 \\ \hline
         CHF & 15 & 367 & 19 & 65772.6703 & 478232,528 \\ \hline
         PCA & 7 & 140 & 81 & 1805.2607 & 733797 \\ \hline
@@ -435,13 +435,13 @@ As presented previously, our main goal is to analyze the features transformation
 
 \subsection{Data Pre-Processing Procedures}
 
-In order to prepare our data, some pre-processing on the measures data that we have available from the signals described in Table 1 must be done. The procedures that we selected to build our experience were based in our literature like \cite{ML_Data_processing} \cite{39_WIND} \cite{N_3_WIND} \cite{41_WIND} \cite{N_4_WIND} \cite{MED_1} \cite{N_7_GENERAL} and according to the modules available in the Azure Machine Learning Studio \cite{AZURE_MACHINE_LEARNING}.
+In order to prepare our data, some pre-processing on the measures data that we have available from the signals described in Table 1 must be done. The procedures that we selected to build our experience were based in our literature like \cite{ML_Data_processing} \cite{39_WIND} \cite{N_3_WIND} \cite{OLD_41_WIND} \cite{N_4_WIND} \cite{MED_1} \cite{N_7_GENERAL} and according to the modules available in the Azure Machine Learning Studio \cite{AZURE_MACHINE_LEARNING}.
 
 First, in our acquisition of the data we analyze if a feature have a high percentage of null values for the entire dataset. If that is the case, we remove the feature because it means that it doesn't have enough quality data and the machine learning algorithm can't have null rows. The next step is to remove the remaining rows that contain any feature with a null value. These steps guarantee that we have a dataset with no invalid rows or features so that the process of training and fitting the model have no errors.
 
 Then we proceed to the feature engineering step, by "create new features from the given dataset or tweak existing features to extract more valuable information" \cite{ML_Data_processing}, as stated also in \cite{N_7_GENERAL} \cite{MED_1}. This procedure is called running summaries as named in \cite{MED_1}.
 
-Other step that was already mentioned before is the use of a sliding time window. This is a procedure that is made "to expand the failure or target window. That is, make the dependent variable, not just the day the equipment failed but the (...) appropriate interval leading up to the failure" \cite{MED_1}. This mechanism is also mentioned in Table 2 of \cite{N_7_GENERAL}, with the column Failure and in \cite{OLD_19_WIND} and \cite{TDC_1} were is explained how this new column is generated. As stated in this last article, "one usually does not need to predict the lifetime very accurate, far in the future. Often the maintenance team only needs to know if the machine will fail ‘soon'". So in order to do this and as presented in next figure 12, we will use a sliding time window (presented in the figure as 'Z' in the x axis) and we will going to label it as 1 to represent a failure. This way, our model will be fitted to learn that Z time before a failure occur, the values of each feature may represent a behaviour that will lead to the failure of the wind turbine.
+Other step that was already mentioned before is the use of a sliding time window. This is a procedure that is made "to expand the failure or target window. That is, make the dependent variable, not just the day the equipment failed but the (...) appropriate interval leading up to the failure" \cite{MED_1}. This mechanism is also mentioned in Table 2 of \cite{N_7_GENERAL}, with the column Failure and in \cite{OLD_19_WIND} and \cite{TDC_1} were is explained how this new column is generated. As stated in this last article, "one usually does not need to predict the lifetime very accurate, far in the future. Often the maintenance team only needs to know if the machine will fail ‘soon'". So in order to do this and as presented in next Figure 5.4, we will use a sliding time window (presented in the figure as 'Z' in the x axis) and we will going to label it as 1 to represent a failure. This way, our model will be fitted to learn that Z time before a failure occur, the values of each feature may represent a behaviour that will lead to the failure of the wind turbine.
 
 %CHECK IF THAT IMAGE SHOULD BE REPLACED
 \begin{figure}[htbp]
@@ -517,21 +517,35 @@ Is calculated from the precision and recall. It's called the Harmonic Mean betwe
 As presented in \cite{MED_1} and explained by the CGI experts, by using the column 'Fault', created in the data pre-processing step, to evaluate the performance of our model does not provide the correct result. This column reflects the failure event represented the Sliding Time Window multiplied by 6 (because each hour have 6*10 minute rows). For example, for a Sliding Time Window of 12 hours, we have each failure event represented 72 times. This may lead to cases where our model does not predict every single 1's in the fault column, but in the sliding time window interval, detects the amount of 1's enough to consider that in that interval it was detected the pattern that will lead to a failure of that fault type in that wind turbine. To understand and evaluate this capacity of the model, the most important column is the Failure Time column, that really indicates the timestamp where a fault occurred and the output from the python script that takes also into consideration the sliding time window interval of the dataset.
 
 %TO CHECK THE COLUMN NAME
-Our evaluation metrics, and considering our score model dataset which contains the structure presented in the first step of Figure X, with the score of the model column, named Scored Model, is build following the presented steps:
+Our evaluation metrics, and considering our score model dataset which contains the structure presented in the first step of Figure 5.5, with the score of the model column, named Scored Model, is build following the presented steps:
 \begin{enumerate}
     \item
-Considering the table with the score model column, we will consider the sliding time window parameter. In this example, represented in the second step of Figure X we will consider 0.5 hours (30 minutes, that match with 3 timestamps).
+Considering the table with the score model column, we will consider the sliding time window parameter. In this example, represented in the second step of Figure 5.5 we will consider 0.5 hours (30 minutes, that match with 3 timestamps).
     \item
 On the dataset we build a new column, called 'Failure Prediction'. This column will be a Boolean (1 or 0), and it is going to indicate the real prediction of the model according to the interval considered in the previous step and the percentage threshold parameter.
-The percentage threshold parameter is a percentage value, and indicates for a certain interval of analysis (the interval presented before), the percentage of predictions (1 values) in the interval that have to exists in order to consider that the end time of that interval represents a timestamp in which in the last 0.5 hours (our sliding time window parameter) the wind turbine is in failure conditions. The fill of that column is represented in the third step of Figure X.
+The percentage threshold parameter is a percentage value, and indicates for a certain interval of analysis (the interval presented before), the percentage of predictions (1 values) in the interval that have to exists in order to consider that the end time of that interval represents a timestamp in which in the last 0.5 hours (our sliding time window parameter) the wind turbine is in failure conditions. The fill of that column is represented in the third step of Figure 5.5.
     \item
 The last step is an iterative process that runs in all the rows. Each row evaluate the sliding time window before the timestamp in that row.
     \item
-After the 'Failure Prediction' column is filled, we analyze the number of straight lines that have true values (represented as 1). Each set of straight lines represent an interval of prediction of the model. This means that from the start of that interval, to the end of that interval, the model predicted a failure event that might occur since the start timestamp of that interval to the end of that timestamp.
+After the 'Failure Prediction' column is filled, we analyze the number of straight lines that have true values (represented as 1). Each set of straight lines represent an interval of prediction of the model. This means that from the start of that interval, to the end of that interval, the model predicted a failure event that might occur since the start timestamp of that interval to the end of that timestamp. These intervals are represented in Figure 5.6.
     \item
 After these intervals are build up, we compare them to the timestamps in which we have a failure event, represented in our dataset with the column 'Failure Time'.
 Then we evaluate with the same metrics as the Confusion Matrix: if the Failure Time is contained in one of these intervals, we classified as a True Positive; if the Failure Time is not contained in any of these intervals, it is considered a miss in prediction and so it counts to the False Negative; if the interval predicted does not contain any failure event, is a bad prediction and is considered an False Positive.
 \end{enumerate}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{Chapters/Figures/metric_example.png}
+	\caption{Evaluation Script Example. The first column represents the timestamp, the second the prediction of the model and the third is the new column, created by the script that indicates, according to the interval and percentage threshold, which is the prediction of the model.}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{Chapters/Figures/metric_example2.png}
+	\caption{Evaluation Script Example 2. In this image and after the prediction of the model column ('Failure Prediction') is created, we have the predicted failure intervals represented.}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
 
 %METER DIAGRAMA DE PROCESSO A EXPLICAR O PROCESSO COM UM EXCEL AO LADO (BASTA O PP)
 

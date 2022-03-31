@@ -66,7 +66,7 @@ CGI RMS stands-out by providing real-time portfolio supervision (represented in 
 \section{Wind Turbines} 
 \label{sub:if_you_use_this_template} 
 
-Our study will focus into one of the major renewable energy technologies: wind turbines. This renewable energy source is growing more year by year. As we can see in the charts In Figure 4, in 2019 in the whole World combined, there was a growth of 12,14\% in terms of wind energy generation. In Portugal only, these numbers are similar, with a total growth of 8,48\% in terms of wind energy produced, compared to the previous year. According to the latest date of IRENA (International Renewable Energy Agency), the global investment in renewable energy technologies is 46,56\% in wind energy \cite{OLD_33_GENERAL}.
+Our study will focus into one of the major renewable energy technologies: wind turbines. This renewable energy source is growing more year by year. As we can see in the charts In Figure 2.3, in 2019 in the whole World combined, there was a growth of 12,14\% in terms of wind energy generation. In Portugal only, these numbers are similar, with a total growth of 8,48\% in terms of wind energy produced, compared to the previous year. According to the latest date of IRENA (International Renewable Energy Agency), the global investment in renewable energy technologies is 46,56\% in wind energy \cite{OLD_33_GENERAL}.
 
 The data available in terms of the grow in these two renewable energy sources, are major factors that motivate the development and improvement of technologies like the CGI RMS and studies like the one that is going to be developed in this master thesis.
 
@@ -83,7 +83,7 @@ In this chapter, we are going to introduce the basics of each of the wind turbin
 
 
 The wind brings kinetic energy associated with it. This energy, when passes through the wind turbine, rotate the blades and consequently the rotor. With this, we transform the kinetic energy into mechanical energy that we can then acquire and transform that to electric energy into the grid \cite{OLD_29_WIND} \cite{OLD_31}.
-Wind turbines may be classified as two major types: horizontal-axis turbines and vertical-axis turbines, represented in Figure 5 in the left and right images, respectively. The more common are the horizontal-axis turbines, that are also composed with gearboxes to accelerate the slow rotation of the blades, to make it strong enough for the generator. The length of the blades is the biggest factor that determines the amount of energy that a wind turbine can generate.
+Wind turbines may be classified as two major types: horizontal-axis turbines and vertical-axis turbines, represented in Figure 2.4 in the left and right images, respectively. The more common are the horizontal-axis turbines, that are also composed with gearboxes to accelerate the slow rotation of the blades, to make it strong enough for the generator. The length of the blades is the biggest factor that determines the amount of energy that a wind turbine can generate.
 
 \begin{figure}[]
 	\centering
@@ -96,7 +96,7 @@ Wind turbines may be classified as two major types: horizontal-axis turbines and
 %%%TODO: Adicionar mais ou menos enquanto varia a Installed Capacity de uma turbina
 
 A wind power plant, also known as wind farm, is the combination of multiple turbines. A wind park may have hundreds of wind turbines, like the Capricon Ridge Wind Farm, in Texas, United States, that have more than 400 wind turbines making it a park with an installed capacity of 662,5 MW \cite{OLD_35_WIND}.
-As we can see in the following charts In Figure 6, in terms of wind energy sources, in 2019, the electricity generated per year in the World was 1.416,95 TWh and 13,69 TWh. The total installed power worldwide was 622,25 GW and in Portugal was 5,22 GW \cite{OLD_33_GENERAL}.
+As we can see in the following charts In Figure 2.5 in terms of wind energy sources, in 2019, the electricity generated per year in the World was 1.416,95 TWh and 13,69 TWh. The total installed power worldwide was 622,25 GW and in Portugal was 5,22 GW \cite{OLD_33_GENERAL}.
 
 
 \begin{figure}[htbp]
@@ -112,7 +112,9 @@ As we can see in the following charts In Figure 6, in terms of wind energy sourc
 \label{sub:if_you_use_this_template} 
 
 Faults in a wind turbine, causes unscheduled maintenance and consequently, loss in the production of energy. A wind turbine has many and complex components that, without the required maintenance and a predictive system of their conditions, may cause the wind turbine to stop working and, may cause the total failure on a component that may cause costs in terms of their replacement, as well as downtime on a wind turbine, which leads to a drop in production.
-The figure 7 presented below, shows the Downtime Allocation Tree available in CGI RMS and that distributes the major failures that may occur in a wind farm. Downtimes in a wind power plant are classified in two major categories, like in the wind power plant:
+Downtimes in a wind power plant are classified in two major categories, like in the wind power plant:
+ 
+ %The figure 2.6 presented below, shows the Downtime Allocation Tree available in CGI RMS and that distributes the major failures that may occur in a wind farm
 
 \begin{enumerate}
     \item 
@@ -124,12 +126,12 @@ External Causes: the external factors that may cause downtime to a wind power pl
 
 The failures that we are going to predict in this thesis are the ones concerning internal causes downtimes.
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[angle=-90,height=0.5\textheight, width=\textwidth]{Chapters/Figures/background_fig7.PNG}
-	\caption{Wind Downtime Allocation Tree. From the Global Downtime (gray) to the two major causes classification: internal causes (dark red) and external (darker green). The data used to build this chart is from historical data that comes from signals from the wind park.}
-	\label{fig:Figuras_Tree_silhouettes-vectorial}
-\end{figure}
+%\begin{figure}[htbp]
+%	\centering
+%	\includegraphics[angle=-90,height=0.1]{Chapters/Figures/background_fig7.PNG}
+%	\caption{Wind Downtime Allocation Tree. From the Global Downtime (gray) to the two major causes classification: internal causes (dark red) and external %(darker green). The data used to build this chart is from historical data that comes from signals from the wind park.}
+%	\label{fig:Figuras_Tree_silhouettes-vectorial}
+%\end{figure}
 
 
 \subsection{Major Components} 
@@ -137,10 +139,10 @@ The failures that we are going to predict in this thesis are the ones concerning
 
 The wind turbine and its blades form the base component that capture the wind, in order to, and with the help of other components, transform it into electric energy to the grid. In the Figure 8, we present an example of some of the main components that compose a wind turbine.
 
-The wind cause lift and rotation of the blades. With this, the rotor [ Figure 2.7 - 1], that is composed together by the blades and hub, starts to spin. Since, most of the times, the wind Itself does not make the rotor spin enough to produce energy, the gearbox rotor [ Figure 2.7 - 3] that “connects the low-speed shaft to the high-speed shaft and increases the rotational speeds from around 30-60 rotations per minute (rpm), to about 1.000-1.800 rpm [ Figure 2.7 - 2 and 4, respectively]. This is the rotational speed required by most generators [ Figure 2.7 - 5] to produce electricity”. To maintain the performance and guarantee that the high speed intensity may cause some failures and damages in the wind turbine, the anemometer and controller [ Figure 2.7 - 6] together, allows to control the machine according to the wind speed: “Starts up the machine at wind speeds of about 8 to 16 miles per hour (mph) and shuts off the machine at about 55 mph. Turbines do not operate at wind speeds above about 55 mph because they may be damaged by the high winds.” \cite{OLD_29_WIND}. These components and others, that have a more secondary role, form the nacelle [ Figure 2.7 - 7].
+The wind cause lift and rotation of the blades. With this, the rotor [ Figure 2.6 - 1], that is composed together by the blades and hub, starts to spin. Since, most of the times, the wind Itself does not make the rotor spin enough to produce energy, the gearbox rotor [ Figure 2.6 - 3] that “connects the low-speed shaft to the high-speed shaft and increases the rotational speeds from around 30-60 rotations per minute (rpm), to about 1.000-1.800 rpm [ Figure 2.6 - 2 and 4, respectively]. This is the rotational speed required by most generators [ Figure 2.6 - 5] to produce electricity”. To maintain the performance and guarantee that the high speed intensity may cause some failures and damages in the wind turbine, the anemometer and controller [ Figure 2.6 - 6] together, allows to control the machine according to the wind speed: “Starts up the machine at wind speeds of about 8 to 16 miles per hour (mph) and shuts off the machine at about 55 mph. Turbines do not operate at wind speeds above about 55 mph because they may be damaged by the high winds.” \cite{OLD_29_WIND}. These components and others, that have a more secondary role, form the nacelle [ Figure 2.6 - 7].
 
 The high complexity and cost of the gearbox, makes this system part one that is trying to be improved: if electricity can be produced by lower rotational speeds, then the necessity of gearbox disappears and, consequently, the price of a wind turbine drops and some faults that are caused by gearboxes.
-The major component that makes part of the wind turbine tower is the yaw [ Figure 2.7 - 8] (composed by the yaw drive and yaw motor): this component, in the overall, “orients upwind turbines to keep them facing the wind when the direction changes” \cite{OLD_29_WIND}.
+The major component that makes part of the wind turbine tower is the yaw [ Figure 2.6 - 8] (composed by the yaw drive and yaw motor): this component, in the overall, “orients upwind turbines to keep them facing the wind when the direction changes” \cite{OLD_29_WIND}.
 
 
 \begin{figure}[htbp]
@@ -169,7 +171,7 @@ Model: it is the representation of what the ML algorithm has learn during the tr
 All the ML algorithms go through 5 major steps: data collection and pre-processing; feature selection and extraction; model selection; validation; fitting the model \cite{OLD_15_WIND} \cite{46_ML}.
 
 
-The taxonomy of ML models is divided into two major types, as represented in Figure 9. In each taxonomy we also present the most common algorithms that are used. Some of these algorithms are going to be used in this thesis work.
+The taxonomy of ML models is divided into two major types, as represented in Figure 2.7. In each taxonomy we also present the most common algorithms that are used. Some of these algorithms are going to be used in this thesis work.
 
 \begin{enumerate}
     \item{Supervised Learning}
