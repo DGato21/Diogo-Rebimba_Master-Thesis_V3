@@ -1,0 +1,89 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Config/6_files.tex
+%% NOVA thesis configuration file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE Config/6_files.tex}
+
+%=============================================================================
+% THE FILES
+%=============================================================================
+
+%%------------------------------------------------------------
+%% Except for the bibliography, all the other FILE NAMES below  
+%%     inside braces must correspond to a file with extension 
+%%     ".tex" and located in the "Chapters" folder
+%%------------------------------------------------------------
+
+%%------------------------------------------------------------
+% BibTeX bibiography files and customization.  
+%   May be used multiple times with a single file nae each time.
+%   syntax: \ntaddfile{bib}{filename.bib}
+
+\ntaddfile{bib}{bibliography.bib}
+
+%%------------------------------------------------------------
+% File with the dedicatory text. Will only be considered for final documents,
+%   i.e., "bsc", "msc" and "phd", otherwise, it will be silently ignored
+%   syntax: \ntaddfile{dedicatory}{filename}
+
+\ntaddfile{dedicatory}{dedicatory}
+
+%%------------------------------------------------------------
+% File with the acknowledgments text. Will only be considered for final documents,
+%   i.e., "bsc", "msc" and "phd", otherwise, it will be silently ignored
+%   syntax: \ntaddfile{acknowledgements}{filename}
+
+\ntaddfile{acknowledgements}{acknowledgements}
+
+%%------------------------------------------------------------
+% File with the quote text. Will only be considered for final documents,
+%   i.e., "bsc", "msc" and "phd", otherwise, it will be silently ignored
+%   syntax: \ntaddfile{quote}{filename}
+
+%%------------------------------------------------------------
+% Abstract files in multiple languages
+%   syntax: \ntaddfile{abstract}[language]{filename}
+
+\ntaddfile{abstract}[pt]{abstract-pt}  % Abstract in Portuguese
+\ntaddfile{abstract}[en]{abstract-en}  % Abstract in English
+
+%%------------------------------------------------------------
+% Lists of Glossary, Acronyms and Symbols
+%   syntax: \ntaddfile{glossaries}[list-type]{filename}
+
+\ntaddfile{glossaries}[glossary]{glossary}
+\ntaddfile{glossaries}[acronyms]{acronyms}
+\ntaddfile{glossaries}[symbols]{symbols}
+
+%%------------------------------------------------------------
+% Main text - document chapters
+%   syntax: \ntaddfile{chapter}{filename}
+
+\ntaddfile{chapter}{introduction}
+\ntaddfile{chapter}{background}
+\ntaddfile{chapter}{technologies}
+\ntaddfile{chapter}{literature}
+\ntaddfile{chapter}{methodology}
+\ntaddfile{chapter}{experiments_results}
+\ntaddfile{chapter}{results_discussion}
+
+% \ntaddfile{chapter}{chapter-last}
+
+%%------------------------------------------------------------
+% Text appendices 
+% syntax: \ntaddfile{appendix}{filename}
+
+%%------------------------------------------------------------
+% Text annexes
+% syntax: \ntaddfile{annex}{filename}
+
+\ntaddfile{annex}{annex_workplan}
+
+%%------------------------------------------------------------
+% Definition of the statement page, to be printed before the copyright
+% syntax: \ntaddfile{statement}{filename}
+
+% \ntaddfile{statement}{statement-nova-ims}
+

@@ -1,0 +1,50 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% technologies.tex
+%% NOVA thesis document file
+%%
+%% Chapter with Background and Related Work
+
+%% REVIEWED by Diogo Gato 2022/03/28
+%%TODO: Colocar Artigos Antigos Corretamente
+%%REVER SE É NECESSARIO COLOCAR ALGO MAIS SOBRE O AZURE MACHINE LEARNING STUDIO - Como colocar mais detalhes sobre cada um dos seus principais modulos (designer, pipeline) e prints
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE technologies.tex}
+
+\chapter{Technologies}
+\label{cha:introduction}
+
+To accomplish our thesis goal of building a failure prediction tool in CGI RMS, the following main tools will be used.
+
+
+\section{Azure Machine Learning Studio} 
+\label{sub:if_you_use_this_template}
+
+Cloud service used for implementing and managing machine learning projects. With this tool, you can create a model or use a model built from an open-source platform [ OLD 28].
+If needed, it can be used Python SDK to develop in a more specific way a more adjusted model to respond to our problem, not being attached only to the built-in model that Azure Machine Learning Studio provide us [ OLD 28].
+This tool provides us a graphical user interface to check up all the outputs obtained according to the data that we provide and results metrics that we defined previously [ OLD 28].
+All the models created are made easily available through endpoints. CGI RMS have already prepared several web services to contact to new endpoints created by this tool, providing to the created models the necessary data (trans-formed directly from the database system to excel files), training and run these models and store the results to the RMS database.
+
+This will be the mainly used tool to make part of the feature engineering process, to build the machine learning models and to analyze the results of the machine trained models.
+
+
+\section{Visual Studio in .NET, REST API and Azure Functions} 
+\label{sub:if_you_use_this_template}
+CGI RMS is built in a microservice architecture developed in .NET. The monitoring tool is based on a REST API interface, that provide a set of endpoints to the web portal. The other microservices are setup in azure service fabric clusters and are triggered, for example, with queue messages. Some RMS processes, like the predictive methods that are used to train and store the outputs of configured ML models, are setup in Azure Functions. These methods are triggered with time or queue activators.
+
+We will use this technology mainly to make a console application to generate all the datasets needed to train and evaluate the machine learning models.
+
+
+\section{SQL Server Management Studio and Azure Blob Storage} 
+\label{sub:if_you_use_this_template}
+CGI RMS is based on two storage providers: a relational database SQL server, that we explore by using SQL Server Management Studio and a non-relational database used to store unstructured data (like excel files), the Azure Blob Storage.
+The SQL Server is more used to store almost all the data used to feed the RMS web portal, all the client’s static data, calculated data and the statistical non-raw data.
+The Azure Blob Storage is used to store blobs, meaning, the non-structured data like excel files and other data that have a bigger size. It is also used to store all the raw data that comes from the signals.
+
+These are the tools that are used to achieve and store all the data needed.
+
+
+\section{CGI RMS Other Tools} 
+\label{sub:if_you_use_this_template}
+There exist some other tools that already are used in CGI RMS but that we are not use directly. Some of these tools are: Azure Service Fabric (distributed systems platforms were the monitoring system microservices are deployed), Azure Redis Cache (for caching data).

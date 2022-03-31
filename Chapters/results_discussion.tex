@@ -1,0 +1,68 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% results_discussion.tex
+%% NOVA thesis document file
+%%
+%% Chapter with Introduction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE results_discussion.tex}
+
+\chapter{Results Discussion}
+\label{cha:Results Discussion}
+
+\section{Introduction} 
+\label{sub:Results Discussion/Introduction}
+After presenting in the Experiments and Results section our experiment and results, we will now analyze the presented metrics, do some analysis on results obtained per fault, component and considering the dataset presented for each fault and then we are going to do an analysis on the features that are important for the prediction of each failure and component.
+
+\section{Machine Learning Models Performance}
+As explained in the Methodology and Experiments and Result section, to understand the real performance of our machine learning models we will look more to the Final Evaluation Metrics results, because it is our final test dataset and will match to a simulation of the behavior of the model in the real world: it will indicate us from the prediction interval that the model built, and according to a set of percentage threshold parameter, the false positives, true positives and false negatives in comparison to the failure events that occurred.
+
+As mentioned in the Experiments and Result section, for the scopes (SCA 10, Fault 8487) and (SCA 28, Fault 8719), in this test dataset (from October 2021 to the end of December 2021) we don't have registered any failure events. So, for the models that were built for these two scopes, we will not analyze the prediction of a fault but yes the model performance in not predict false positives. Since the beginning of this study, we mentioned that one of our main goals is that our models don't have a high number of false positives, so this analysis is also important to guarantee the reliability of these models and experiment. As we can see from table X and Y, our model don't have any prediction of failure event for these two scopes, for any time window and percentage threshold. So, we can conclude that the models performed well in a case when it was submitted to a dataset that do not have any failure events.
+
+Focusing on the remaining 9 scopes of wind turbines faults, that have failure events in the final evaluation dataset we can see from the analysis of the Final Evaluation Tables (the tables with the confusion matrix metrics that is an output of the script), in Table X, Y, Z, that:
+\begin{enumerate}
+    \item
+6 of them have at least, one machine learning model that predicted 1 interval that contained a failure events, and in all of them there was no registered any predicted intervals that contains false positives.
+These scopes are: (SCA 34 Fault 9112), (PAP 35 Fault 8749), (BNE 18 Fault 768), (CHF 18 Fault 768), (PCA 7 Fault 140), (PLS 9 Fault 140).
+    \item
+The remaining 3 scopes that were not predicted (meaning that only have registered false negative scores), have the positive conclusion that did not lead the any false positives, which goes in the direction of this study goal.
+    \item
+Considering only the scopes with predictions and that have at least 5 fault events, which are (PCA 7 Fault 140), (CHF 18 Fault 768), (BNE 18 Fault 768), (PAP 35 Fault 8749), (SCA 34 Fault 9112), we present in the Table 7.1 the recall of the best model, that indicate us in all the failure events in the dataset, the percentage of success of the model in terms of its prediction.
+By looking at the results of Table 7.1, we can see that 3 scopes (SCA 34 Fault 9112), (CHF 18 Fault 768), (PCA 7 Fault 140) have a great performance, with a recall of over 85\%
+    \item
+The models have the best results when the percentage threshold parameter (that is configured on the evaluation python script), has it's lower levels (from 0.2 or 0.3). This indicates that for each time window interval, the model can only flag it as a failure interval when it detects a low percentage of flagged rows (rows that have the 'Score Model' = 1). When a high percentage of flagged rows are needed to consider the interval as a failure, it is not considered as a failure interval and thus the number of true positives decreases (and the false negatives increases). 
+Which meets the low results from the Evaluate Model Metrics (Precision, Recall, F1 Score), that only consider the prediction of each row separately against the 'Fault' column.
+\end{enumerate}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+    \hline
+        Scope & Fault & Model Info & \% Threshold & TP & FN & Recall \\ \hline
+        SCA 34 & 9112 & NN TW 24h & 0.2 ; 0.3 & 16 & 2 & 89\% \\ \hline
+        PAP 35 & 8749 & NN TW 72h & 0.2 & 2 & 6 & 25\% \\ \hline
+        BNE 18 & 768 & DF/BDT TW 72h & 0.2 & 1 & 7 & 13\% \\ \hline
+        CHF 18 & 768 & LogReg TW 72h & 0.2 & 21 & 3 & 88\% \\ \hline
+        PCA 7 & 140 & LogReg/SVM TW 72h & 0.3, 0.4, 0.5 & 11 & 2 & 85\% \\ \hline
+    \end{tabular}
+    \caption{Best Models and the Recall Results. In the Model Info column, we will name our algorithms by their abbreviation (NN: Neural Network; DT: Decision Tree; BDT: Boosted Decision Tree; LogReg: Logistic Regression; SVM: Support Vector Machine}
+\end{table}
+
+In terms of the performance of each algorithm in all the fault scopes, by analyzing mainly the first split test dataset, presented by Tables X, Y, (...) and the second split test dataset, presented by Tables X, Y, (...) we can take the following conclusions:
+\begin{enumerate}
+    \item{Support Vector Machine(SVM)}
+This algorithm indicates that it is the more reliable in terms of their predictions. It have the lower number of false positives of all the other models algorithms and the evaluation metrics from the first split are more reliable in comparison with other algorithms, that seem to be overfitted.
+In other hand, their true positive and recall metrics, indicates a worst performance in predict all the failure intervals, compensating with the fact that is more reliable leading to none failure positives.
+    \item{Logistic Regression}
+Have a prediction behaviour similar to the SVM, gaining in the prediction of intervals, having the same or best numbers in terms of recall and true positives, but losing in terms of it's reliability.
+    \item{Two-Class Neural Network, Two-Class Decision Forest and Two-Class Boosted Decision Tree}
+These three algorithms seem to have similar results. In the first split dataset, they same to be overfitted to this dataset, since they have results of precision, recall and F1 score close to 1, but when a new dataset (the second split dataset) is presented, their results decrease. When analyzing their performance with the confusion matrix metrics presented after the evaluation script analyzes the models predicted behavior, we can see that the models of these algorithms have lower reliability, having a higher number of false positives, and a higher number of true positives and predictions.
+\end{enumerate}
+
+In terms of the time window parameter, by analyzing the final evaluation results, in Table X, Y, Z, we can see that for the fault scopes that have the highest number of failure events in the dataset and that are predicted, the models with the highest time window (72 hours) has the best performance. This might be related to the fact that with a higher time window, the number of rows with the 'Fault Column' with true value is higher and thus the model detects more failure patterns.
+
+
+\section{Conclusion} 
+\label{sub:if_you_use_this_template}
+

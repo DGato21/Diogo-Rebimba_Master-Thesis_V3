@@ -1,0 +1,197 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% background_relatedwork.tex
+%%
+%% Chapter with Background and Related Work
+%%
+%% REVIEWED by Diogo Gato 2022/03/28
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%TODO: 
+%% Fix small things:
+%% - Renomear nrfiguras nos textos
+%% - Colocar Artigos Antigos Corretamente
+
+\typeout{NT FILE background.tex}
+
+\chapter{Background}
+\label{cha:background}
+
+
+\section{Introduction} 
+\label{sub:if_you_use_this_template} 
+
+In this chapter we will provide to the reader a background of what the thesis will involve. We will start by introducing the system in which our thesis work will be implemented and that provide us the data that will be used. Then, we will advance to a theoretical introduction to our main analysis theme, the wind turbines, providing a first introduction to its context in nowadays, how their downtimes are classified and their major components. We will finish this chapter by introducing the area that we will use to accomplish our goal, machine learning.
+
+\section{CGI RMS - Renewable Monitoring System} 
+\label{sub:if_you_use_this_template} 
+
+CGI Renewable Monitoring System (RMS) is a system that “comprises an integrated set of tools to maximize energy production, increase availability, control energy losses, and improve overall operational performance with direct impact on business revenues".
+
+Its scope includes all the 3 major renewable energies: wind, solar and hydro. In 2019, it had multiple clients with a total combined portfolio of over 8,000 generators, and approximately 15 GW installed capacity distributed over 3 continents: North America (with 5,495 MW) South America (with 1,261 MW) and Europe (with 8,089 MW).
+
+It has 4 major modules [ OLD 8]:
+\begin{enumerate}
+\item
+Monitor: with a screen with possible dashboards and tools with real time data, allows to assist both managers and field teams in acquire all the necessary information to manage their assets.
+
+\item
+Analyze: provides a global overview of portfolio performance by providing trend analysis, benchmark indicators and key operational dashboards and reports.
+
+\item
+Predict: by using machine-learning algorithms and continuous monitoring of real-time data, allows to anticipate potential failures. It allows also to build digital twins and use them as a baseline for behavior comparison.
+
+\item
+Operate: this module is designed for control rooms. It provides multi-screen with a clear real-time overview of all assets and a step-by-step workflow to guide operators, remote control, and intelligent alarm management.
+\end{enumerate}
+
+CGI RMS stands-out by providing real-time portfolio supervision (represented in Figure 2 by the monitoring dashboard) and control, automatic generation and sharing of reports and data exports, key performance indicators calculated and updated according to the real-time data, long-term storage of historical data for performance analysis and tools to analyze the data (like the Data Analysis tool, represented in Figure 3) and performance of their assets according to what it should be expected with dashboards like the power curve analysis, among other features.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{Chapters/Figures/background_fig2.PNG}
+	\caption{Dashboard of general monitoring. With this screen, the user can have an overview of the state, performance and notifications and alarms that exist on their parks and assets.Source: CGI RMS}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{Chapters/Figures/background_fig3.PNG}
+	\caption{RMS Data Analysis tool. It allows to select certain variables, key performance indicators and signals and compare their values in a certain time interval. It also allows to apply a correlation function on those variables. Source: CGI RMS}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+
+\section{Wind Turbines} 
+\label{sub:if_you_use_this_template} 
+
+Our study will focus into one of the major renewable energy technologies: wind turbines. This renewable energy source is growing more year by year. As we can see in the charts In Figure 4, in 2019 in the whole World combined, there was a growth of 12,14\% in terms of wind energy generation. In Portugal only, these numbers are similar, with a total growth of 8,48\% in terms of wind energy produced, compared to the previous year. According to the latest date of IRENA (International Renewable Energy Agency), the global investment in renewable energy technologies is 46,56\% in wind energy [ OLD 9].
+
+The data available in terms of the grow in these two renewable energy sources, are major factors that motivate the development and improvement of technologies like the CGI RMS and studies like the one that is going to be developed in this master thesis.
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{Chapters/Figures/background_fig4.PNG}
+	\caption{Shown is the percentage change in wind energy generation relative to the previous year, according to OurWordInData. Source: [9]}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+
+In this chapter, we are going to introduce the basics of each of the wind turbines, that allow the reader to acquire a general knowledge of them and some key concepts that will provide the basics to understand this master thesis goals. We will start by introducing how a wind park is composed, presenting the major components of each of their asset and finalizing with the factors (internal or external) that may cause failures in these same assets.
+
+
+The wind brings kinetic energy associated with it. This energy, when passes through the wind turbine, rotate the blades and consequently the rotor. With this, we transform the kinetic energy into mechanical energy that we can then acquire and transform that to electric energy into the grid [ OLD 10] [ OLD 11].
+Wind turbines may be classified as two major types: horizontal-axis turbines and vertical-axis turbines, represented in Figure 5 in the left and right images, respectively. The more common are the horizontal-axis turbines, that are also composed with gearboxes to accelerate the slow rotation of the blades, to make it strong enough for the generator. The length of the blades is the biggest factor that determines the amount of energy that a wind turbine can generate.
+
+\begin{figure}[]
+	\centering
+	\includegraphics[width=\textwidth]{Chapters/Figures/background_fig5.png}
+	\caption{Different types of Wind Turbines: horizontal (left) and vertical (right) Source: Kid's Korner (apogee.net)}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+
+%%%TODO: Adicionar mais ou menos enquanto varia a Installed Capacity de uma turbina
+
+A wind power plant, also known as wind farm, is the combination of multiple turbines. A wind park may have hundreds of wind turbines, like the Capricon Ridge Wind Farm, in Texas, United States, that have more than 400 wind turbines making it a park with an installed capacity of 662,5 MW [ OLD 12].
+As we can see in the following charts In Figure 6, in terms of wind energy sources, in 2019, the electricity generated per year in the World was 1.416,95 TWh and 13,69 TWh. The total installed power worldwide was 622,25 GW and in Portugal was 5,22 GW [ OLD 9].
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{Chapters/Figures/background_fig6.PNG}
+	\caption{Installed wind capacity (up image) and electricity generated from wind energy sources (down image) in 2019 in two continents (World, Europe) and four countries (China, United States, Spain and Portugal). Source: [9]}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+%TODO: Format the Paragraphs and respective images
+
+\subsection{Downtime Classification} 
+\label{sub:if_you_use_this_template} 
+
+Faults in a wind turbine, causes unscheduled maintenance and consequently, loss in the production of energy. A wind turbine has many and complex components that, without the required maintenance and a predictive system of their conditions, may cause the wind turbine to stop working and, may cause the total failure on a component that may cause costs in terms of their replacement, as well as downtime on a wind turbine, which leads to a drop in production.
+The figure 7 presented below, shows the Downtime Allocation Tree available in CGI RMS and that distributes the major failures that may occur in a wind farm. Downtimes in a wind power plant are classified in two major categories, like in the wind power plant:
+
+\begin{enumerate}
+    \item 
+Internal Causes: these internal downtimes can be caused by wind turbine direct failures or internal BoP failures. These failures are registered also as planned, unplanned or caused by civil or electrical constructions, with each of these being classified in a lower level of the specific cause of the failure, like wind turbine maintenance, failures, among others.
+
+    \item
+External Causes: the external factors that may cause downtime to a wind power plant are grouped as external to the wind turbine, external BoP failures or curtailment downtimes. The specificities of these failures may be caused by environment conditions, exclusion causes, operations on the grid, among many others.
+\end{enumerate}
+
+The failures that we are going to predict in this thesis are the ones concerning internal causes downtimes.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[angle=-90,height=0.5\textheight, width=\textwidth]{Chapters/Figures/background_fig7.PNG}
+	\caption{Wind Downtime Allocation Tree. From the Global Downtime (gray) to the two major causes classification: internal causes (dark red) and external (darker green). The data used to build this chart is from historical data that comes from signals from the wind park.}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+
+\subsection{Major Components} 
+\label{sub:if_you_use_this_template} 
+
+The wind turbine and its blades form the base component that capture the wind, in order to, and with the help of other components, transform it into electric energy to the grid. In the Figure 8, we present an example of some of the main components that compose a wind turbine.
+
+The wind cause lift and rotation of the blades. With this, the rotor [ OLD Figure 8 - 1], that is composed together by the blades and hub, starts to spin. Since, most of the times, the wind Itself does not make the rotor spin enough to produce energy, the gearbox rotor [ OLD Figure 8 - 3] that “connects the low-speed shaft to the high-speed shaft and increases the rotational speeds from around 30-60 rotations per minute (rpm), to about 1.000-1.800 rpm [ OLD Figure 8 - 2 and 4, respectively]. This is the rotational speed required by most generators [ OLD Figure 8 - 5] to produce electricity”. To maintain the performance and guarantee that the high speed intensity may cause some failures and damages in the wind turbine, the anemometer and controller [ OLD Figure 8 - 6] together, allows to control the machine according to the wind speed: “Starts up the machine at wind speeds of about 8 to 16 miles per hour (mph) and shuts off the machine at about 55 mph. Turbines do not operate at wind speeds above about 55 mph because they may be damaged by the high winds.” [ OLD 10]. These components and others, that have a more secondary role, form the nacelle [ OLD Figure 8 - 7].
+
+The high complexity and cost of the gearbox, makes this system part one that is trying to be improved: if electricity can be produced by lower rotational speeds, then the necessity of gearbox disappears and, consequently, the price of a wind turbine drops and some faults that are caused by gearboxes.
+The major component that makes part of the wind turbine tower is the yaw [ OLD Figure 8 - 8] (composed by the yaw drive and yaw motor): this component, in the overall, “orients upwind turbines to keep them facing the wind when the direction changes” [ OLD 10].
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{Chapters/Figures/background_fig8.PNG}
+	\caption{Wind turbine main components. [1] Rotor, [2] Low-Speed Shaft, [3] Gearbox, [4] High-Speed Shaft, [5] Generator, [6] Controller], [7] Nacelle, [8] Yaw (with Yaw Drive above and Yaw Motor below. Source: [ OLD 10 ]}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+
+\section{Machine Learning} 
+\label{sub:if_you_use_this_template} 
+
+Machine Learning is the process of building a model that turns information into knowledge. By providing data into a machine learning, the model can analyze it and discover patterns that are useful for understanding relationships in data. This model must pass through a learning process so that it can improve its accuracy and reliability in providing correct outputs [ OLD 3] [ OLD 14].
+There exist 3 basics terms that we should know to understand ML:
+
+\begin{enumerate}
+    \item 
+Dataset: The set of data that it is provided to train the model.
+    \item
+Features: The quality of these pieces of data that exists in the data set determine the quality of the model.
+    \item
+Model: it is the representation of what the ML algorithm has learn during the training process from the data set and the features provided.
+\end{enumerate}
+
+All the ML algorithms go through 5 major steps: data collection and pre-processing; feature selection and extraction; model selection; validation; fitting the model [ OLD 3] [ OLD 14].
+
+
+The taxonomy of ML models is divided into two major types, as represented in Figure 9. In each taxonomy we also present the most common algorithms that are used. Some of these algorithms are going to be used in this thesis work.
+
+\begin{enumerate}
+    \item{Supervised Learning}
+The main goal is to predict an output variable using labeled data as input. One important goal of these models is their adaptation to new input. To do that, we don’t want our model to be overfit, meaning, too much adapted to our training data. We always want our model to be as general as possible, so that the “supervised model defines the real ‘general’ underlying relationship”. A supervised learning algorithm may be a regression model, that predicts a numeric variable or a classification model, that it should classify the inputs into a set of data.
+
+    \item{Unsupervised Learning}
+These models work only with input data, not having an output labelled data to compare. The main goal is to provide complex patterns that are hidden within data without any labels. The more used type of unsupervised learning is clustering. Clustering is the task of dividing the sample into a number of groups in which the data points from the same groups are similar to each other and dissimilar to the data points in other groups.
+\end{enumerate}
+
+ML also have two less used types and that are also more complex to implement: semi-supervised learning, that as the name indicates, it is a mix between supervised and unsupervised learning. It is used for cases that we mix a small amount of labelled data with a much larger unlabeled dataset; reinforcement learning, that is implemented as Pavlov’s dog study: occasional positive and negative feedback teaches the model to takes better decision in the next actions, meaning, in the next predictions [ OLD 14].
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{Chapters/Figures/background_fig9.PNG}
+	\caption{Machine Learning taxonomy of the main types. Source: [ OLD 22 ]}
+	\label{fig:Figuras_Tree_silhouettes-vectorial}
+\end{figure}
+
+Another subfield of machine learning is deep learning. Deep learning is based in a layered structure of algorithms called artificial neural network that makes intelligent decisions on its own. One important detail of these types of algorithms is that they need a large amount of data to become more efficient that the typical supervised algorithms. The larger the dataset, better the algorithm will surpass the traditional machine learning algorithms [ML Deep Learning] [ML Deep Learning (2)].
+
+
+\section{Conclusion} 
+\label{sub:if_you_use_this_template} 
+
+In this chapter we could understand how CGI RMS works, their main tools and its portfolio. It was also presented all the basic terms and operation of a wind turbine, how downtimes are divided, which is a basis of the classification of the failures that we are going to study and how the key components work together in a wind turbine, allowing us to understand the complexity of a wind turbine, from the nacelle to the yaw, and the importance of monitoring and predicting a failure in a component, so that all the other components that are connected don't be affected and consequently damaged, and the energy production can carry on without losses due to downtimes. It was introduced the machine learning area in which this thesis will be implemented. Considering all the machine learning types, we can understand that the machine learning algorithms that should be used are the classification ones because our goal is exactly to understand in which cases, we are going to have a failure, or set of failures, and when we will have a normal operation time.
