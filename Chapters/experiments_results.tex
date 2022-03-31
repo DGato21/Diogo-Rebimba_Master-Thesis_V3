@@ -12,7 +12,7 @@
 \label{cha:Experiments and Results}
 
 
-\section{Introduction} 
+\section{Introduction}
 \label{sub:if_you_use_this_template} 
 In order to reach our goal of understanding all the procedures, algorithms and features that should be used to build the base experiment of the failure prediction tool.
 
@@ -79,9 +79,9 @@ The next steps use as a dataset the first split dataset, the Training dataset. T
 This component allow us to set to each column some metadata info that is useful to improve the performance of the models.
     
     \item{Filter Based Feature Selection}
-This component goal is to identify and select the "columns in the input dataset that have the greatest predict power" [Azure Machine Learning Studio]. This module provide the option to choose the correlation method to classify the prediction power of each feature. The available methods are Pearson correlation and Chi-squared values.
+This component goal is to identify and select the "columns in the input dataset that have the greatest predict power" \cite{AZURE_MACHINE_LEARNING}. This module provide the option to choose the correlation method to classify the prediction power of each feature. The available methods are Pearson correlation and Chi-squared values.
 
-We select Chi-squared for the correlation method since it is refereed in [41 (WIND)] and [MLMistery - Feature Selection]. In the last article, it is refereed that this correlation method is the more adequate for our problem, a classification predictive problem with categorical output, despite the fact that our inputs are numerical. Since in this article, for an numerical input and categorical output, the correlation method advice is not available, we decided to select the one that seems more fitted to our problem. The article refers that Pearson Correlation is more adequate for regression problems.
+We select Chi-squared for the correlation method since it is refereed in \cite{OLD_41_WIND} and [MLMistery - Feature Selection]. In the last article, it is refereed that this correlation method is the more adequate for our problem, a classification predictive problem with categorical output, despite the fact that our inputs are numerical. Since in this article, for an numerical input and categorical output, the correlation method advice is not available, we decided to select the one that seems more fitted to our problem. The article refers that Pearson Correlation is more adequate for regression problems.
 
 This component was only used for three algorithms: Two-Class Logistic Regression, Two-Class Support Vector Machine and Two-Class Neural Network. In the Decision Tree based algorithms (Two-Class Decision Forest and Two-Class Boosted Decision Tree), we don't use this module since the base of these algorithms already analyzes the best predictive features [TDC - Feature Selection].
 
