@@ -90,7 +90,7 @@ With the data available for those parks, a first analysis on the faults was made
 As stated previously, in terms of data available in CGI RMS and classified as quality data, we have one major client portfolio of data that have different parks in different locations in Portugal.
 
 This client provides data from 36 wind parks configured, with a total of 323 generators. These generators turbines have different manufacturers and models: a combination of 6 manufacturers and 13 turbine models compose these 323 generators. This client has configured 16,730 fault types and 31,970 different signals.
-Considering, for example, July 2021 and one of the faults and wind turbine presented in Table X, we have registered 184 events that concerns to that particular failure and wind turbine.
+Considering, for example, July 2021 and one of the faults and wind turbine presented in Table 5.3, we have registered 184 events that concerns to that particular failure and wind turbine.
 
 As presented earlier in the Data Structure section and in image Figure 5.1, we see that we can map to each failure event the component were the failure occurs and the energy loss and duration associated to that failure event, allowing us to classify the impact that the failure have in terms of financial loss and time to fix it. By knowing the exact moment when the failure was registered, we can correlate that data with the signals data from that component and asset, to understand how the wind turbine was behaving itself before the failure occurs, and to train the machine learning model to predict failures when those same or similar conditions occur.
 
@@ -120,7 +120,7 @@ Despite this particularity of each model, a set of general features is selected 
     \label{GeneralSignals}
 \end{table}
 
-We then selected some signals that are specific of each component of the fault itself. These features presented in Table 1, are features that exist for the majority of the manufacturers and models of the subset of faults and provide information specific of the component that they are connected to.
+We then selected some signals that are specific of each component of the fault itself. These features presented in Table 5.2, are features that exist for the majority of the manufacturers and models of the subset of faults and provide information specific of the component that they are connected to.
 Some of these signals are mentioned by some articles of our literature that studied failures that affect some of these components also.
 
 % DEPRECATED
@@ -223,7 +223,7 @@ The column 'Park', represents the id of a wind park. The column 'Asset', represe
     \label{TopFaultsTable}
 \end{table}
 
-After selecting the top faults, while the analysis was being made we decide to include for the same faults, some wind turbines which have a lower number of occurrences of faults events in order to understand if our model can have a similar power of prediction in case of wind turbines that have a substantial lower number of fault events. This subset of faults are presented in Table Y.
+After selecting the top faults, while the analysis was being made we decide to include for the same faults, some wind turbines which have a lower number of occurrences of faults events in order to understand if our model can have a similar power of prediction in case of wind turbines that have a substantial lower number of fault events. This subset of faults are presented in Table 5.4.
 
 \begin{table}[!ht]
     \centering
@@ -238,9 +238,9 @@ After selecting the top faults, while the analysis was being made we decide to i
     \label{Subset of Faults with less occurences that are going to be analyzed}
 \end{table}
 
-According to the information of the signals available, provided in the dataset section, and the faults selected previously, in the Appendix 2 we can see the complete set of features available for each fault. These features are based on the first analysis presented in Table X and Table X2 presented earlier in the Dataset section, in 'How can we predict the failure with the available monitoring data' subsection.
+According to the information of the signals available, provided in the dataset section, and the faults selected previously, in the Appendix X we can see the complete set of features available for each fault. These features are based on the first analysis presented in Table 5.3 and Table 5.4 presented earlier in the Dataset section, in 'How can we predict the failure with the available monitoring data' subsection.
 
-For each of the faults presented in Table3 and Table4, we did an analysis on its distribution per month in order for us to understand the predictions that we should expect in each dataset used for training, validation and testing. That distribution information is presented in Table 5. In the experiment procedures section we will get into more detail in this step of distribution of the faults per each dataset.
+For each of the faults presented in Table 5.3 and Table 5.4, we did an analysis on its distribution per month in order for us to understand the predictions that we should expect in each dataset used for training, validation and testing. That distribution information is presented in Table 5.5 and Table 5.6. In the experiment procedures section we will get into more detail in this step of distribution of the faults per each dataset.
 
 \begin{table}[!ht]
     \centering
@@ -284,7 +284,7 @@ For each of the faults presented in Table3 and Table4, we did an analysis on its
         CHF & 15 & 367 & 4 & 3 & 5 & 0 & 0 \\ \hline
         PCA & 7 & 140 & 2 & 32 & 12 & 20 & 0 \\ \hline
     \end{tabular}
-    \caption{Faults Distribution per Month (August to End of Decemebr 2021)}
+    \caption{Faults Distribution per Month (August to End of December 2021)}
     \label{FaultsDistribitutionAugDec21}
 \end{table}
 
@@ -389,7 +389,7 @@ In terms of its implementation in Azure Machine Learning Studio, we have availab
 \end{enumerate}
 
 \subsubsection{Configurable Parameters}
-For the previous presented algorithms, as enumerated we have a serious of parameters to configure. In the next presented tables, Table X, Table Y, Table, we present all the parameters that were configured for the algorithms. Some parameters presented are a subset of values. These parameters are the ones that are going to be analyzed using the Tune Model Hyperparameter module, that correspond to the hyperparameters of the algorithms. The static parameter values were chosen by running in an initial version of the experiment, and choosing from the available values, the parameter value that lead to the best results.
+For the previous presented algorithms, as enumerated we have a serious of parameters to configure. In the Table 5.7, we present all the parameters that were configured for the algorithms. Some parameters presented are a subset of values. These parameters are the ones that are going to be analyzed using the Tune Model Hyperparameter module, that correspond to the hyperparameters of the algorithms. The static parameter values were chosen by running in an initial version of the experiment, and choosing from the available values, the parameter value that lead to the best results.
 
 \begin{table}[!ht]
     \centering
@@ -435,7 +435,7 @@ As presented previously, our main goal is to analyze the features transformation
 
 \subsection{Data Pre-Processing Procedures}
 
-In order to prepare our data, some pre-processing on the measures data that we have available from the signals described in Table 1 must be done. The procedures that we selected to build our experience were based in our literature like \cite{ML_Data_processing} \cite{39_WIND} \cite{N_3_WIND} \cite{OLD_41_WIND} \cite{N_4_WIND} \cite{MED_1} \cite{N_7_GENERAL} and according to the modules available in the Azure Machine Learning Studio \cite{AZURE_MACHINE_LEARNING}.
+In order to prepare our data, some pre-processing on the measures data that we have available from the signals described earlier in Table 5.1 and 5.2 must be done. The procedures that we selected to build our experience were based in our literature like \cite{ML_Data_processing} \cite{39_WIND} \cite{N_3_WIND} \cite{OLD_41_WIND} \cite{N_4_WIND} \cite{MED_1} \cite{N_7_GENERAL} and according to the modules available in the Azure Machine Learning Studio \cite{AZURE_MACHINE_LEARNING}.
 
 First, in our acquisition of the data we analyze if a feature have a high percentage of null values for the entire dataset. If that is the case, we remove the feature because it means that it doesn't have enough quality data and the machine learning algorithm can't have null rows. The next step is to remove the remaining rows that contain any feature with a null value. These steps guarantee that we have a dataset with no invalid rows or features so that the process of training and fitting the model have no errors.
 
@@ -478,7 +478,7 @@ After this process, we have a more balanced training dataset, having for the sam
 \subsection{Train and Fit of the Model}
 After all the pre-processing of the data, we are ready to feed to our machine learning algorithms mentioned before our dataset and creating our models. Each algorithm is available in Azure Machine Learning Studio and receives as input the train dataset. These modules configurations receive a parameter range, so that each parameter of each algorithm can receive a list of possible values that are then analyzed, using the Tune Model Hyperparameters module, and the validation dataset. 
 The values selected for each parameter that were introduced were a varied list of values so that we can understand, for all the faults, for each algorithm which parameter values perform better on the overall of the faults.
-In the previous presented Table 5.5, we can see for each algorithm which values were introduced for each parameter.
+In the previous presented Table 5.7, we can see for each algorithm which values were introduced for each parameter.
 
 \subsection{Evaluation of the Model}
 In terms of evaluating the model we based our evaluation in some standard metrics that are used in classification problems and that are mentioned in \cite{41_WIND} \cite{N_4_WIND} \cite{MED_1} [Classification]. These metrics are the Confusion Matrix, precision, recall and F1 Score.

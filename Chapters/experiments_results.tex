@@ -28,7 +28,7 @@ This first step was build up in .NET, using Visual Studio, and with SQL Server, 
 
 In this experiment part, we are not going to referee all the study work of the signals that should be associated with a fault in a wind turbine is done, presented previously in the methodology section.
 
-Our dataset acquisition parameters, as referenced in Table X, will have a start time, starting in the 6th March 2021 and an end date of 31 December 2021 23:59:00. The sliding time windows that are going to be study are 12 hours, 24 hours and 72 hours.
+Our dataset acquisition parameters, will have a start time, starting in the 6th March 2021 and an end date of 31 December 2021 23:59:00. The sliding time windows that are going to be study are 12 hours, 24 hours and 72 hours.
 For each wind turbine fault, we will generate a dataset according to different sliding time windows.
 
 %NOTA: FOI DESCOBERTO UM ERRO NO PROCESSO DE AQUISICAO PARA A CONSTRUCAO DAS RUNNING SUMMARIES
@@ -57,7 +57,7 @@ Our final step, is a simple merge of the signals data and the faults data, so th
 
 \end{enumerate}
 
-After this process of the dataset generation, summed up in Figure X, we have generated all datasets for each fault and wind turbine, one .csv file per sliding time window, meaning that for each wind turbine fault we have 3 .csv files, one for the sliding time window of 12h, one for the 24h and another for the 72h.
+After this process of the dataset generation, we have generated all datasets for each fault and wind turbine, one .csv file per sliding time window, meaning that for each wind turbine fault we have 3 .csv files, one for the sliding time window of 12h, one for the 24h and another for the 72h.
 
 %METER AQUI UM DIAGRAMA DE PROCESSO A REPRESENTAR
 %DIAGRAMA DE PROCESSO A REPRESENTAR ESTE PROCESSO (TODO)
@@ -134,7 +134,7 @@ As stated earlier in our methodology, we will have two results per failure and a
 In the next subsections, we will present for each fault and wind turbine, the model for each algorithm that presented the best result, with the parameters information that lead to that result.
 The complete list of results with all the parameters evaluation and that lead us to the best machine learning model, will be represented in the Appendix section, with the Appendix X.
 
-Each scope is identified by three terms: the Fault Id, that is a identifier of the Fault, the Park Id, with three string letters, the Asset/Wind Turbine Id, that is also an identifier of the wind turbine of the park. These scopes are the ones presented in the Methodology section, in Table X and Y.
+Each scope is identified by three terms: the Fault Id, that is a identifier of the Fault, the Park Id, with three string letters, the Asset/Wind Turbine Id, that is also an identifier of the wind turbine of the park. These scopes are the ones presented in the Methodology section, in Table 5.3 and Table 5.4.
 
 %DEPRECATED SINCE WE USE F1 SCORE IN THE TUNE MODEL HYPERPARAMETER
 %We consider the best model by evaluating their metrics. As mentioned before, we prioritize the minimum %value of false positives and only then try to maximize the true positives. In terms of the precision, %recall, F1 score metrics, this means that we will prioritize the precision metric and then the F1 score %(that is balance of precision and recall).
@@ -161,14 +161,14 @@ The final table, will present the results of our evaluation script presented ear
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.814 & 0.641 & 0.717 \\ \hline
         Two-Class Support Vector Machine & 24 & 0.553 & 0.698 & 0.617 \\ \hline
         Two-Class Neural Network & 72 & 0.849 & 0.857 & 0.853 \\ \hline
         Two-Class Decision Forest & 72 & 0.992 & 0.992 & 0.985 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.99 & 0.995 & 0.992 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 9112 - SCA 34: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -176,14 +176,14 @@ The final table, will present the results of our evaluation script presented ear
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 12 & 0.341 & 0.279 & 0.307 \\ \hline
         Two-Class Support Vector Machine & 12 & 0.338 & 0.307 & 0.322 \\ \hline
         Two-Class Neural Network & 72 & 0.352 & 0.461 & 0.399 \\ \hline
         Two-Class Decision Forest & 72 & 0.391 & 0.45 & 0.418 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.389 & 0.552 & 0.445 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: Second Split (March 2021 - End September 2021) - Evaluate Model Results}
+    \caption{Fault 9112 - SCA 34: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_2nd}
 \end{table}
 
@@ -191,14 +191,14 @@ The final table, will present the results of our evaluation script presented ear
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 24 & 0.2 & 0 & 15 & 3 \\ \hline
         Two-Class Support Vector Machine & 24 & 0.2 & 0 & 15 & 3 \\ \hline
         Two-Class Neural Network & 24 & 0.2 ; 0.3 & 0 & 16 & 2 \\ \hline
         Two-Class Decision Forest & 24 & 0.2 & 0 & 15 & 3 \\ \hline
         Two-Class Boosted Decision Tree & 24 & 0.2 & 0 & 15 & 3 \\ \hline
     \end{tabular}
-	\caption{SCA 34 Fault 9112: Second Split (March 2021 - End September 2021) - Evaluate Script Predictions}
+	\caption{Fault 9112 - SCA 34: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_3rd}
 \end{table}
 
@@ -252,14 +252,14 @@ In terms of the machine learning model built for each algorithm that provided th
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.587 & 0.567 & 0.577 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.515 & 0.465 & 0.489 \\ \hline
         Two-Class Neural Network & 72 & 0.975 & 0.985 & 0.98 \\ \hline
         Two-Class Decision Forest & 72 & 0.996 & 0.994 & 0.995 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.999 & 0.994 & 0.997 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8749 - PAP 35: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -267,14 +267,14 @@ In terms of the machine learning model built for each algorithm that provided th
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.288 & 0.16 & 0.206 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.167 & 0.099 & 0.124 \\ \hline
         Two-Class Neural Network & 72 & 0.259 & 0.237 & 0.248 \\ \hline
         Two-Class Decision Forest & 72 & 0.223 & 0.369 & 0.278 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.43 & 0.295 & 0.35 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8749 - PAP 35: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -282,14 +282,14 @@ In terms of the machine learning model built for each algorithm that provided th
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 24 & 0.2 ; 0.3 & 0 & 2 & 6 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.2 ; 0.3 & 0 & 1 & 7 \\ \hline
         Two-Class Neural Network & 72 & 0.2 & 0 & 2 & 6 \\ \hline
         Two-Class Decision Forest & 72 & 0.4 ; 0.5 ; 0.6 & 0 & 1 & 7 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.5 ; 0.6 ; 0.7 & 0 & 1 & 7 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8749 - PAP 35: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -343,14 +343,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.447 & 0.224 & 0.298 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.875 & 0.082 & 0.151 \\ \hline
         Two-Class Neural Network & 24 & 0.966 & 1 & 0.983 \\ \hline
         Two-Class Decision Forest & 72 & 0.998 & 0.993 & 0.995 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 1 & 0.993 & 0.996 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - BNE 18: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -358,14 +358,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.126 & 0.02 & 0.035 \\ \hline
         Two-Class Support Vector Machine & All & 1 & 0 & 0 \\ \hline
         Two-Class Neural Network & 72 & 0.291 & 0.066 & 0.107 \\ \hline
         Two-Class Decision Forest & 72 & 0.481 & 0.116 & 0.187 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.42 & 0.114 & 0.179 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - BNE 18: Second Split (October 2021 - End December 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -373,14 +373,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & All & All & 0 & 0 & 8 \\ \hline
         Two-Class Support Vector Machine & All & All & 0 & 0 & 8 \\ \hline
         Two-Class Neural Network & 72 & >= 0.4 & 0 & 0 & 8 \\ \hline
         Two-Class Decision Forest & 72 & 0.2 & 0 & 1 & 7 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.2 & 0 & 1 & 7 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - BNE 18: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -428,14 +428,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 12 & 0.561 & 0.217 & 0.313 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.561 & 0.107 & 0.18 \\ \hline
         Two-Class Neural Network & 12 & 0.991 & 0.991 & 0.991 \\ \hline
         Two-Class Decision Forest & 72 & 0.999 & 1 & 0.999 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.999 & 1 & 0.999 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - CHF 28: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -443,14 +443,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.7 & 0.161 & 0.262 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.81 & 0.074 & 0.136 \\ \hline
         Two-Class Neural Network & 72 & 0.444 & 0.123 & 0.193 \\ \hline
         Two-Class Decision Forest & 72 & 0.681 & 0.11 & 0.189 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.651 & 0.084 & 0.148 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - CHF 28: Second Split (October 2021 - End December 2021) - Evaluate Model Results - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -458,14 +458,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 72 & 0.2 & 0 & 21 & 3 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.2 & 0 & 10 & 14 \\ \hline
         Two-Class Neural Network & 12, 72 & 0.2 & 0 & 2 & 22 \\ \hline
         Two-Class Decision Forest & 72 & 0.2 & 0 & 8 & 16 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.2 & 0 & 1 & 23 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - CHF 28: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -519,14 +519,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.587 & 0.556 & 0.571 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.598 & 0.542 & 0.569 \\ \hline
         Two-Class Neural Network & 72 & 0.978 & 0.978 & 0.978 \\ \hline
         Two-Class Decision Forest & 72 & 0.996 & 0.995 & 0.996 \\ \hline
         Two-Class Boosted Decision Tree & 24 & 0.999 & 0.997 & 0.998 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 140 - PCA 7: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -534,14 +534,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.139 & 0.571 & 0.223 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.141 & 0.579 & 0.227 \\ \hline
         Two-Class Neural Network & 72 & 0.124 & 0.546 & 0.202 \\ \hline
         Two-Class Decision Forest & 72 & 0.129 & 0.42 & 0.197 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.146 & 0.262 & 0.188 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 140 - PCA 7: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -549,14 +549,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 72 & 0.3, 0.4, 0.5 & 0 & 11 & 2 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.3, 0.4, 0.5 & 0 & 11 & 2 \\ \hline
         Two-Class Neural Network & 72 & 0.3 & 0 & 11 & 2 \\ \hline
         Two-Class Decision Forest & 72 & 0.2 & 0 & 10 & 3 \\ \hline
         Two-Class Boosted Decision Tree & 12 & <= 0.6 & 0 & 2 & 11 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 140 - PCA 7: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -610,14 +610,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.414 & 0.317 & 0.359 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.574 & 0.14 & 0.224 \\ \hline
         Two-Class Neural Network & 72 & 0.939 & 0.943 & 0.941 \\ \hline
         Two-Class Decision Forest & 72 & 0.998 & 0.99 & 0.994 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.999 & 0.993 & 0.996 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 14474 - TMS 6: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -625,14 +625,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.399 & 0.073 & 0.124 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.265 & 0.018 & 0.033 \\ \hline
         Two-Class Neural Network & 72 & 0.173 & 0.083 & 0.112 \\ \hline
         Two-Class Decision Forest & 24 & 0.62 & 0.228 & 0.333 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.05 & 0.009 & 0.015 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 14474 - TMS 6: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -640,14 +640,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 12, 72 & >= 0.3 & 0 & 0 & 10 \\ \hline
         Two-Class Support Vector Machine & All & All & 0 & 0 & 10 \\ \hline
         Two-Class Neural Network & 72 & >= 0.3 & 0 & 0 & 10 \\ \hline
         Two-Class Decision Forest & 12, 24 & All & 0 & 0 & 10 \\ \hline
         Two-Class Boosted Decision Tree & 12, 24 & All & 0 & 0 & 10 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 14474 - TMS 6: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -701,14 +701,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 24 & 0.555 & 0.233 & 0.328 \\ \hline
         Two-Class Support Vector Machine & 24 & 0.636 & 0.119 & 0.2 \\ \hline
         Two-Class Neural Network & 72 & 0.986 & 0.99 & 0.988 \\ \hline
         Two-Class Decision Forest & 72 & 1 & 0.991 & 0.996 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 1 & 0.995 & 0.998 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - BNE 14: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -716,14 +716,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & All & 0 & 0 & 0 \\ \hline
         Two-Class Support Vector Machine & All & 0 & 0 & 0 \\ \hline
         Two-Class Neural Network & All & 0 & 0 & 0 \\ \hline
         Two-Class Decision Forest & All & 0 & 0 & 0 \\ \hline
         Two-Class Boosted Decision Tree & All & 0 & 0 & 0 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - BNE 14: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -731,14 +731,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & All & All & 0 & 0 & 6 \\ \hline
         Two-Class Support Vector Machine & 12, 72 & All & 0 & 0 & 6 \\ \hline
         Two-Class Neural Network & All & All & 0 & 0 & 6 \\ \hline
         Two-Class Decision Forest & All & All & 0 & 0 & 6 \\ \hline
         Two-Class Boosted Decision Tree & All & All & 0 & 0 & 6 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 768 - BNE 14: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -792,14 +792,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.32 & 0.068 & 0.111 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.471 & 0.034 & 0.063 \\ \hline
         Two-Class Neural Network & 24 & 0.979 & 0.979 & 0.979 \\ \hline
         Two-Class Decision Forest & 72 & 1 & 0.992 & 0.996 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.998 & 0.994 & 0.996 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 367 - CHF 15: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -807,14 +807,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.6 & 0.052 & 0.095 \\ \hline
         Two-Class Support Vector Machine & All & 1 & 0 & 0 \\ \hline
         Two-Class Neural Network & 72 & 0.154 & 0.063 & 0.089 \\ \hline
         Two-Class Decision Forest & 72 & 0.12 & 0.029 & 0.046 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.104 & 0.031 & 0.048 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 367 - CHF 15: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -822,50 +822,50 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 24, 72 & All & 0 & 0 & 4 \\ \hline
         Two-Class Support Vector Machine & All & All & 0 & 0 & 4 \\ \hline
         Two-Class Neural Network & 24, 72 & All & 0 & 0 & 4 \\ \hline
         Two-Class Decision Forest & All & All & 0 & 0 & 4 \\ \hline
         Two-Class Boosted Decision Tree & 12, 24 & All & 0 & 0 & 4 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 367 - CHF 15: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
 In terms of the machine learning model built for each algorithm, the best hyperparameters selected from the Tune Model Hyperparameter module are:
 
 \begin{enumerate}
-    \item{Two-Class Logistic Regression}72
+    \item{Two-Class Logistic Regression}
     
     \begin{enumerate}
         \item{Optimization Tolerance:} 0
         \item{Regularization Weight:} 0.1
     \end{enumerate}
     
-    \item{Two-Class Support Vector Machine}72
+    \item{Two-Class Support Vector Machine}
     
     \begin{enumerate}
         \item{Number of Iterations:} 750
         \item{Lambda:} All
     \end{enumerate}
     
-    \item{Two-Class Neural Network}72
+    \item{Two-Class Neural Network}
     
     \begin{enumerate}
         \item{Number of Learning Iterations:} 500
         \item{Learning Rate:} 0.2
     \end{enumerate}
     
-    \item{Two-Class Decision Forest}72
+    \item{Two-Class Decision Forest}
 
     \begin{enumerate}
         \item{Number of Decision Trees:} 32
         \item{Minimum number of samples per leaf node:} 1
         \item{Maximum depth of the decision tree:} [32,64]
     \end{enumerate}
-    
-    \item{Two-Class Boosted Decision Tree}12
+
+    \item{Two-Class Boosted Decision Tree}
     
     \begin{enumerate}
         \item{Maximum number of leaves per tree:} 8
@@ -883,14 +883,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.469 & 0.374 & 0.416 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.48 & 0.359 & 0.411 \\ \hline
         Two-Class Neural Network & 72 & 0.964 & 0.98 & 0.972 \\ \hline
         Two-Class Decision Forest & 72 & 0.993 & 0.992 & 0.993 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.996 & 0.997 & 0.997 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 140 - PLS 9: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -898,14 +898,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.098 & 0.394 & 0.156 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.096 & 0.398 & 0.155 \\ \hline
         Two-Class Neural Network & 72 & 0.077 & 0.194 & 0.111 \\ \hline
         Two-Class Decision Forest & 72 & 0.064 & 0.17 & 0.093 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.066 & 0.17 & 0.095 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 140 - PLS 9: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -913,42 +913,42 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & 12, 24 & All & 0 & 0 & 3 \\ \hline
         Two-Class Support Vector Machine & 24 & All & 0 & 0 & 3 \\ \hline
         Two-Class Neural Network & 12 & <= 0.4 & 0 & 1 & 2 \\ \hline
         Two-Class Decision Forest & 12, 24 & All & 0 & 0 & 3 \\ \hline
         Two-Class Boosted Decision Tree & 12 & All & 0 & 0 & 3 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 140 - PLS 9: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
 In terms of the machine learning model built for each algorithm, the best hyperparameters selected from the Tune Model Hyperparameter module are:
 
 \begin{enumerate}
-    \item{Two-Class Logistic Regression}24
+    \item{Two-Class Logistic Regression}
     
     \begin{enumerate}
         \item{Optimization Tolerance:} 0
         \item{Regularization Weight:} 0.01
     \end{enumerate}
     
-    \item{Two-Class Support Vector Machine}24
+    \item{Two-Class Support Vector Machine}
     
     \begin{enumerate}
         \item{Number of Iterations:} 500
         \item{Lambda:} All
     \end{enumerate}
     
-    \item{Two-Class Neural Network}12
+    \item{Two-Class Neural Network}
     
     \begin{enumerate}
         \item{Number of Learning Iterations:} 500
         \item{Learning Rate:} 0.6
     \end{enumerate}
     
-    \item{Two-Class Decision Forest}12
+    \item{Two-Class Decision Forest}
 
     \begin{enumerate}
         \item{Number of Decision Trees:} 16
@@ -956,7 +956,7 @@ In terms of the machine learning model built for each algorithm, the best hyperp
         \item{Maximum depth of the decision tree:} 32
     \end{enumerate}
     
-    \item{Two-Class Boosted Decision Tree}12
+    \item{Two-Class Boosted Decision Tree}1
     
     \begin{enumerate}
         \item{Maximum number of leaves per tree:} 8
@@ -974,14 +974,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 24 & 0.688 & 0.543 & 0.607 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.619 & 0.548 & 0.581 \\ \hline
         Two-Class Neural Network & 72 & 0.982 & 0.989 & 0.986 \\ \hline
         Two-Class Decision Forest & 24 & 0.99 & 0.996 & 0.993 \\ \hline
         Two-Class Boosted Decision Tree & 24 & 0.995 & 0.999 & 0.997 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8487 - SCA 10: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -989,14 +989,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & All & 0 & 0 & 0 \\ \hline
         Two-Class Support Vector Machine & All & 0 & 0 & 0 \\ \hline
         Two-Class Neural Network & All & 0 & 0 & 0 \\ \hline
         Two-Class Decision Forest & All & 0 & 0 & 0 \\ \hline
         Two-Class Boosted Decision Tree & All & 0 & 0 & 0 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8487 - SCA 10: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -1004,14 +1004,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Support Vector Machine & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Neural Network & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Decision Forest & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Boosted Decision Tree & All & All & 0 & 0 & 0 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8487 - SCA 10: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -1025,21 +1025,21 @@ In terms of the machine learning model built for each algorithm, the best hyperp
         \item{Regularization Weight:} 0.1
     \end{enumerate}
     
-    \item{Two-Class Support Vector Machine}72
+    \item{Two-Class Support Vector Machine}
     
     \begin{enumerate}
         \item{Number of Iterations:} 750
         \item{Lambda:} All
     \end{enumerate}
     
-    \item{Two-Class Neural Network}72
+    \item{Two-Class Neural Network}
     
     \begin{enumerate}
         \item{Number of Learning Iterations:} 500
         \item{Learning Rate:} 0.6
     \end{enumerate}
     
-    \item{Two-Class Decision Forest}24
+    \item{Two-Class Decision Forest}
 
     \begin{enumerate}
         \item{Number of Decision Trees:} 32
@@ -1047,7 +1047,7 @@ In terms of the machine learning model built for each algorithm, the best hyperp
         \item{Maximum depth of the decision tree:} [32,64]
     \end{enumerate}
     
-    \item{Two-Class Boosted Decision Tree}24
+    \item{Two-Class Boosted Decision Tree}
     
     \begin{enumerate}
         \item{Maximum number of leaves per tree:} 32
@@ -1065,14 +1065,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & 72 & 0.414 & 0.317 & 0.359 \\ \hline
         Two-Class Support Vector Machine & 72 & 0.475 & 0.251 & 0.328 \\ \hline
         Two-Class Neural Network & 24 & 0.692 & 0.911 & 0.786 \\ \hline
         Two-Class Decision Forest & 72 & 0.996 & 0.997 & 0.996 \\ \hline
         Two-Class Boosted Decision Tree & 72 & 0.999 & 0.998 & 0.998 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8719 - SCA 28: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -1080,14 +1080,14 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & Precision & Recall & F1 Score \\ \hline
+        Algorithm & Time Window & Precision & Recall & F1 Score \\ \hline
         Two-Class Logistic Regression & All & 0 & 0 & 0 \\ \hline
         Two-Class Support Vector Machine & All & 0 & 0 & 0 \\ \hline
         Two-Class Neural Network & All & 0 & 0 & 0 \\ \hline
         Two-Class Decision Forest & All & 0 & 0 & 0 \\ \hline
         Two-Class Boosted Decision Tree & All & 0 & 0 & 0 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8719 - SCA 28: Second Split (October 2021 - End December 2021) - Evaluate Model Results}
     \label{9112_SCA34_1st}
 \end{table}
 
@@ -1095,28 +1095,28 @@ In terms of the machine learning model built for each algorithm, the best hyperp
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        Alghoritm & Time Window & \% Threshold & FP & TP & FN \\ \hline
+        Algorithm & Time Window & \% Threshold & FP & TP & FN \\ \hline
         Two-Class Logistic Regression & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Support Vector Machine & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Neural Network & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Decision Forest & All & All & 0 & 0 & 0 \\ \hline
         Two-Class Boosted Decision Tree & All & All & 0 & 0 & 0 \\ \hline
     \end{tabular}
-    \caption{SCA 34 Fault 9112: First Split (March 2021 - End September 2021) - Test Dataset - Evaluate Model Results}
+    \caption{Fault 8719 - SCA 28: Second Split (October 2021 - End December 2021) - Evaluation Script Predictions}
     \label{9112_SCA34_1st}
 \end{table}
 
 In terms of the machine learning model built for each algorithm, the best hyperparameters selected from the Tune Model Hyperparameter module are:
 
 \begin{enumerate}
-    \item{Two-Class Logistic Regression}72
+    \item{Two-Class Logistic Regression}
     
     \begin{enumerate}
         \item{Optimization Tolerance:} 0
         \item{Regularization Weight:} 0.01
     \end{enumerate}
     
-    \item{Two-Class Support Vector Machine}72
+    \item{Two-Class Support Vector Machine}
     
     \begin{enumerate}
         \item{Number of Iterations:} 750
@@ -1130,7 +1130,7 @@ In terms of the machine learning model built for each algorithm, the best hyperp
         \item{Learning Rate:} 0.6
     \end{enumerate}
     
-    \item{Two-Class Decision Forest}72
+    \item{Two-Class Decision Forest}
 
     \begin{enumerate}
         \item{Number of Decision Trees:} 32
@@ -1138,7 +1138,7 @@ In terms of the machine learning model built for each algorithm, the best hyperp
         \item{Maximum depth of the decision tree:} [34,64]
     \end{enumerate}
     
-    \item{Two-Class Boosted Decision Tree}72
+    \item{Two-Class Boosted Decision Tree}
     
     \begin{enumerate}
         \item{Maximum number of leaves per tree:} 128
@@ -1160,8 +1160,8 @@ In terms of the machine learning model built for each algorithm, the best hyperp
 
 %TABLE X
 
-\section{Conclusion} 
-\label{sub:if_you_use_this_template} 
+%\section{Conclusion} 
+%\label{sub:if_you_use_this_template} 
 
 %TODO'S FINAIS:
 %TODO: COLOCAR NA METODOLOGIA/TALVEZ AQUI NA EXPERIMENT, QUE IDEALMENTEO PROCESSO DE FILTER BASED FEATURE IMPORTANCE DEVIA AVALIAR O NUMERO COMO UM HYPERPARAMETER. MAS DEVIDO A LIMITAÇÕES DA TECNOLOGIA, ESSE NUMERO TEM DE SER FIXO.
