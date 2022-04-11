@@ -6,7 +6,8 @@
 %% REVIEWED by Diogo Gato 2022/03/29
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%TODO: Colocar Artigos Artigos Corretamente
+%REVIEWED 2022/04/11
+%CORRECTIONS FROM PROF 30/03/2022
 
 \typeout{NT FILE introduction.tex}
 
@@ -39,20 +40,18 @@ A wind turbine is composed by complex components interconnected between them. Th
 	\label{fig:Figuras_Tree_silhouettes-vectorial}
 \end{figure}
 
-As we can see In Figure 1.1, the probability of failures that are not detected, in all key components that are represented, are in average above 80\% . Despite the fact of actual failures in the Rotor (that is the component that the total cost is higher) being almost 0\%, the next two components that have the higher cost of failure, Gear and Hydraulic failures, have a probability of failure of 9\%  and 20\%. The costs of these, two combined, surpasses the 500,000 €, that is a much higher cost compared to the costs of maintenance and monitoring of the components.
+As observed in Figure 1.1, the probability of failures that are not detected, in all key components that are represented, are in average above 80\% . Despite the fact of actual failures in the Rotor (that is the component that the total cost is higher) being almost 0\%, the next two components that have the higher cost of failure, Gear and Hydraulic failures, have a probability of failure of 9\%  and 20\%. The costs of these, two combined, surpasses the 500,000 €, that is a much higher cost compared to the costs of maintenance and monitoring of the components.
 
 %TODO: FIX THE & Character
 
-In \cite{OLD_53_WIND}, it is presented an analysis of the costs of failures in wind turbines, com-pared to the costs of a correct O&M (Operation and Maintenance) (including predictive maintenance). According to this study, the cost of O\&M during a 20-years lifetime in a 2 MW onshore wind turbine in a 200-MW project, is around 1.7M € and in a 4,14 MW offshore wind turbine in a 600-MW project, the cost is around 12.6M €. These costs were in addition to the cost for lost energy production during the failure and maintenance period.
+In \cite{OLD_53_WIND}, it is presented an analysis of the costs of failures in wind turbines, compared to the costs of a correct O&M (Operation and Maintenance) (including predictive maintenance). According to this study, the cost of O\&M during a 20-years lifetime in a 2 MW onshore wind turbine in a 200-MW project, is around 1.7M € and in a 4,14 MW offshore wind turbine in a 600-MW project, the cost is around 12.6M €. These costs were in addition to the cost for lost energy production during the failure and maintenance period.
 
-“Proactive maintenance is expected to decrease downtime and the cost of failure, but the extent and frequency of needed maintenance is debatable” \cite{OLD_53_WIND}.
-
-Further in this article, it is presented that “employing a condition monitoring system would result to savings of 190,000 € for a 3 MW wind turbine”. If no preventive maintenance is employed, the cost of the corrective maintenance is 436,299 €, whereas the “total O\&M cost would be 66,129 € if there are two preventive maintenance events per year per turbine in its entire life”, according to the average presented by O&M databases \cite{OLD_53_WIND}. This result in a total of 370,170 € profit, by using a predictive maintenance.
+Further in this article, it is presented that “employing a condition monitoring system would result to savings of 190,000 € for a 3 MW wind turbine”. If no preventive maintenance is employed, the cost of the corrective maintenance is 436,299 €, whereas the “total O\&M cost would be 66,129 € if there are two preventive maintenance events per year per turbine in its entire life”, according to the average presented by O&M databases \cite{OLD_53_WIND}. This result is a total of 370,170 € profit, by using a predictive maintenance.
 
 \section{Goals} 
 \label{sub:if_you_use_this_template} 
 
-To maximize energy production, increase availability, control energy losses and improve overall operational performance, CGI Renewable Management System (RMS) \cite{OLD_8} features an integrated set of tools. This master thesis study has the objective to improve this system, more particularly to study the base of the tool Failure Prediction from the Predictive module by using Artificial Intelligence. By extracting and studying the data available, our goal is to analyze all the steps needed to build a machine learning experiment, that will work as a foundation to predict faults in a wind turbine and to be used in the Failure Prediction tool, thus providing to the client a tool that predict exceptional situations and failures in the operation of renewable energies assets.
+To maximize energy production, increase availability, control energy losses and improve overall operational performance, CGI Renewable Management System (RMS) \cite{OLD_8} features an integrated set of tools. This master thesis study has the objective to improve this system, more particularly to study the base of the tool Failure Prediction from the Predictive module by using Machine Learning. By extracting and studying the data available, our goal is to analyze all the steps needed to build a machine learning experiment, that will work as a foundation to predict faults in a wind turbine and to be used in the Failure Prediction tool, thus providing to the client a tool that predict exceptional situations and failures in the operation of renewable energies assets.
 
 With the use of CGI RMS, we will have available real-time and historical data from real assets that exists on the field. With this data, we will be able to build a data-driven based method for fault detection with the help of machine learning algorithms. We will study, implement, and adapt supervised learning algorithms that are adequate to failure prediction, study the historical data available in CGI RMS from multiple signals and feed them to the previous referred algorithms. We will analyze the obtained results, comparing them against the historical data that we have available, so that we can check which algorithms and set of features are the more adequate to predict faults of multiple wind turbines. To conclude our work, we will then prepare these build models to be feed to the Failure Prediction tool available In CGI RMS.
 
@@ -76,11 +75,37 @@ After our models are trained and we acquire an output from our experiments, we w
 
 \end{enumerate}
 
+% REMOVED AFTER CORRECTIONS FROM PROF
+%\section{Expected Contributions} 
+%\label{sub:if_you_use_this_template} 
 
-\section{Expected Contributions} 
-\label{sub:if_you_use_this_template} 
+%With this thesis work, first we will improve the CGI RMS predictive %module, by implementing the base experiment for our Failure Prediction %tool that directly helps our clients reducing their repair costs and %improving their assets performance and production.
 
-With this thesis work, first we will improve the CGI RMS predictive module, by implementing the base experiment for our Failure Prediction tool that directly helps our clients reducing their repair costs and improving their assets performance and production.
+%Beyond the contribution to RMS, we will study and try to accomplish an %improvement in one of the most interesting areas in today’s world: %renewable energies. By using a set of theoretical studies on possible %algorithms that may lead to the decrease of failures in renewable energy %assets, we expect to put into practice these studies and develop the most %correct machine learning models, that allied with a real-time monitoring %system, improve the monitoring systems of renewable energies, and help the %green energy producers to improve their production and reduce their repair %costs.
+%Allying a powerful tool like a Failure Prediction with a real-time %monitoring system, will put the renewable energy systems one step closer %to a world with no need for polluting energy sources.
 
-Beyond the contribution to RMS, we will study and try to accomplish an improvement in one of the most interesting areas in today’s world: renewable energies. By using a set of theoretical studies on possible algorithms that may lead to the decrease of failures in renewable energy assets, we expect to put into practice these studies and develop the most correct machine learning models, that allied with a real-time monitoring system, improve the monitoring systems of renewable energies, and help the green energy producers to improve their production and reduce their repair costs.
-Allying a powerful tool like a Failure Prediction with a real-time monitoring system, will put the renewable energy systems one step closer to a world with no need for polluting energy sources.
+\section{Document Structure} 
+\label{sub:if_you_use_this_template}
+
+This master thesis document will be organized as the following: 
+
+\begin{enumerate}
+    \item
+First we will provide a background of what this master thesis will focus. We start by the monitoring system that provide us the data to build our machine learning models, the CGI RMS, then we advance to provide some context of the area were the study focuses, the wind turbines and we will finish by providing a basic introduction on the machine learning area, that is the area that will be used to accomplish our master thesis goal.
+
+\item
+Then, we will provide a basic introduction on the technologies that are going to be used to accomplish our work.
+
+\item
+We advance through an analysis of the main literature that was used to guide our work and backup our decisions of the procedures that were used when building our datasets and experiment.
+
+\item
+After this, we introduce our methodology by presenting our data, our dataset and faults, the machine learning algorithms that were used in this study and all our experiment procedures that were used to build our dataset and to build and evaluate our machine learning models.
+
+\item
+Then, we present our experiment results, with the results of all the steps of our experiment using the metrics presented earlier and the best hyperparameters and model from each fault scope.
+
+\item
+We conclude this master thesis document by analyzing the previously presented results and taking some conclusions of these results.
+
+\end{enumerate}
