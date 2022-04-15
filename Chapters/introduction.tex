@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %REVIEWED 2022/04/11
-%CORRECTIONS FROM PROF 30/03/2022
+% W/CORRECTIONS FROM PROF 30/03/2022
 
 \typeout{NT FILE introduction.tex}
 
@@ -21,7 +21,7 @@ Over the past two decades, many governmental entities have implemented a wide ar
 
 Despite all the technologies that exist to assist the monitoring of renewable energy systems, failures in their assets are still one of the major problems that decrease the potential of those assets. “Ensuring that wind turbines perform at their optimal level over their lifetime (usually 20-25 years) costs around 25\% of the offshore installation” \cite{OLD_15_WIND}. Also, “technical faults that require unscheduled maintenance are increasingly important” and represent a large part of the total of failures on wind turbines \cite{OLD_18_WIND}.
 
-This is where the CGI Renewable Management System (RMS) enters. Monitoring systems are essential to maintain optimal performance of renewable systems assets. With this master thesis work, we are trying to improve CGI RMS system by implementing a fault detection tool, to help our system clients in detecting possible failures soon and thus, improving the overall performance of their systems and reducing maintenance costs.
+This is where the CGI Renewable Management System (\acrshort{rms}) enters. Monitoring systems are essential to maintain optimal performance of renewable systems assets. With this master thesis work, we are trying to improve CGI \acrshort{rms} system by implementing a fault detection tool, to help our system clients in detecting possible failures soon and thus, improving the overall performance of their systems and reducing maintenance costs.
 
 
 \section{Problem Definition} 
@@ -51,9 +51,9 @@ Further in this article, it is presented that “employing a condition monitorin
 \section{Goals} 
 \label{sub:if_you_use_this_template} 
 
-To maximize energy production, increase availability, control energy losses and improve overall operational performance, CGI Renewable Management System (RMS) \cite{OLD_8} features an integrated set of tools. This master thesis study has the objective to improve this system, more particularly to study the base of the tool Failure Prediction from the Predictive module by using Machine Learning. By extracting and studying the data available, our goal is to analyze all the steps needed to build a machine learning experiment, that will work as a foundation to predict faults in a wind turbine and to be used in the Failure Prediction tool, thus providing to the client a tool that predict exceptional situations and failures in the operation of renewable energies assets.
+To maximize energy production, increase availability, control energy losses and improve overall operational performance, CGI Renewable Management System (\acrshort{rms}) \cite{OLD_8} features an integrated set of tools. This master thesis study has the objective to improve this system, more particularly to study the base of the tool Failure Prediction from the Predictive module by using Machine Learning. By extracting and studying the data available, our goal is to analyze all the steps needed to build a machine learning experiment, that will work as a foundation to predict faults in a wind turbine and to be used in the Failure Prediction tool, thus providing to the client a tool that predict exceptional situations and failures in the operation of renewable energies assets.
 
-With the use of CGI RMS, we will have available real-time and historical data from real assets that exists on the field. With this data, we will be able to build a data-driven based method for fault detection with the help of machine learning algorithms. We will study, implement, and adapt supervised learning algorithms that are adequate to failure prediction, study the historical data available in CGI RMS from multiple signals and feed them to the previous referred algorithms. We will analyze the obtained results, comparing them against the historical data that we have available, so that we can check which algorithms and set of features are the more adequate to predict faults of multiple wind turbines. To conclude our work, we will then prepare these build models to be feed to the Failure Prediction tool available In CGI RMS.
+With the use of CGI \acrshort{rms}, we will have available real-time and historical data from real assets that exists on the field. With this data, we will be able to build a data-driven based method for fault detection with the help of machine learning algorithms. We will study, implement, and adapt supervised learning algorithms that are adequate to failure prediction, study the historical data available in CGI \acrshort{rms} from multiple signals and feed them to the previous referred algorithms. We will analyze the obtained results, comparing them against the historical data that we have available, so that we can check which algorithms and set of features are the more adequate to predict faults of multiple wind turbines. To conclude our work, we will then prepare these build models to be feed to the Failure Prediction tool available In CGI \acrshort{rms}.
 
 To achieve this, we are going to divide the study of our thesis in five different scopes:
 
@@ -68,10 +68,10 @@ Then, we are going to study data so that we can identify the variables that allo
 We will perform some feature engineering, by using the Azure Machine Learning Studio built-in modules to analyze which features have more correlation with the fault events, building new features from the initial set of variables and to analyze our historical failure events that we have available to confirm that we have an unbalanced training set (since, naturally, the number of failures events is less that the normal operation events) and prepare a future step on balancing the training set for model training.
 
 \item 
-By using the features identified on the previous step, we are going to develop the machine learning models for each wind turbine fault, that can be integrated with CGI RMS to help to predict and classify the major failures according to the real-time data that the system monitors.
+By using the features identified on the previous step, we are going to develop the machine learning models for each wind turbine fault, that can be integrated with CGI \acrshort{rms} to help to predict and classify the major failures according to the real-time data that the system monitors.
 
 \item 
-After our models are trained and we acquire an output from our experiments, we will analyze and present our conclusions of our built models and experiment steps, and present the future improvements that must be done in order to implement the Failure Prediction tool on CGI RMS.
+After our models are trained and we acquire an output from our experiments, we will analyze and present our conclusions of our built models and experiment steps, and present the future improvements that must be done in order to implement the Failure Prediction tool on CGI \acrshort{rms}.
 
 \end{enumerate}
 
@@ -91,7 +91,7 @@ This master thesis document will be organized as the following:
 
 \begin{enumerate}
     \item
-First we will provide a background of what this master thesis will focus. We start by the monitoring system that provide us the data to build our machine learning models, the CGI RMS, then we advance to provide some context of the area were the study focuses, the wind turbines and we will finish by providing a basic introduction on the machine learning area, that is the area that will be used to accomplish our master thesis goal.
+First we will provide a background of what this master thesis will focus. We start by the monitoring system that provide us the data to build our machine learning models, the CGI \acrshort{rms}, then we advance to provide some context of the area were the study focuses, the wind turbines and we will finish by providing a basic introduction on the machine learning area, that is the area that will be used to accomplish our master thesis goal.
 
 \item
 Then, we will provide a basic introduction on the technologies that are going to be used to accomplish our work.
