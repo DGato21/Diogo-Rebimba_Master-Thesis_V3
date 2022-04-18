@@ -9,6 +9,9 @@
 
 %% REVER SE HÁ OLD ARTIGOS QUE SEJAM IMPORTANTES MENCIONAR AQUI E USAR
 
+%REVIEWED 2022/04/18
+% W/CORRECTIONS FROM PROF 30/03/2022
+
 \typeout{NT FILE literature.tex}
 
 \chapter{State of the Art}
@@ -18,18 +21,18 @@
 \section{Introduction} 
 \label{sub:if_you_use_this_template} 
 
-In this chapter it will be presented a review on the articles that we consider as basis to support the methodology chosen. We will divide this section into several parts, according to the steps that a machine learning model is developed.
+In this chapter it will be presented a review on the articles that we consider as basis to support the methodology chosen. We will divide this section into several parts, according to the steps to develop a machine learning model.
 We will first introduce the references that were used to auxiliary the decision of our dataset and the pre-processing mechanisms that were decided. Then we will advance to the articles that support our feature engineering process. We advance to the machine learning algorithms that were chosen and conclude with the references that support the evaluation mechanisms that were decided to be used in order to rank our training models.
 
 \section{Literature Analysis}
 
-
+%Maybe more articles in the first cite
 \subsection{Features}
 
-In several articles like \cite{N_1_WIND} \cite{N_5_WIND} [...], and as stated by CGI experts, vibration signals are one of the most important features that can be used in failure prediction in mechanical systems. In our particular case, we don't have access to vibration signals.
+In several articles like \cite{N_1_WIND} \cite{N_5_WIND}, and as stated by CGI experts, vibration signals are one of the most important features that can be used in failure prediction in mechanical systems. In our particular case, we don't have access to vibration signals.
 In \cite{OLD_19_WIND}, for the prediction of "high temperature fault", it is presented in Table 1 several signals that it was used in this article, in which we can see that several temperature signals from several wind turbine components were chosen as well as signals that provide general information about the state of a wind turbine (like rotor speed, blade pitch angle and power).
 In \cite{N_2_WIND} and \cite{39_WIND}, several sensors with generic information about a wind turbine were used for the fault detection. These sensors provide information like generated electrical power, rotor speed, generator speed and pitch angle. It is stated also that "the main challenges of the wind turbine fault detection lie in their non-linearity, unknown disturbances, and significant measurement noise at each sensor", providing an important feedback concerning the difficulty to detect standards between failures and specific component states.
-\cite{N_3_WIND} studies two failures, one related to blade angle and another concerning generator. For each failure, the features selected were some general ones (like rotor speed, generator speed, wind speed), some of temperature concerning the second failure and some specific of the component of the failure, like specific component sensors or sensors of components that are related (for the blade angle failure, blade and nacelle sensors; for the generator failure, generator, bearing and nacelle sensors).
+\cite{N_3_WIND} studies two failures, one related to blade angle and another concerning generator. For each failure, the features selected were some general ones (like rotor speed, generator speed, wind speed) and some specific of the component of the failure, like component sensors or sensors of related components (for the blade angle failure, blade and nacelle sensors; for the generator failure, generator, bearing and nacelle sensors). For the second failure there were used also used signals of the temperature of the generator and shaft bearing.
 In \cite{OLD_41_WIND}, it is considered as a parameter related to the fault the generator speed, power output and wind speed.
 Finally, in \cite{N_8_WIND}, for the prediction of generator and gearbox failures, mostly all the sensors concerning temperatures and oil temperatures were used as well as general ambient and wind turbine information like average wind speed, total production, ambient temperature.
 
@@ -38,23 +41,25 @@ Finally, in \cite{N_8_WIND}, for the prediction of generator and gearbox failure
 %Colocar nota sobre "Inequality Method of Checbyshev - Remove data outliers
 %TODO: Procurar o site onde vi que o ChiSquared era melhor para classificacao
 
-Classification problems, more particularly fault prediction problems, have several dataset pre-processing work that is make in order to improve the performance of the fault detection. In almost all of our literature that present some dataset information, we see some "standards" in the approaches that are used.
+Classification problems, more particularly fault prediction problems, have several dataset pre-processing work that is make in order to improve the performance of the fault detection. In almost all of our literature that present some dataset information, we see some common approaches.
 
 In \cite{OLD_19_WIND}, it is referred the removal of data outliers, by using Chebyshev inequality method, the scaling of the features, using normalization and after selecting a subset of signals that are related to the failure, it is performed a feature selection using a feature ranking using correlation coefficient. It also uses a sliding time window on the features.
 
-In \cite{N_2_WIND}, it is pre-processed the features by "group scaling and feature transformation", reducing the dimensionality of the feature space using "multiway principal component analysis". The next step is to "10-fold cross-validation" using SVM based classification, in order to assess if results will generalize to an independent dataset. This article also refer that "methods that focus on a specific part of the WT (Wind Turbine), require the choice of the most appropriate sensors, their advisable position in the sub-assembly".
+In \cite{N_2_WIND}, it is pre-processed the features by "group scaling and feature transformation", reducing the dimensionality of the feature space using "multiway principal component analysis". The next step is to "10-fold cross-validation" using \acrshort{svm} based classification, in order to assess if results will generalize to an independent dataset. This article also refer that "methods that focus on a specific part of the WT (Wind Turbine), require the choice of the most appropriate sensors, their advisable position in the sub-assembly".
 
 \cite{39_WIND} only refers the importance of reducing a large number of features and the use of feature extraction and feature selection techniques. It uses also the 10-fold cross-validation for data split.
 
 \cite{N_3_WIND} and \cite{OLD_41_WIND} states that in a study like ours, of failure prediction, there exists an unbalanced dataset. The number of faults events is much lower that the number of normal state events. That is something that should be treated on the training dataset to balance the dataset that is used to train the model.
 \cite{N_4_WIND} uses, for feature selection, Pearson correlation to eliminate the more correlated features and then use "PCA to identify the variables that exceeds the threshold".
 
-\cite{TDC_1} and \cite{MED_1} highlight one of the most important dataset transformations that can be used in machine learning problems such as the one of our master thesis. It refers for the dataset sliding window technique that allow the machine learning model to learn the behaviour of the wind turbine a set of time before the failure actually occur.
+\cite{TDC_1} and \cite{MED_1} highlight one of the most important dataset transformations that can be used in machine learning problems such as the one of our master thesis. It refers for the dataset sliding window technique that allow the machine learning model to learn the behaviour of the wind turbine a set of time before the failure actually occurs.
 
 Other important technique referred by \cite{MED_1}, and more briefly by \cite{N_7_GENERAL} is the running summaries. This consists in building new features from an statistical aggregation (for example, average) of the last set of values of each feature. This allow us to compare the current value of the feature with the average behaviour of the feature, discovering values that are not considered as normal and thus indicating a possible failure.
 
 In addition, \cite{MED_1} describes also some data pre-processing techniques that were also referred in the previous articles, like the removal of the null and duplicated rows, ways to deal with the split of data for the train/validation/test datasets.
-\cite{Machine_Learning_Mistery_Train-Test-Split} explains the importance of the Train-Test Split for evaluating machine learning algorithms in comparison with other techniques. Since we have a dataset with a sufficient high size, this article recommends the use of this technique to evaluate the algorithms.
+Since we have a dataset with a sufficient large size, it is recommended the use of this technique to evaluate the algorithms.
+
+%VERIFICAR AS CORREÇÕES INDICADAS PELO PROF NESTE ULTIMO PARAGRAFO
 
 
 \subsection{Machine Learning Algorithm's}
@@ -67,12 +72,12 @@ Neural Network are mentioned in \cite{OLD_15_WIND}, \cite{OLD_20_WIND}, \cite{OL
 
 Articles like \cite{ML_Alg_Analysis_2} and \cite{ML_Alg_Analysis} also mention in detail some of these algorithms as the ones to be used for classification problems. Some of the algorithms mentioned by these two articles are K-Nearest Neighbor, Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Support Vector Machine and Naive Bayes Classifier.
 
-One algorithm that is also mentioned and that is said to be one of the most adequate for our problem in particular, is the Long Short Term Memory (LSTM) \cite{TDC_1}. Although0p0 this analysis from our literature, we will not use it because it is not available in Azure Machine Learning Studio.
+One algorithm that is also mentioned and that is said to be one of the most adequate for our problem in particular, is the Long Short Term Memory (LSTM) \cite{TDC_1}. Although this analysis from our literature, we will not use it because it is not available in Azure Machine Learning Studio.
 
 
 \subsection{Evaluation Metrics}
 
-For binary classification problems, general literature about the machine learning area and our algorithms have the same opinion of the metrics that should be used. Of course this metrics that are evaluated are in general terms, without any specific consideration in terms of business needs. In our particular case, we have a particular interest in reducing the number of false positives, even if that lead to a higher number of false negatives and a lower number of true positives. This idea is justified in more detail in the next chapters.
+For binary classification problems, machine learning area documentation and our literature suggest a set of metrics to use. Of course these metrics that are evaluated are in general terms, without any specific consideration in terms of business needs. In our particular case, we have a particular interest in reducing the number of false positives, even if that lead to a higher number of false negatives and a lower number of true positives. This idea is justified in more detail in the next chapters.
 
 \cite{OLD_31} mention the use of the accuracy, false positive rate, true positive rate, ROC curve and confusion matrix. \cite{OLD_18_WIND} uses ROC curve and AUC curve. 
 \cite{N_3_WIND} uses ACC (classification accuracy), SEN (sensitivity) and SPE (specifity), which are metrics that are derived from the confusion metrics and that provide us percentage values.
@@ -85,14 +90,14 @@ In \cite{MED_1} and backed up by our CGI expert, we can't rely only on these met
 \section{Conclusion} 
 \label{sub:if_you_use_this_template} 
 
-Considering the analysis that was made on the articles previously mentioned and the advices from CGI experts, we built our methodology to address the problem of our master thesis with the technology that we have available.
+Considering the literature previously mentioned and the advices from CGI experts, we built our methodology to address the problem of our master thesis with the technology that we have available.
 
 %% TODO: CONFIRMAR PELO EXCEL SE NAO SE COLOCOU PARA TODAS AS FALHAS OS SINAIS DA TEMPERATURA DO OLEO. OU SE FOI APENAS ESPECIFICO DE ALGUMAS FALHAS
 
-In terms of the features that were selected for each fault, it was decided to use general data signals, like wind speed, temperature, active power of the wind turbine for all the faults. Then, for specific signals of each fault, we selected the signals of the fault component or components that were neighbors of the fault components.
+In terms of the features that were selected for each fault, it was decided to use general data signals, like wind speed, external temperature, active power of the wind turbine for all the faults. Then, for specific signals of each fault, we selected the signals of the fault component or components that were neighbors of the fault components.
 
-In terms of the dataset and feature engineering step, considering the limitations of the technology that we have to use, the 10 fold cross-validation was used in order to understand the quality of our model in terms of predicting new data. For the feature selection, we used the Filter Based Feature Selection module, with the Chi squared metric. The Principal Component Analysis was deprecated due to limitations of the Azure Machine Learning Studio that doesn't have a built-in module to use the Principal Component Analysis (PCA). In the built of the dataset, we remove invalid rows (rows which the features are null) and features (when the feature have to much null values), select only data that are considered to have quality (meaning that have no noise) and build the running summaries of the features. Further one, we use the train-test split to train, validate and test our model.
+In terms of the dataset and feature engineering step, considering the limitations of the technology that we have to use, the 10 fold cross-validation was used in order to understand the quality of our model in terms of predicting new data. For the feature selection, we used the Filter Based Feature Selection module, with the Chisquared metric. The Principal Component Analysis was discarded due to limitations of the Azure Machine Learning Studio that doesn't have a built-in module to use the Principal Component Analysis (PCA). In the built of the dataset, we remove invalid rows (rows which the features are null) and features (when the feature have to much null values), select only data that are considered to have quality (meaning that have no noise) and build the running summaries of the features. Further one, we use the train-test split to train, validate and test our model.
 
 In terms of the machine learning algorithms, and considering all the machine learning algorithms available in the Azure Machine Learning Studio, we selected the Two-Class Logistic Regression, Two-Class Support Vector Machine, Two-Class Neural Network, Two-Class Decision Tree and Two-Class Boosted Decision Tree.
 
-Finally, to evaluate our models, we use as metrics Precision, Recall and F1 Score. Also considering the \cite{MED_1}, we built a script to understand the real capacity of the model in predicting faults and run it into a dataset that was not used in the build of the model.
+Finally, to evaluate our models, we use as metrics Precision, Recall and F1 Score. Also considering the \cite{MED_1}, we built a script to understand the real capacity of the model in predicting faults and run it into a dataset that was not used in the construction of the model.
