@@ -7,8 +7,8 @@
 %% (older Previous Work)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%REVIWED IN 2022/03/30
-%COMPLETED IN 2022/03/30
+%REVIEWED 2022/04/22
+% W/CORRECTIONS FROM PROF 30/03/2022
 
 \typeout{NT FILE methodology.tex}
 
@@ -17,11 +17,10 @@
 
 \section{Introduction} 
 \label{sub:if_you_use_this_template} 
-In order to advance, and better prepare the study of this thesis, a specific study on CGI RMS data and research was developed, to get a starting point on the variables data and algorithms.
 
-As presented before, this study will use a data-driven based method that involves less restriction in knowing all the details of the underlying fault process and the technical knowledge of all the components \cite{OLD_19_WIND}. With the large amount of historical data that is available in the CGI RMS, all the conditions are reunited to start developing the work with this method.
+As presented before, our approach will use a data-driven based method that involves less restriction in knowing all the details of the underlying fault process and the technical knowledge of all the components \cite{OLD_19_WIND}. With the large amount of historical data that is available in the CGI RMS, all the conditions are reunited to start developing the work with this method.
 
-Since our goal is to build an generic experiment in Azure Machine Learning Studio that may be used as a foundation for the Failure Prediction tool, and due to the limitations of the signals that we have available and the built-in modules available in Azure Machine Learning Studio, we have to analyze our literature and confront with the modules available in order to obtain the best experiment possible to build the best model to predict the failures of the wind turbines that are being studied.
+Since our goal is to build an generic experiment in Azure Machine Learning Studio that may be used as a foundation for the Failure Prediction tool, and due to the limitations of the signals that we have available and the built-in modules available in Azure Machine Learning Studio, we analyzed the literature and confronted it with the modules available in order to obtain the best experiment possible to build the best model to predict the failures of the wind turbines that are being studied.
 
 % DEPRECATED
 %With several studies like [OLD 2] \cite{40_WIND} \cite{OLD_36_SOLAR}, we can understand %and select the machine learning algorithms that should be used and %compared to obtain the best model for failure prediction.
@@ -34,7 +33,7 @@ Since our goal is to build an generic experiment in Azure Machine Learning Studi
 
 Following the previous knowledge obtained with RMS CGI, the data model presented in Figure 5.1 and Figure 5.2, provides a global overview of the classification of an event into a failure of a certain type, and of how data from assets are obtained and stored.
 
-Before all the data acquisition begins, the client (owner of the parks) provides all the information needed to monitor the complete wind park. The most important data entities for this thesis are:
+Before all the data acquisition begins, the client (owner of the parks) provides all the information needed to monitor the complete wind park. The most important data entities for the development of the fault prediction model are:
 
 \begin{enumerate}
     \item 
@@ -44,18 +43,18 @@ Components, which are the basic units that forms each wind turbine and that allo
     \item
 Signals, that exist in each asset or in the park. These signals provide us different information, like the active power for example or the wind speed.
     \item
-Faults, that allow us to understand the cause of a failure and the component where it occurs. It is going to be one of the main entities for this thesis.
+Faults, that allow us to understand the cause of a failure and the component where it occurs. It is going to be one of the main entities for the model.
     \item
 Statuses, that allows us to associate to each asset their status and acknowledge the status associated with an event. The downtimes presented before, may be associated to one or more statuses.
     \item
-Budgets, that are used as monthly expectations that the park owners have on their assets in different type of measures (like production, ratio of performance). Allied with KPIs, allow to better under-stand the performance of the assets.
+Budgets, that are used as monthly expectations that the park owners have on their assets in different type of measures (like production, ratio of performance). Allied with KPIs, allow to better understand the performance of the assets.
     \item
-Key Performance Indicators (KPIs), that are calculations over signals that allow for a quicker understatement of the performance of the wind turbines. May allied more than one source of information (like signals or budgets) to provide a final value that directly indicate the performance of a wind turbine or park.
+Key Performance Indicators (KPIs), that are calculations over signals that allow for a quicker understanding of the performance of the wind turbines. They may allied more than one source of information (like signals, budgets or constants) to provide a final value that directly indicate the performance of a wind turbine or park.
 \end{enumerate}
 
-Other data that is provided to us, including some classifications and indicators that the system already have in its basis, are adapted to the specification of each client.
+Other data that is provided to us, including some classifications and indicators that the system already have in its basis, are adapted to the specificities of each client.
 
-In terms of the process of data acquisition, it involves all the entities represented in Figure 5.1. It begins with an event, registered with a certain state allied. Events are one of the most basic units registered in our system. RMS have a state machine, that uses these events and static data presented before like faults and states, allowing us to calculate the energy loss, duration, and number of events that occur in a certain time interval, and present the downtime of an asset and the classification of that downtime, meaning, the motive for that failure to occur. Each event is counted as one until a change of it state occurs, meaning that a single event may last for days (for example, for an event that states that a wind turbine is running).
+In terms of the process of data acquisition, it involves all the entities represented in Figure 5.1. It begins with an event, registered with a certain state. Events are one of the most basic units registered in our system. RMS have a state machine, that uses these events and static data presented before like faults and states, allowing us to calculate the energy loss, duration, and number of events that occur in a certain time interval, and present the downtime of an asset and the classification of that downtime, meaning, the cause for that failure to occur. Each event is counted as one until a change of it state occurs, meaning that a single event may last for days (for example, for an event that states that a wind turbine is running).
 
 \begin{figure}[htbp]
 	\centering
@@ -65,10 +64,10 @@ In terms of the process of data acquisition, it involves all the entities repres
 \end{figure}
 
 Data from assets, allows us to understand the values of a certain asset during a time interval. In figure 5.2, we have the representation of all the entities that are involved in the calculation and storage of the data that the RMS CGI acquires from the wind turbines.
-This data can have two origins: real-time data from field signals, or post processing data that uses the previous ones to make some calculations as soon as it is received (for example, expected power in wind turbines is calculated using wind speed, neighbors data, besides other data).
+The data can have two origins: real-time data from field signals, or post processing data that uses the previous ones to make some calculations as soon as it is received (for example, expected power in wind turbines is calculated using wind speed, neighbors data, besides other data).
 %Check if it's clear
 The real-time data that is sent by the wind turbines are then received by a linked system that supports RMS CGI and that is responsible to aggregate them statistically in 10 minutes values (the number of minutes depends on each signal and client). This means, that in the statistical storage, we will have registered daily 144 values (one value per 10 minutes), each of these values represents the aggregation over the last 10 minutes, with the average value, minimum value, maximum of value and the standard deviation of the last 10 minutes of that signal for a specific timestamp.
-To help in better structuring the signals comprehension, in RMS we use a term of tag that works as a string mask of the signal. In that way, it becomes easier to search for all the signals of multiple assets that concern a certain measure.
+To help in better structuring the signals comprehension, in RMS we use a term of tag that works as a string mask of the signal. With this field, it becomes easier to search for all the signals of multiple assets that concern a certain measure (for example, using the tag 'GENACTIVEPOWER', that represents the active power of a wind turbine, we can obtain more easily all the signals ids that provide the information of this measure).
 
 \begin{figure}[htbp]
 	\centering
@@ -80,16 +79,14 @@ To help in better structuring the signals comprehension, in RMS we use a term of
 
 \section{Dataset}
 \label{sub:if_you_use_this_template} 
-This thesis will focus on the data from CGI RMS concerning different parks in different locations of all Portugal, since the 5h March of 2021 until the end of that same year. This is the time interval of data that the current version of the RMS CGI has been running with all the configurations needed. Data that is stored in CGI RMS from previous years, came from a previous version of the CGI RMS system that was transitioned to the current system during this master thesis, and due to the fact that the processes of previous versions and current versions are not exactly the same, it has been decided that it shouldn't be used for this master thesis.
+This thesis will focus on the data from CGI RMS concerning different parks in different locations of all Portugal, since the 5h March of 2021 until the end of that same year. This is the time interval of data that the current version of the RMS CGI has been running with all the configurations needed. Data that is stored in CGI RMS from previous years, came from a previous version of the CGI RMS system that was transitioned to the current system during this master thesis, and due to the fact that the processes of previous versions and current versions are not exactly the same, it has been decided that it shouldn't be used for the current work.
 
 With the data available for those parks, a first analysis on the faults was made to understand two main questions in this thesis: 1) have we enough quality data to develop the machine learning models? 2) how can we predict the failure with the available monitoring data? 
 
 \subsection{Have we enough data to train the machine learning models} 
 \label{sub:if_you_use_this_template} 
 
-As stated previously, in terms of data available in CGI RMS and classified as quality data, we have one major client portfolio of data that have different parks in different locations in Portugal.
-
-This client provides data from 36 wind parks configured, with a total of 323 generators. These generators turbines have different manufacturers and models: a combination of 6 manufacturers and 13 turbine models compose these 323 generators. This client has configured 16,730 fault types and 31,970 different signals.
+As stated previously, in terms of data available in CGI RMS and classified as quality data, we have one major client portfolio of data that have different parks in different locations in Portugal. This client provides data from 36 wind parks configured, with a total of 323 generators. These generators turbines have different manufacturers and models: a combination of 6 manufacturers and 13 turbine models compose these 323 generators. This client has configured 16,730 fault types and 31,970 different signals.
 Considering, for example, July 2021 and one of the faults and wind turbine presented in Table 5.3, we have registered 184 events that concerns to that particular failure and wind turbine.
 
 As presented earlier in the Data Structure section and in image Figure 5.1, we see that we can map to each failure event the component were the failure occurs and the energy loss and duration associated to that failure event, allowing us to classify the impact that the failure have in terms of financial loss and time to fix it. By knowing the exact moment when the failure was registered, we can correlate that data with the signals data from that component and asset, to understand how the wind turbine was behaving itself before the failure occurs, and to train the machine learning model to predict failures when those same or similar conditions occur.
@@ -99,11 +96,13 @@ As presented earlier in the Data Structure section and in image Figure 5.1, we s
 \subsection{How can we predict the failure with the available monitoring data} 
 \label{sub:if_you_use_this_template} 
 
-To predict a failure, as any machine learning algorithm, we will provide samples of the dataset to train the algorithm. From all the signals available in the system, we selected a subset of some of the features that we will use as a starting point to train our model. The selection of each feature was supported by articles like \cite{OLD_41_WIND} [...] and by the opinion of CGI experts of renewable energy sources.
+%TODO Nos paragrafos com referencias, verificar se nao ha mais artigos. Tinha [...]
+
+To predict a failure, as any machine learning algorithm, we will provide samples of the dataset to train the algorithm. From all the signals available in the system, we selected a subset of some of the features that we will use as a starting point to train our model. The selection of each feature was supported by articles like \cite{OLD_41_WIND} and by the opinion of CGI experts of renewable energy sources.
 
 Each signal available depends on the manufacturer and model associated with the fault that is being study. So, to support the study of each fault, the features for each one might not be all the same and so this might be a factor that affects the performance of the model for the fault being predicted.
 
-Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table 5.2 and mentioned in \cite{OLD_41_WIND} [...], are general information about the environment and the wind turbine.
+Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table 5.2 and mentioned in \cite{OLD_41_WIND}, are general information about the environment and the wind turbine.
 
 \begin{table}[!ht]
     \centering
@@ -172,11 +171,12 @@ AssetId (String): the id of the wind turbine.
     \item
 Feature (one column per feature) (Double): the 10 min value of the feature for that particular timestamp. Some of the features column available are new variables created from others that are explained later in the Experiment Procedures-Feature Engineering chapter.
     \item
-Fault (Boolean): indicates if the timestamp is in the sliding time window of failure. If it value is true, it means that the timestamp is inside the time window of one failure, and that the values of the feature of that same timestamp should be considered as indication that a failure will occur. Later, in Experiment Procedures chapter we will explain on how this column is built.
+Fault (Boolean): indicates if the timestamp is in the sliding time window of failure. If it value is true, it means that the timestamp is inside the time window of one failure, and that the values of the feature of that same timestamp should be considered as indication that a failure will occur. Later, in Experiment Procedures chapter we will explain on how this column is built, as well as the size of the time window.
     \item
 Failure Time (Boolean): indicates that in that timestamp a failure occurred. This column is specifically important in the evaluation of the final test dataset, to check if our machine learning model predicted with anticipation that failure time.
     \item
 Fault Category (String): it was built to identify each failure event and to group them when each failure time is close to another failure time. In other words, indicates an id of a failure. The rows that do not correspond to a failure (indicating normal state of the wind turbine), will have an Fault Category value that indicates the next failure event. This means, that all the timestamps with a normal state of the wind turbine (Fault = 0) will have a Fault Category value equal to the next fault state of the wind turbine (Fault = 1).
+%TO REVIEW
 
 \end{enumerate}
 
@@ -194,12 +194,12 @@ Each row of the dataset represents one timestamp of the wind turbine, and the co
 
 In terms of the faults that were selected to be predicted, we started our analysis by ordering them with a first criteria of the number of events, thus meaning the faults that have more occurrences and consequently have more fault data to feed to our models. The second criteria was the total energy losses that the fault led to, thus meaning the direct impact in terms of lost of production and consequently the potential loss of revenues that the fault provoked to the client. We also filtered all the faults that are classified as alarms since these types of faults are not really faults, being alarms that the wind turbine provide to indicate a state of the wind turbine and that may be related to a maintenance or an alarm that is provoked by a component fault. These components faults are the ones that we will try to predict. The final selection criteria of the faults is to try to select the wider variety of manufacturers and model of faults and components, so that our study covers as many types of failures as possible. Our base number of top faults to study is around 10, but that number may vary according to the results of our analysis.
 
-Initially when we start to analyze our approach of the best way to predict a specific failure in a portfolio of parks, we took the more generic approach possible. This means that we first though about joining in our dataset all the data of all the wind turbines of the same manufacturer and model in the prediction of a fault of that same manufacturer and model. A second approach, more restrict will be restrict only the wind turbines of the same park and that share the same manufacturer and model. Then after our first tests and after talking with the CGI experts and according to the feedback that a client of CGI RMS as given previously, we understand that this generic approach is not correct mainly due to this reason: even in the same park, each wind turbine varies from the others since each wind turbine is exposed to different external conditions (like wind direction), does not have always the same production (sometimes some wind turbines are limited in producing in comparison of wind turbines in the same park) and each component of the different wind turbines doesn't have the same level of degradation. 
+Initially when we start to analyze the best way to predict a specific failure in a portfolio of parks, we took the more generic approach possible. This means that we first thought about joining in our dataset all the data of all the wind turbines of the same manufacturer and model in the prediction of a fault of that same manufacturer and model. A second approach, restricts the model to the wind turbines of the same park and that share the same manufacturer and model. Then after our first tests and after talking with the CGI experts and according to the feedback that a client of CGI RMS as given previously, we understand that this generic approach is not correct mainly due to this reason: even in the same park, each wind turbine varies from the others since each wind turbine is exposed to different external conditions (like wind direction), does not have always the same production (sometimes some wind turbines are limited in producing in comparison of wind turbines in the same park) and each component of the different wind turbines doesn't have the same level of degradation. 
 
 %DEPRECATED BECAUSE IT IS NOT 100% CORRECT
 %Secondly, if our model was built on a mixture of wind turbines each %prediction of a fault will only tell our client that a fault that is %concern a single component will occur on a possible subset of wind %turbines. This is not very useful for a maintenance point of view, since %the model does not indicate which specific wind turbines needs %maintenance.
 
-So considering this point of view and the opinion of a client of CGI RMS, our final approach in terms of the range of variety that each model should be built, and justified by what has been told previously, was to build each model dataset and fit each model to predict a single failure of a specific wind turbine. This way our model will be more fitted to a wind turbine and the particular fault, thus resulting a prediction that will direct the client maintenance team to the particular component of the failure and to a particular wind turbine.
+So considering this point of view and the opinion of a client of CGI RMS, our final approach in terms of the range of variety that each model should be built, and justified by what has been told previously, was to construct a different model to predict a single failure of a specific wind turbine. This way our model will be more fitted to a wind turbine and the particular fault, thus resulting a prediction that will direct the client maintenance team to the particular component of the failure and to a particular wind turbine.
 
 So, according to the filter and order criteria specified before, we obtain the following results presented in Table 5.3, that represent the top failures of the portfolio of parks that are going to be studied in this master thesis, in order to understand the correct approach to predict a failure in a wind turbine and thus, being these models the base model for the implementation of the Failure Prediction tool in CGI RMS.
 
@@ -223,7 +223,7 @@ The column 'Park', represents the id of a wind park. The column 'Asset', represe
     \label{TopFaultsTable}
 \end{table}
 
-After selecting the top faults, while the analysis was being made we decide to include for the same faults, some wind turbines which have a lower number of occurrences of faults events in order to understand if our model can have a similar power of prediction in case of wind turbines that have a substantial lower number of fault events. This subset of faults are presented in Table 5.4.
+After selecting the top faults, while the analysis was being made, we decided to include for the same faults, some wind turbines which have a lower number of occurrences of faults events in order to understand if our model can have a similar power of prediction in case of wind turbines that have a substantial lower number of fault events. This subset of faults are presented in Table 5.4.
 
 \begin{table}[!ht]
     \centering
@@ -238,9 +238,9 @@ After selecting the top faults, while the analysis was being made we decide to i
     \label{Subset of Faults with less occurences that are going to be analyzed}
 \end{table}
 
-According to the information of the signals available, provided in the dataset section, and the faults selected previously, in the Appendix X we can see the complete set of features available for each fault. These features are based on the first analysis presented in Table 5.3 and Table 5.4 presented earlier in the Dataset section, in 'How can we predict the failure with the available monitoring data' subsection.
+According to the information of the signals available, provided in the dataset section, and the faults selected previously, in the Appendix X we can see the complete set of features available for each fault. These features are based on the first analysis presented in Section Dataset.
 
-For each of the faults presented in Table 5.3 and Table 5.4, we did an analysis on its distribution per month in order for us to understand the predictions that we should expect in each dataset used for training, validation and testing. That distribution information is presented in Table 5.5 and Table 5.6. In the experiment procedures section we will get into more detail in this step of distribution of the faults per each dataset.
+For each of the faults presented in Table 5.3 and Table 5.4, we did an analysis on its distribution per month in order for us to understand the predictions that we should expect in each dataset used for training, validation and testing. That distribution information is presented in Table 5.5 and Table 5.6. In the Section Experimental Setup we will get into more detail in this step of distribution of the faults per each dataset.
 
 \begin{table}[!ht]
     \centering
@@ -319,9 +319,9 @@ In terms of its implementation in Azure Machine Learning Studio, we have availab
 
 
 \subsubsection{Two-Class SVM (Support Vector Machine)}
-It is a binary classification learning algorithm where each data item is a point in a n-dimensional space (where n is the number of features provided) and the classification is performed by finding the hyperplane that differentiates the two classes. The support vectors are data points that are closer to the hyperplane and influence the position and orientation of this hyperplane. Using the support vectors, we maximize the margin of the classifier. \cite{SVM}
+It is a binary classification learning algorithm where each data item is a point in a n-dimensional space (where n is the number of features provided) and the classification is performed by finding the hyperplane that ideally linearly separates the two classes. The support vectors are data points that are closer to the hyperplane and influence the position and orientation of this hyperplane. Using the support vectors, we maximize the margin of the classifier. \cite{SVM}
 
-One of the key parameters of the SVM classifier is the kernel function that is used. The kernel function is a function that "give us the inner product of the transformed vectors as a function of the original vectors" \cite{FCT_AA}, meaning that it is the function that converts the input data space into a higher-dimensional space. The kernel function "takes two data points and calculates a distance score be-tween those. This score is higher for closer data points and vice versa." \cite{SVM}. The more popular and the kernel functions that we are going to study are Linear Function, Polynomial Function, Radial Basic Function (RBF) and Sigmoid Function.
+One of the key parameters of the SVM classifier is the kernel function that is used. The kernel function is a function that "give us the inner product of the transformed vectors as a function of the original vectors" \cite{FCT_AA}, meaning that it is the function that converts the input data space into a higher-dimensional space. The kernel function "takes two data points and calculates a distance score be-tween those. This score is higher for closer data points and vice versa." \cite{SVM}. The more popular and the kernel functions that we are going to study are Linear Function, Polynomial Function and Radial Basic Function (RBF).
 
 The key parameters that should be study in order to find out the values that are more adequate to our dataset is gamma, that defines how far the influence of a single training example reaches and C, that behaves as a regularization parameter in the SVM, in terms of margin of acceptance for the decision surface (lower C values lead to allowing more errors).
 It is a good algorithm when we have a high number of features having a disadvantage of being slow. It is suited for extreme case binary classification and when the classes are separable.
@@ -429,7 +429,7 @@ For the previous presented algorithms, as enumerated we have a serious of parame
 \end{table}
 
 
-\section{Experiment Procedures}
+\section{Experimental Setup}
 
 As presented previously, our main goal is to analyze the features transformations that should be made and build an experiment that can be used for the prediction of the failures of wind turbine. So for that, and according to the modules available in the Azure Machine Learning Studio, we designed an experiment that build several models, each with the same procedures only differing the machine learning algorithm, so that for each fault and wind turbine we can evaluate each model result and then choosing the best fit for the scope that is being predicted.
 
@@ -437,7 +437,7 @@ As presented previously, our main goal is to analyze the features transformation
 
 In order to prepare our data, some pre-processing on the measures data that we have available from the signals described earlier in Table 5.1 and 5.2 must be done. The procedures that we selected to build our experience were based in our literature like \cite{ML_Data_processing} \cite{39_WIND} \cite{N_3_WIND} \cite{OLD_41_WIND} \cite{N_4_WIND} \cite{MED_1} \cite{N_7_GENERAL} and according to the modules available in the Azure Machine Learning Studio \cite{AZURE_MACHINE_LEARNING}.
 
-First, in our acquisition of the data we analyze if a feature have a high percentage of null values for the entire dataset. If that is the case, we remove the feature because it means that it doesn't have enough quality data and the machine learning algorithm can't have null rows. The next step is to remove the remaining rows that contain any feature with a null value. These steps guarantee that we have a dataset with no invalid rows or features so that the process of training and fitting the model have no errors.
+First, in the data acquisition step, we analyze if a feature has a high percentage of null values for the entire dataset. If that is the case, we remove the feature because it means that it doesn't have enough quality data and the machine learning algorithm can't have null rows. The next step is to remove the remaining rows that contain any feature with a null value. These steps guarantee that we have a dataset with no invalid rows or features so that the process of training and fitting the model have no errors.
 
 Then we proceed to the feature engineering step, by "create new features from the given dataset or tweak existing features to extract more valuable information" \cite{ML_Data_processing}, as stated also in \cite{N_7_GENERAL} \cite{MED_1}. This procedure is called running summaries as named in \cite{MED_1}.
 
@@ -461,16 +461,18 @@ In our case, we will use a more custom split. In the beginning of the experiment
 In our first split (March 2021 to 1st October 2021), we will apply the Split Data module available in Azure Machine Learning Studio twice, so that we can achieve the three datasets that we pretend. We pretend to obtain 60\% for train, 30\% for validation and 10\% for testing. To obtain that, since we have to use the Split Data module twice, first we split with a fraction of 60\%, obtaining the train dataset, and on the remaining 40\%, we will split it into 70\%, thus giving approximately the percentages mentioned earlier for validation and test.
 
 In terms of the type of split that we choose, we tried two approaches: first we did a randomized split, so that our data is completely unbiased in the rows chosen. Our second approach, by using a stratified split using the Fault Category column mentioned earlier, lead to best results and so was the approach selected.
-As stated earlier, the failure event, have an id represented by the column fault category (presented earlier in dataset section). This failure event is multiplied by our sliding time window, as stated earlier. By splitting by the fault category, each dataset (the train, validation and test) contains part of each failure event and so our model is trained and evaluated using all the fault events available. This way, we guarantee that our model will use all the failure events in that timestamp, and thus learn the maximum number of patterns of the fault being study as possible. Our validation and test dataset will still evaluate if the model was correctly fitted to all the failure events since in these datasets it is present a portion of each failure event.
+As stated earlier, the failure event, has an id represented by the column fault category (presented earlier in dataset section). This failure event is multiplied by our sliding time window, as stated earlier. By splitting by the fault category, each dataset (the train, validation and test) contains part of each failure event and so our model is trained and evaluated using all the fault events available. This way, we guarantee that our models will use all the failure events in that timestamp, and thus learn the maximum number of patterns of the fault being study as possible. Our validation and test dataset will still evaluate if the model was correctly fitted to all the failure events since in these datasets it is present a portion of each failure event.
 For example, if we have a sliding time window of 1 hour, our failure event is represented with 6 rows. With this split, our failure event is represented in the train dataset with 3 rows (approximately 60\%), that represents 3 timestamps, the validation will contain 2 rows of that failure (approximately 70\% of the remaining) and the test will contain 1 row of that failure (approximately the last portion).
 Since we still have a second not used dataset to obtain our final results (data since October 2021 to the end of that same year), we still have available a complete new dataset to simulate our model behaviour and thus providing us a correct evaluation of our model.
 
 %MAYBE PRESENT A CHART
 
-If we do an analysis on the fault column for one of our faults that have the more number of fault events, and with the higher sliding time window of 72 hours (meaning that for each failure event, we will have 72*6 = 432 rows with fault = 1), for the column fault we have 9663 negatives (represented as 0, that means that the wind turbine was working correctly in that timestamp) and only 1996 positives, demonstrating that we have class imbalance since even with the sliding time window of 72 hours, only approximately 20\% of our rows represent a failure condition of the wind turbine.
+If we perform an analysis on the fault column for one of our faults that have the more number of fault events, and with the higher sliding time window of 72 hours (meaning that for each failure event, we will have 72*6 = 432 rows with fault = 1), for the column fault we have 9663 negatives (represented as 0, that means that the wind turbine was working correctly in that timestamp) and only 1996 positives, demonstrating that we have class imbalance since even with the sliding time window of 72 hours, only approximately 20\% of our rows represent a failure condition of the wind turbine.
 "Class imbalance means one class is dominating and there are very few instances of the other class" \cite{ML_Data_processing}. This is normal in problems like the one that is being studied in this master thesis, since a wind turbine should stay most of it time running correctly and not with a specific type of failure.
 In order to address this problem in our train dataset, we will synthesize new examples of the minority class, than in our case is the fault event. To do that, we will use the SMOTE (Synthetic Minority Oversampling Technique) module that exists in Azure Machine Learning Studio. SMOTE uses the k-nearest neighbor logic to build examples: "A randomly selected neighbor is chosen and a synthetic example is created at a randomly selected point between the two examples in feature space." [SMOTE].
 After this process, we have a more balanced training dataset, having for the same fault mentioned before and after the SMOTE module, X negatives and Y positives.
+
+%TODO X, Y POSITIVES
 
 % CHECK IF WE PUT  NEXT PARAGRAPH THIS BECAUSe OS PROFESSORES PODEM COMEÇAR A QUERER UMA ANALISE ESTATISTICA DETALHADA
 %This number was selected from a previous analysis of the faults we were obtaining the best %results, and check the output of the Filter Based Feature Selection and module to check the %results of the two-way chi-squared test and the number of features that have  
@@ -493,7 +495,7 @@ The standard metrics mentioned earlier (Confusion Matrix, precision, recall and 
 \begin{enumerate}
     \item{Confusion Matrix}
 Confusion matrix is a matrix that provide us four important terms: true positives (when the model predicts YES and the output is YES); true negatives (when the model predicts NO and the output is NO); false positives (when the model predicts YES and the output is NO); false negatives (when the model predicts NO and the output is YES).
-As stated previously in this work, we have the priority of minimize as possible the false positives and try to have some true positives.
+As stated previously in this work, we have the priority of minimizing as much possible the false positives and try to have some true positives.
 The confusion matrix terms forms the basis for the other types of metrics.
 
     \item{Precision}
