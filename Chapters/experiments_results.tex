@@ -6,6 +6,8 @@
 %% Chapter with Introduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%% TODO FUTURE WORK CHAPTER. MENCIONADO %%%%%%%%%%%%
+
 \typeout{NT FILE experiments_results.tex}
 
 \chapter{Experiments and Results}
@@ -16,19 +18,19 @@
 \label{sub:if_you_use_this_template} 
 In order to reach our goal of understanding all the procedures, algorithms and features that should be used to build the base experiment of the failure prediction tool.
 
-The experiment that was built, as mentioned before, started by having a more generic and simple approach, in terms of the scopes of the datasets and in terms of the dataset pre-processing steps. While we were studying the experiments results by using the evaluation metrics mentioned in the previous Methodology section, we learn more about the problems and after talking with CGI experts, considering the clients feedback and our literature, we improved our experiment to the final its final form.
+The experiments that were built during this work, as mentioned before, started by having a more generic and simple approach, in terms of the scopes of the datasets and in terms of the dataset pre-processing steps. While we were studying the experimental results by using the evaluation metrics mentioned in the previous Methodology section, we learn more about the problems and considering the clients, CGI experts feedback and our literature, we improved our experiment to its final form.
 
 In this section we will present the final form of the experiment that is going to be implemented as a base for the failure prediction tool. We will present all the dataset pre-processing procedures that were implemented in .NET, using Visual Studio, to acquire all the data from the CGI RMS database and to execute some of the pre-processing procedures needed in order to build the dataset. This dataset is then provided to the experiment build inside the Azure Machine Learning Studio, that is the main tool that receive the dataset and build the machine learning models that are then evaluated.
 
 \section{Experiment}
-In the presentation of our experiment, we will separate it into two steps, according to the technologies that are used. Firstly we will introduce the build up of our dataset, that contains some data pre-processing and feature engineering, and were it result the build up of the dataset that is then provided to the next step, in the Azure Machine Learning Studio.
+In the presentation of our experiment, we will separate it into two steps, according to the technologies that were used. Firstly we will introduce the build up of our dataset, that contains some data pre-processing and feature engineering methods, which resulted the dataset that is then provided to the next step, in the Azure Machine Learning Studio experiment.
 
 \subsection{Dataset Acquisition and Build Up}
-This first step was build up in .NET, using Visual Studio, and with SQL Server, the database system were the CGI RMS data is stored.
+This first step was build in .NET, using Visual Studio, and with SQL Server, the database system were the CGI RMS data is stored.
 
-In this experiment part, we are not going to referee all the study work of the signals that should be associated with a fault in a wind turbine is done, presented previously in the methodology section.
+In this experiment part, we are not going to refer all the study work of the signals that should be associated with a fault in a wind turbine is done, presented previously in the Methodology section.
 
-Our dataset acquisition parameters, will have a start time, starting in the 6th March 2021 and an end date of 31 December 2021 23:59:00. The sliding time windows that are going to be study are 12 hours, 24 hours and 72 hours.
+Our dataset acquisition parameters, will have a start time, defined as the March 6th 2021, and an end date, the December 31st 2021 at 23:59:59. The sliding time windows that are going to be study are 12 hours, 24 hours and 72 hours.
 For each wind turbine fault, we will generate a dataset according to different sliding time windows.
 
 %NOTA: FOI DESCOBERTO UM ERRO NO PROCESSO DE AQUISICAO PARA A CONSTRUCAO DAS RUNNING SUMMARIES
@@ -38,24 +40,28 @@ For each wind turbine fault, we will generate a dataset according to different s
 
 \begin{enumerate}
     \item 
-Firstly it is acquired the data from the signals that have good quality. For each feature, it is generated the running summaries, mentioned earlier in the methodology, with the generation of these features considering the average, standard deviation, minimum and maximum of each signal for the last 6 hours.
+Firstly it is acquired the data from the signals that have good quality. For each feature, it is generated the running summaries, mentioned earlier in the Methodology section, with the generation of these features considering the average, standard deviation, minimum and maximum of each signal for the last 6 hours.
 The number of hours defined in these step was fixed since this technique was applied later in this master thesis work and from the knowledge of the CGI experts, we consider that looking 6 hours before it is good to compare mainly abrupt changes in a wind turbine behavior.
 It is mentioned in the Future Work section, an improvement that we consider that should be studied after this master thesis work.
 
     \item
 After the acquisition of the signals data, with the running summaries features, it is removed from the features column, all the features that have more than 50\% of null rows. We have to do this step, since if we keep these features, we will have to remove the null rows and that will lead to a big amount of timestamps being removed only because of one signal.
-Then, after this analysis to the invalid features is made, it is removed the remaining null rows.
+Then, after the analysis of the invalid features is concluded, the remaining null rows are removed.
 
     \item
-Then we step up to the failure events data acquisition, that it is generated according to the current sliding time window that is being dealt. In this acquisition beyond the acquisition of the timestamps that have a failure event, it is also generated the fault column, mentioned earlier in the methodology section,
+Then we step up to the failure events data acquisition, that it is generated according to the current sliding time window that is being dealt. In this step, beyond the acquisition of the timestamps that have a failure event, it is also generated the fault column, mentioned earlier in the Methodology section,
 
     \item
-After the acquisition of the timestamps that correspond to a failure event, and the build up of the fault column, it is built an auxiliar column, the fault category.
+After the acquisition of the timestamps that correspond to a failure event and the build up of the fault column, it is built an auxiliar column, the fault category.
 
     \item
-Our final step, is a simple merge of the signals data and the faults data, so that we have only the corresponding timestamps that exist in both tables obtained earlier and it is done a last check to delete null rows, if exists.
+Our final step, is a simple merge of the signals data and the faults data, so that we have only the corresponding timestamps that exist in both tables obtained earlier. To finalize the dataset, it is done a last check to delete null rows, if exists.
 
 \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%% REVIEWED ATÉ AQUI EM 26/04 %%%%%%
+
+%METER PRINT DA EXPERIENCIA DOS STEPS DO CODIGO COM NRS ASSOCIADOS A CADA STEP
 
 After this process of the dataset generation, we have generated all datasets for each fault and wind turbine, one .csv file per sliding time window, meaning that for each wind turbine fault we have 3 .csv files, one for the sliding time window of 12h, one for the 24h and another for the 72h.
 
@@ -125,6 +131,7 @@ This module is the same as explained earlier, with the difference that is evalua
 This module, will run the Evaluation Script explained earlier in the Methodology, that allow us to obtain the intervals of fault that the model predicted. The output of this script is the evaluation if the intervals that the model predicted contains failure events. This comparison will lead to the confusion matrix for each percentage threshold (the parameter used in the evaluation script) that allow us to understand how the model performs with a complete new set of failure events.
 \end{enumerate}
 
+%METER PRINT DA EXPERIENCIA DO AZURE MACHINE LEARNING STUDIO COM NRS ASSOCIADOS A CADA STEP
 
 
 \section{Results}
