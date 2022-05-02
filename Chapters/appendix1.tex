@@ -1,0 +1,227 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% appendix1.tex
+%% NOVA thesis document file
+%%
+%% Chapter with Appendix1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE appendix2.tex}
+
+\chapter{Appendix 1}
+\label{appendix1}
+
+In this appendix we will present all the signals that are used as features for each one of the fault scopes studied. As presented earlier during the document, the scope will be presented with the following string format: (fault id, wind park id, wind turbine/asset id).
+
+\subsection{140 PCA 7}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WGEN\_SPD & RPM & Speed generator \\ \hline
+        WGEN\_VA & KVA & Apparent power \\ \hline
+        WGEN\_W & KW & Active power \\ \hline
+        WNAC\_EXTMP & DEGC & Temp outside \\ \hline
+        WNAC\_INTLTMP & DEGC & Temp Nacelle \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind speed \\ \hline
+        WROT\_PTAGVALBL & DEG & Phase angle \\ \hline
+        WROT\_ROTSPD & RPM & Speed rotor \\ \hline
+        WTUR\_GCTRVEL & RPM & Filtered speed breaking \\ \hline
+        WTUR\_PRESFREN & BAR & Brake pressure \\ \hline
+        WYAW\_YAWANG & DEG & Nacelle direction \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 140 PCA 7}
+\end{table}
+
+\subsection{367 CHF 15}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WCNV\_GRIA & A & Current Phase L2 \\ \hline
+        WCNV\_GRIA1 & A & Current Phase L1 \\ \hline
+        WCNV\_GRIA3 & A & Current Phase L3 \\ \hline
+        WGEN\_SPD & RPM & Generator speed \\ \hline
+        WGEN\_W & KW & Active power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind speed \\ \hline
+        WTRF\_VSTARS & V & Voltage Phase L1-L2 \\ \hline
+        WTRF\_VSTAST & V & Voltage Phase L2-L3 \\ \hline
+        WTRF\_VSTATR & V & Voltage Phase L1-L3 \\ \hline
+        WTRM\_COOLTMP2 & DEGC & Temperature of Generator's cooling water \\ \hline
+        WTRM\_HYOILPRES & BAR & Hydraulic pressure \\ \hline
+        WTRM\_HYOILTMP & DEGC & Hydraulic oil temperature \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 367 CHF 15}
+\end{table}
+
+\subsection{768 BNE 14}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WCNV\_GRIA & A & Current Phase L2 \\ \hline
+        WCNV\_GRIA1 & A & Current Phase L1 \\ \hline
+        WCNV\_GRIA3 & A & Current Phase L3 \\ \hline
+        WGEN\_SPD & RPM & Generator speed \\ \hline
+        WGEN\_W & KW & Active power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind speed \\ \hline
+        WTRF\_VSTARS & V & Voltage Phase L1-L2 \\ \hline
+        WTRF\_VSTAST & V & Voltage Phase L2-L3 \\ \hline
+        WTRF\_VSTATR & V & Voltage Phase L1-L3 \\ \hline
+        WTRM\_COOLTMP2 & DEGC & Temperature of Generator's cooling water \\ \hline
+        WTRM\_HYOILPRES & BAR & Hydraulic pressure \\ \hline
+        WTRM\_HYOILTMP & DEGC & Hydraulic oil temperature \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 768 BNE 14}
+\end{table}
+
+\subsection{768 BNE 18}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WCNV\_GRIA & A & Current Phase L2 \\ \hline
+        WCNV\_GRIA1 & A & Current Phase L1 \\ \hline
+        WCNV\_GRIA3 & A & Current Phase L3 \\ \hline
+        WGEN\_SPD & RPM & Generator speed \\ \hline
+        WGEN\_W & KW & Active power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind speed \\ \hline
+        WTRF\_VSTARS & V & Voltage Phase L1-L2 \\ \hline
+        WTRF\_VSTAST & V & Voltage Phase L2-L3 \\ \hline
+        WTRF\_VSTATR & V & Voltage Phase L1-L3 \\ \hline
+        WTRM\_COOLTMP2 & DEGC & Temperature of Generator's cooling water \\ \hline
+        WTRM\_HYOILPRES & BAR & Hydraulic pressure \\ \hline
+        WTRM\_HYOILTMP & DEGC & Hydraulic oil temperature \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 768 BNE 18}
+\end{table}
+
+\subsection{8487 SCA 10}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WGEN\_W & KW & Grid Power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient Temperature \\ \hline
+        WNAC\_INTLTMP & DEGC & Nacelle Internal Temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind Speed \\ \hline
+        WROT\_HUBTMP & DEGC & Controller hub temperature \\ \hline
+        WROT\_INVTMP & DEGC & Inverter temperature phase 2 \\ \hline
+        WROT\_PTAGVALBL & DEG & Blades pitch angle \\ \hline
+        WROT\_ROTSPD & RPM & Rotor Speed \\ \hline
+        WROT\_TOPTMP & DEGC & Controller top temperature \\ \hline
+        WTRM\_TMPGBXOIL & DEGC & Gearbox oil temperature \\ \hline
+        WYAW\_YAWANG & DEG & Nacelle direction \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 8487 SCA 10}
+\end{table}
+
+\subsection{8719 SCA 28}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WGEN\_GNTMPSTA & DEGC & Phase 2 temperature \\ \hline
+        WGEN\_GRIA & A & Current phase 2 \\ \hline
+        WGEN\_HZ & HZ & Frequency \\ \hline
+        WGEN\_SLRTMP & DEGC & Split ring temperature \\ \hline
+        WGEN\_SPINTMP & DEGC & Spinner temperature \\ \hline
+        WGEN\_STAPPV & KV & Voltage phase 2 \\ \hline
+        WGEN\_W & KW & Grid Power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient Temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind Speed \\ \hline
+        WTRF\_HVTMP & DEGC & Transformer temperature phase 2 \\ \hline
+        WTRF\_INVTMP & DEGC & Inverter temperature phase 1 \\ \hline
+        WTRM\_HYOILPRES & BAR & Hydraulic oil pressure \\ \hline
+        WTRM\_HYOILTMP & DEGC & Hydraulic oil temperature \\ \hline
+        WTRM\_TMPGBXOIL & DEGC & Gearbox oil temperature \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 8719 SCA 28}
+\end{table}
+
+\subsection{8749 PAP 35}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WGEN\_W & KW & Grid Power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient Temperature \\ \hline
+        WNAC\_INTLTMP & DEGC & Nacelle Internal Temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind Speed \\ \hline
+        WTRM\_HYOILPRES & BAR & Hydraulic oil pressure \\ \hline
+        WTRM\_HYOILTMP & DEGC & Hydraulic oil temperature \\ \hline
+        WTRM\_TMPGBXOIL & DEGC & Gearbox oil temperature \\ \hline
+        WYAW\_YAWANG & DEG & Nacelle direction \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 8749 PAP 35}
+\end{table}
+
+\subsection{9112 SCA 34}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        component & sub\_component & description \\ \hline
+        WGEN\_W & KW & Grid Power \\ \hline
+        WNAC\_EXTMP & DEGC & Ambient Temperature \\ \hline
+        WNAC\_INTLTMP & DEGC & Nacelle Internal Temperature \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind Speed \\ \hline
+        WROT\_HUBTMP & DEGC & Controller hub temperature \\ \hline
+        WROT\_INVTMP & DEGC & Inverter temperature phase 2 \\ \hline
+        WROT\_PTAGVALBL & DEG & Blades pitch angle \\ \hline
+        WROT\_ROTSPD & RPM & Rotor Speed \\ \hline
+        WROT\_TOPTMP & DEGC & Controller top temperature \\ \hline
+        WTRM\_TMPGBXOIL & DEGC & Gearbox oil temperature \\ \hline
+        WYAW\_YAWANG & DEG & Nacelle direction \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 9112 SCA 34}
+\end{table}
+
+\subsection{14474 TMS 6}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        Component & Unit & Description \\ \hline
+        WGEN\_BRGFTMP2 & DEGC & Blades pitch angle \\ \hline
+        WGEN\_SPD & RPM & Generador speed \\ \hline
+        WGEN\_W & KW & Active Power \\ \hline
+        WNAC\_EXTMP & DEGC & Temp. Ambient \\ \hline
+        WNAC\_INTLTMP & DEGC & Temp. Góndola \\ \hline
+        WNAC\_WDDIR & DEG & Wind direction \\ \hline
+        WNAC\_WDSPD & M/S & Wind Speed \\ \hline
+        WROT\_PTAGVALBL & DEG & Blade 1, actual value A \\ \hline
+        WROT\_ROTSPD & RPM & Rotor Speed \\ \hline
+        WTRM\_TMPGBXOIL & DEGC & Gearbox oil temperature \\ \hline
+        WYAW\_YAWANG & DEG & Nacelle direction \\ \hline
+    \end{tabular}
+    \caption{Signals selected for Fault 14474 TMS 6}
+\end{table}
+
