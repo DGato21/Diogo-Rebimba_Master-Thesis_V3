@@ -154,18 +154,7 @@ The major component that makes part of the wind turbine tower is the yaw [ Figur
 \label{sub:if_you_use_this_template} 
 
 %Machine Learning is the process of building a model that turns %information into knowledge. 
-"Machine learning is the science of building systems that improve with data"\cite{FCT_AA}. By providing data into a machine learning, the model can analyze it and discover patterns that are useful for understanding relationships in data. This model must pass through a learning process so that it can improve its accuracy and reliability in providing correct outputs \cite{OLD_15_WIND} \cite{46_ML}. There exist 3 basics terms that we should know to understand ML \cite{46_ML}:
-\begin{enumerate}
-    \item{Dataset:}
-The set of data that it is provided to train the model.
-    \item{Features:}
-"Important pieces of data that help us understand a problem. These are fed in to a Machine Learning algorithm to help it learn."
-    \item{Model:}
-It is the representation of what the ML algorithm has learnt during the training process from the data set and the features provided.
-\end{enumerate}
-
-The machine learning methodology follows 5 major steps: data collection and pre-processing; feature selection and extraction; model selection; validation; fitting the model \cite{OLD_15_WIND} \cite{46_ML}.
-
+"Machine learning is the science of building systems that improve with data"\cite{FCT_AA}. By providing data into a machine learning, the model can analyze it and discover patterns that are useful for understanding relationships in data. This model must pass through a learning process so that it can improve its accuracy and reliability in providing correct outputs \cite{OLD_15_WIND} \cite{46_ML}.
 
 The taxonomy of ML models is divided into two major types, as represented in Figure 2.7. In each taxonomy we also present the most common algorithms that are used. Some of these algorithms are going to be used in this thesis work.
 
@@ -186,10 +175,23 @@ ML also have two less used types and that are also more complex to implement: se
 	\label{fig:Figuras_Tree_silhouettes-vectorial}
 \end{figure}
 
+
+There exist 3 basics terms that we should know to understand ML \cite{46_ML}:
+\begin{enumerate}
+    \item{Dataset:}
+The set of data that it is provided to train the model.
+    \item{Features:}
+"Important pieces of data that help us understand a problem. These are fed in to a Machine Learning algorithm to help it learn."
+    \item{Model:}
+It is the representation of what the ML algorithm has learnt during the training process from the data set and the features provided.
+\end{enumerate}
+
+The machine learning methodology follows 5 major steps: data collection and pre-processing; feature selection and extraction; model selection; validation; fitting the model \cite{OLD_15_WIND} \cite{46_ML}.
+
 Another subfield of machine learning is deep learning. Deep learning is based in a layered structure of algorithms called artificial neural network that makes intelligent decisions on its own. One important detail of these types of algorithms is that they need a large amount of data to become more efficient that the typical supervised algorithms. The larger the dataset, better the algorithm will surpass the traditional machine learning algorithms \cite{ML_Deep_Learning_2} \cite{ML_Deep_Learning}.
 
 
 \section{Conclusion} 
 \label{sub:if_you_use_this_template} 
 
-In this chapter we could understand how CGI \acrshort{rms} works, their main tools and its portfolio. It was also presented all the basic terms and operation of a wind turbine, how downtimes are divided, which is a basis of the classification of the failures that we are going to study and how the key components work together in a wind turbine, allowing us to understand the complexity of a wind turbine, from the nacelle to the yaw, and the importance of monitoring and predicting a failure in a component, so that all the other components that are connected don't be affected and consequently damaged, and the energy production can carry on without losses due to downtimes. It was introduced the machine learning area that will be used to implement anomaly detection models. Considering all the machine learning types, we can understand that the machine learning algorithms that should be used are the classification ones because our goal is exactly to understand in which cases, we are going to have a failure, or set of failures, and when we will have a normal operation time.
+In this chapter we could understand how CGI \acrshort{rms} works, their main tools and its portfolio. It was also presented all the basic terms and operation of a wind turbine, how downtimes are divided, which is a basis of the classification of the failures that we are going to study and how the key components work together in a wind turbine, allowing us to understand the complexity of a wind turbine, from the nacelle to the yaw, and the importance of monitoring and predicting a failure in a component, so that all the other components that are connected don't be affected and consequently damaged, and the energy production can carry on without losses due to downtimes. It was introduced the machine learning area that will be used to implement anomaly detection models. Considering all the machine learning types, we can understand that the machine learning algorithms that should be used are the classification ones because our goal is exactly to understand in which cases, we are going to have a failure, or set of failures, and when we will have a normal operation time, for which we have labelled data.

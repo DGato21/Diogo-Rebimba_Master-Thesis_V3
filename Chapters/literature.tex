@@ -37,7 +37,7 @@ In \cite{OLD_41_WIND}, it is considered as a parameter related to the fault the 
 Finally, in \cite{N_8_WIND}, for the prediction of generator and gearbox failures, mostly all the sensors concerning temperatures and oil temperatures were used as well as general ambient and wind turbine information like average wind speed, total production, ambient temperature.
 
 
-\subsection{Dataset and Feature Engineering}
+\subsection{Dataset Pre-processing and Feature Engineering}
 %Colocar nota sobre "Inequality Method of Checbyshev - Remove data outliers
 %TODO: Procurar o site onde vi que o ChiSquared era melhor para classificacao
 
@@ -45,7 +45,7 @@ Classification problems, more particularly fault prediction problems, have sever
 
 In \cite{OLD_19_WIND}, it is referred the removal of data outliers, by using Chebyshev inequality method, the scaling of the features, using normalization and after selecting a subset of signals that are related to the failure, it is performed a feature selection using a feature ranking using correlation coefficient. It also uses a sliding time window on the features.
 
-In \cite{N_2_WIND}, it is pre-processed the features by "group scaling and feature transformation", reducing the dimensionality of the feature space using "multiway principal component analysis". The next step is to "10-fold cross-validation" using \acrshort{svm} based classification, in order to assess if results will generalize to an independent dataset. This article also refer that "methods that focus on a specific part of the WT (Wind Turbine), require the choice of the most appropriate sensors, their advisable position in the sub-assembly".
+In \cite{N_2_WIND}, it is pre-processed the features by "group scaling and feature transformation", reducing the dimensionality of the feature space using "multiway principal component analysis". The next step is to 10-fold cross-validation using \acrshort{svm} based classification, in order to assess if results will generalize to an independent dataset. This article also refer that "methods that focus on a specific part of the WT (Wind Turbine), require the choice of the most appropriate sensors, their advisable position in the sub-assembly".
 
 \cite{39_WIND} only refers the importance of reducing a large number of features and the use of feature extraction and feature selection techniques. It uses also the 10-fold cross-validation for data split.
 
@@ -68,21 +68,21 @@ The machine learning algorithms that are mentioned by our literature to address 
 
 We have to mention that not all of the articles use exactly the same techniques to predict failures as we use, and this have influence on the algorithms that are chosen. Another important factor is that we are restricted to use the algorithms that are available in Azure Machine Learning Studio, factor that influence the use of the algorithms and their parameters, thus affecting their performance.
 
-Neural Network are mentioned in \cite{OLD_15_WIND}, \cite{OLD_20_WIND}, \cite{OLD_41_WIND} and \cite{N_8_WIND}. Decision Tree algorithms are analyzed in \cite{OLD_41_WIND}, \cite{39_WIND}, \cite{N_3_WIND} and [N7 (WIND)]. Logistic Regression ( \cite{N_5_WIND}, \cite{N_7_GENERAL}, \cite{N_8_WIND} and K-Nearest Neighbors ( \cite{39_WIND}, \cite{N_3_WIND}, \cite{N_4_WIND} are more simple algorithms that are also used but the one that is more mentioned in our literature is the Support Vector Machine algorithm, which is mentioned in \cite{OLD_41_WIND}, \cite{OLD_19_WIND}, \cite{39_WIND}, \cite{N_1_WIND}, \cite{N_2_WIND}, \cite{N_3_WIND} and \cite{N_8_WIND}.
+Neural Network is introduced in \cite{OLD_15_WIND}, \cite{OLD_20_WIND}, \cite{OLD_41_WIND} and \cite{N_8_WIND}. Decision Tree algorithms are analyzed in \cite{OLD_41_WIND}, \cite{39_WIND}, \cite{N_3_WIND} and [N7 (WIND)]. Logistic Regression ( \cite{N_5_WIND}, \cite{N_7_GENERAL}, \cite{N_8_WIND} and K-Nearest Neighbors ( \cite{39_WIND}, \cite{N_3_WIND}, \cite{N_4_WIND} are simpler algorithms that are also used but the one that is more mentioned in our literature is the Support Vector Machine algorithm, which is refereed in \cite{OLD_41_WIND}, \cite{OLD_19_WIND}, \cite{39_WIND}, \cite{N_1_WIND}, \cite{N_2_WIND}, \cite{N_3_WIND} and \cite{N_8_WIND}.
 
-Articles like \cite{ML_Alg_Analysis_2} and \cite{ML_Alg_Analysis} also mention in detail some of these algorithms as the ones to be used for classification problems. Some of the algorithms mentioned by these two articles are K-Nearest Neighbor, Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Support Vector Machine and Naive Bayes Classifier.
+Articles like \cite{ML_Alg_Analysis_2} and \cite{ML_Alg_Analysis} also discuss in detail some of these algorithms as the ones to be used for classification problems. Some of the algorithms mentioned by these two articles are K-Nearest Neighbor, Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Support Vector Machine and Naive Bayes Classifier.
 
-One algorithm that is also mentioned and that is said to be one of the most adequate for our problem in particular, is the Long Short Term Memory (LSTM) \cite{TDC_1}. Although this analysis from our literature, we will not use it because it is not available in Azure Machine Learning Studio.
+One algorithm that is also debated and that is said to be one of the most adequate for our problem in particular, is the Long Short Term Memory (LSTM) \cite{TDC_1}. Although this analysis from our literature, we will not use it because it is not available in Azure Machine Learning Studio.
 
 
 \subsection{Evaluation Metrics}
 
-For binary classification problems, machine learning area documentation and our literature suggest a set of metrics to use. Of course these metrics that are evaluated are in general terms, without any specific consideration in terms of business needs. In our particular case, we have a particular interest in reducing the number of false positives, even if that lead to a higher number of false negatives and a lower number of true positives. This idea is justified in more detail in the next chapters.
+For binary classification problems, machine learning area documentation and our literature suggest a set of metrics to use. The metrics that are discussed in these documentation don not have any specific consideration in terms of business needs. In our particular case, we have a particular interest in reducing the number of false positives, even if that lead to a higher number of false negatives and a lower number of true positives. This idea is justified in more detail in the next chapters.
 
 \cite{OLD_31} mention the use of the accuracy, false positive rate, true positive rate, ROC curve and confusion matrix. \cite{OLD_18_WIND} uses ROC curve and AUC curve. 
-\cite{N_3_WIND} uses ACC (classification accuracy), SEN (sensitivity) and SPE (specifity), which are metrics that are derived from the confusion metrics and that provide us percentage values.
+\cite{N_3_WIND} uses ACC (classification accuracy), SEN (sensitivity) (also known as recall) and SPE (specifity), which are metrics that are derived from the confusion metrics and that provide us percentage values.
 
-\cite{OLD_41_WIND}, \cite{ML_Alg_Analysis_2}, uses the most common metrics for evaluating binary classification problems: true positives, false negatives, true negatives and false positives, and percentage values that are calculated from the previous mention values, accuracy, recall, precision and F1 score.
+\cite{OLD_41_WIND}, \cite{ML_Alg_Analysis_2}, uses the most common metrics for evaluating binary classification problems: true positives, false negatives, true negatives and false positives, and percentage values that are calculated from the previous mention values, accuracy, recall (mentioned earlier as SEN), precision and F1 score.
 
 In \cite{MED_1} and backed up by our CGI expert, we can't rely only on these metrics to evaluate a running algorithm when we are using the sliding time window technique. For this case, we want to build our own evaluation technique that should rely on "additional logic and business heuristics" \cite{MED_1} to understand if in a time window, the fault was predicted or not, and not only if the algorithm predicts all the timestamps that were flagged as belonging to the sliding time window of a failure. More on these heuristic will be explained in the next chapters.
 
@@ -96,7 +96,10 @@ Considering the literature previously mentioned and the advices from CGI experts
 
 In terms of the features that were selected for each fault, it was decided to use general data signals, like wind speed, external temperature, active power of the wind turbine for all the faults. Then, for specific signals of each fault, we selected the signals of the fault component or components that were neighbors of the fault components.
 
-In terms of the dataset and feature engineering step, considering the limitations of the technology that we have to use, the 10 fold cross-validation was used in order to understand the quality of our model in terms of predicting new data. For the feature selection, we used the Filter Based Feature Selection module, with the Chisquared metric. The Principal Component Analysis was discarded due to limitations of the Azure Machine Learning Studio that doesn't have a built-in module to use the Principal Component Analysis (PCA). In the built of the dataset, we remove invalid rows (rows which the features are null) and features (when the feature have to much null values), select only data that are considered to have quality (meaning that have no noise) and build the running summaries of the features. Further one, we use the train-test split to train, validate and test our model.
+#20220701: REMOVED BECAUSE WE DIDNT INTRODUCED THIS MODULE RESULT
+#the 10 fold cross-validation was used in order to understand the quality #of our model in terms of predicting new data.
+
+In terms of the dataset and feature engineering step, considering the limitations of the technology that we had to use, for the feature selection, we used the Filter Based Feature Selection module, with the Chisquared metric. The Principal Component Analysis was discarded due to limitations of the Azure Machine Learning Studio that doesn't have a built-in module to use the Principal Component Analysis (PCA). In the built of the dataset, we remove invalid rows (rows which the features are null) and features (when the feature have to much null values), select only data that are considered to have quality (meaning that have no noise) and build the running summaries of the features. Further one, we use the train-test split to train, validate and test our model.
 
 In terms of the machine learning algorithms, and considering all the machine learning algorithms available in the Azure Machine Learning Studio, we selected the Two-Class Logistic Regression, Two-Class Support Vector Machine, Two-Class Neural Network, Two-Class Decision Tree and Two-Class Boosted Decision Tree.
 
