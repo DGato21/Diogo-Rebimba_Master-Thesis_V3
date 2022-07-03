@@ -31,7 +31,7 @@ Since our goal is to build an generic experiment in Azure Machine Learning Studi
 \section{Data Structure} 
 \label{sub:if_you_use_this_template} 
 
-Following the previous knowledge obtained with RMS CGI, the data model presented in Figure 5.1 and Figure 5.2, provides a global overview of the classification of an event into a failure of a certain type, and of how data from assets are obtained and stored.
+Following the previous knowledge obtained with \acrshort{rms} CGI, the data model presented in Figure 5.1 and Figure 5.2, provides a global overview of the classification of an event into a failure of a certain type, and of how data from assets are obtained and stored.
 
 Before all the data acquisition begins, the client (owner of the parks) provides all the information needed to monitor the complete wind park. The most important data entities for the development of the fault prediction model are:
 
@@ -47,27 +47,27 @@ Faults, that allow us to understand the cause of a failure and the component whe
     \item
 Statuses, that allows us to associate to each asset their status and acknowledge the status associated with an event. The downtimes presented before may be associated to one or more statuses.
     \item
-Budgets, that are used as monthly expectations that the park owners have on their assets in different type of measures (like production, ratio of performance). Allied with KPIs, allow to better understand the performance of the assets.
+Budgets, that are used as monthly expectations that the park owners have on their assets in different type of measures (like production, ratio of performance). Allied with \acrshort{kpi}, allow to better understand the performance of the assets.
     \item
-Key Performance Indicators (KPIs), that are calculations over signals that allow for a quicker understanding of the performance of the wind turbines. They may allow more than one source of information (like signals, budgets or constants) to provide a final value that directly indicates the performance of a wind turbine or park.
+Key Performance Indicators (\acrshort{kpi}), that are calculations over signals that allow for a quicker understanding of the performance of the wind turbines. They may allow more than one source of information (like signals, budgets or constants) to provide a final value that directly indicates the performance of a wind turbine or park.
 \end{enumerate}
 
 Other data that is provided to us, including some classifications and indicators that the system already have in its basis, are adapted to the specificities of each client.
 
-In terms of the process of data acquisition, it involves all the entities represented in Figure 5.1. It begins with an event, registered with a certain state. Events are one of the most basic units registered in our system. RMS has a state machine, that uses these events and static data presented before like faults and states, allowing us to calculate the energy loss, duration, and number of events that occur in a certain time interval, and present the downtime of an asset and the classification of that downtime, meaning, the cause for that failure to occur. Each event is counted as one until a change of it state occurs, meaning that a single event may last for days (for example, for an event that states that a wind turbine is running).
+In terms of the process of data acquisition, it involves all the entities represented in Figure 5.1. It begins with an event, registered with a certain state. Events are one of the most basic units registered in our system. \acrshort{rms} has a state machine, that uses these events and static data presented before like faults and states, allowing us to calculate the energy loss, duration, and number of events that occur in a certain time interval, and present the downtime of an asset and the classification of that downtime, meaning, the cause for that failure to occur. After starting, an event lasts until a change on the wind turbine occurs, meaning that a single event may last for days (for example, for an event that states that a wind turbine is running may last for days until  something occurs that makes the wind turbine stops, closing the previous event that states the wind turbine is running and starting a new event stating that the wind turbine is stopped).
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.7]{Chapters/Figures/methodology_fig10.png}
-	\caption{RMS Data Model of Data Acquisiton Entities: It represents all the entities that are involved in the data acquisition process and the storage of failure events.}
+	\caption{RMS Data Model of Data Acquisition Entities: It represents all the entities that are involved in the data acquisition process and the storage of failure events.}
 	\label{fig:Figuras_Tree_silhouettes-vectorial}
 \end{figure}
 
-Data from assets, allows us to understand the values of a certain asset during a time interval. In figure 5.2, we have the representation of all the entities that are involved in the calculation and storage of the data that the RMS CGI acquires from the wind turbines.
+Data from assets, allows us to understand the values of a certain asset during a time interval. In figure 5.2, we have the representation of all the entities that are involved in the calculation and storage of the data that the \acrshort{rms} CGI acquires from the wind turbines.
 The data can have two origins: real-time data from field signals, or post processing data that uses the previous ones to make some calculations as soon as it is received (for example, expected power in wind turbines is calculated using wind speed, neighbors data, besides other data).
 %Check if it's clear
-The real-time data that is sent by the wind turbines are then received by a linked system that supports RMS CGI and that is responsible to aggregate them statistically in 10 minutes values (the number of minutes depends on each signal and client). This means, that in the statistical storage, we will have registered daily 144 values (one value per 10 minutes), each of these values represents the aggregation over the last 10 minutes, with the average value, minimum value, maximum of value and the standard deviation of the last 10 minutes of that signal for a specific timestamp.
-To help in better structuring the signals comprehension, in RMS we use a term  tag that works as a string mask of the signal. With this field, it becomes easier to search for all the signals of multiple assets that concern a certain measure (for example, using the tag 'GENACTIVEPOWER', that represents the active power of a wind turbine, we can obtain more easily all the signals ids that provide the information of this measure).
+The real-time data that is sent by the wind turbines are then received by a linked system that supports \acrshort{rms} CGI and that is responsible to aggregate them statistically in 10 minutes values (the number of minutes depends on each signal and client). This means, that in the statistical storage, we will have registered daily 144 values (one value per 10 minutes), each of these values represents the aggregation over the last 10 minutes, with the average value, minimum value, maximum of value and the standard deviation of the last 10 minutes of that signal for a specific timestamp.
+To help in better structuring the signals comprehension, in \acrshort{rms} we use a term  tag that works as a string mask of the signal. With this field, it becomes easier to search for all the signals of multiple assets that concern a certain measure (for example, using the tag 'GENACTIVEPOWER', that represents the active power of a wind turbine, we can obtain more easily all the signals ids that provide the information of this measure).
 
 \begin{figure}[htbp]
 	\centering
@@ -79,21 +79,21 @@ To help in better structuring the signals comprehension, in RMS we use a term  t
 
 \section{Dataset}
 \label{sub:if_you_use_this_template} 
-This thesis will focus on the data from CGI RMS concerning different parks in different locations of all around Portugal, since the 5th of March, 2021 until the end of that same year. This is the time interval of data that the current version of the RMS CGI has been running with all the configurations needed. Data that is stored in CGI RMS from previous years, came from a previous version of the CGI RMS system that was transitioned to the current system during this master thesis, and due to the fact that the processes of previous versions and current versions are not exactly the same, it has been decided that it shouldn't be used for the current work.
+This thesis will focus on the data from CGI RMS concerning different parks in different locations of all around Portugal, since the March 5th, 2021 until the end of that same year. This is the time interval of data that the current version of the RMS CGI has been running with all the configurations needed. Data that is stored in CGI RMS from previous years, came from a previous version of the CGI RMS system that was transitioned to the current system during this master thesis, and due to the fact that the processes of previous versions and current versions are not exactly the same, it has been decided that it shouldn't be used for the current work.
 
 With the data available for those parks, a first analysis on the faults was made to understand two main questions in this thesis: 1) do we have enough quality data to develop the machine learning models? 2) how can we predict the failure with the available monitoring data? 
 
-\subsection{Do we have enough data to train the machine learning models} 
+\subsection{Available Data} 
 \label{sub:if_you_use_this_template} 
 
 As stated previously, in terms of data available in CGI RMS and classified as quality data, we have one major client portfolio of data that has different parks in different locations in Portugal. This client provides data from 36 wind parks, with a total of 323 generators. These wind turbines have different manufacturers and models: a combination of 6 manufacturers and 13 turbine models compose these 323 generators. This client has configured 16,730 fault types and 31,970 different signals.
 Considering, for example, July 2021 and one of the faults and wind turbine presented in Table 5.3, we have registered 184 events that concerns to that particular failure and wind turbine.
 
-As presented earlier in the Data Structure section and in image Figure 5.1, we see that we can map to each failure event the component where the failure occurs and the energy loss and duration associated to that failure event, allowing us to classify the impact that the failure has in terms of financial loss and time to fix it. By knowing the exact moment when the failure was registered, we can correlate that data with the signals data from that component and asset, to understand how the wind turbine was behaving itself before the failure occurred, and to train the machine learning model to predict failures when those same or similar conditions occur.
+As presented earlier in the Data Structure section and in image Figure 5.1, we see that we can map to each failure event the component where the failure occurs and the energy loss and duration associated to that failure event, allowing us to classify the impact that the failure has in terms of financial loss and time to fix it. By knowing the exact moment when the failure was recorded, we can correlate that data with the signals data from that component and asset, to understand how the wind turbine was behaving itself before the failure occurred, and to train the machine learning model to predict failures when those same or similar conditions occur.
 
 %IMPROVEMENT: (PENSAR SE HA ALGO MAIS QUE POSSA COLOCAR)
 
-\subsection{How can we predict the failure with the available monitoring data} 
+\subsection{Signals to use} 
 \label{sub:if_you_use_this_template} 
 
 %TODO Nos paragrafos com referencias, verificar se nao ha mais artigos. Tinha [...]
@@ -102,7 +102,7 @@ To predict a failure, as any machine learning algorithm, we will provide samples
 
 Each signal available depends on the manufacturer and model associated with the fault that is being studied. So, to support the study of each fault, the features for each one might not all be the same and so this might be a factor that affects the performance of the model for the fault being predicted.
 
-Despite this particularity of each model, a set of general features is selected for each fault. These features, displayed in Table 5.2 and mentioned in \cite{OLD_41_WIND}, are general information about the environment and the wind turbine.
+Despite the particularities of each model, a set of general features is selected for each fault. These features, displayed in Table 5.2 and mentioned in \cite{OLD_41_WIND}, are general information about the environment and the wind turbine.
 
 \begin{table}[!ht]
     \centering
@@ -141,15 +141,13 @@ Some of these signals are mentioned by some articles of our literature that stud
         WROT\_PTAGVALBL & DEG & Blade 1, actual value & ALL & ALL \\ \hline
         WROT\_ROTSPD & RPM & Rotor Speed & ALL & ALL \\ \hline
     \end{tabular}
-    \caption{Wind Turbine Component Signals. These signals are specific for some manufacturers and models, and only exists for a subset of wind turbines. Provide information about a specific component.}
+    \caption{Wind Turbine Component Signals. These signals are specific for some manufacturers and models, and only exists for a subset of wind turbines.}
     \label{ComponentSignals}
 \end{table}
 
 In the last analysis on the features that we can use to provide more information about the wind turbines components, we made a specific analysis on the signals that we had available for each manufacturer and model. These signals are specific of some component of the wind turbine and are not available for all the wind turbines.
 Since these signals are available depending on turbine manufacturer and model, this may lead some machine learning models of failures of specific turbines to contain features that have key data for the prediction of a failure and, consequently, perform better in terms of predicting those failures.
-Some of the signals available are signals that have information about the current of the converter, temperature of several components and oil of these components, voltage of the transformer and generator. The complete list of signals is available in the Appendix1.
-
-%TODO COLOCAR LISTA NO APPENDIX1!!!
+Some of the signals available are signals that have information about the current of the converter, temperature of several components and oil of these components, voltage of the transformer and generator. The complete list of signals is available in the Appendix 1.
 
 Some signals that are mentioned in our literature and by CGI experts as important for the prediction of problems in wind turbines are vibration signals. Due to the fact that the wind turbine manufacturers don't provide them, we have to use other signals data that we have available, like temperature signals (gearbox oil temperature, etc.), that are considered to be one of the best alternatives to the vibration signals to predict failures in components, as said by CGI experts and in \cite{OLD_19_WIND}.
 
@@ -194,7 +192,7 @@ Each row of the dataset represents one timestamp of the wind turbine, and the co
 
 In terms of the faults that were selected to be predicted, we started our analysis by ordering them with a first criteria of the number of events, thus meaning the faults that have more occurrences and consequently have more fault data to feed to our models. The second criteria was the total energy losses that the fault led to, thus meaning the direct impact in terms of lost of production and consequently the potential loss of revenues that the fault provoked to the client. We also filtered all the faults that are classified as alarms since these types of faults are not really faults, being alarms that the wind turbine provide to indicate a state of the wind turbine and that may be related to a maintenance or an alarm that is provoked by a component fault. These components faults are the ones that we will try to predict. The final selection criteria of the faults is to try to select the wider variety of manufacturers and model of faults and components, so that our study covers as many types of failures as possible. Our base number of top faults to study is around 10, but that number may vary according to the results of our analysis.
 
-Initially when we start to analyze the best way to predict a specific failure in a portfolio of parks, we took the more generic approach possible. This means that we first thought about combining in our dataset all the data of all the wind turbines of the same manufacturer and model in the prediction of a fault of that same manufacturer and model. A second approach, restricts the model to the wind turbines of the same park and that share the same manufacturer and model. Then after our first tests and after talking with the CGI experts and according to the feedback that a client of CGI RMS as given previously, we understand that this generic approach is not correct mainly due to this reason: even in the same park, each wind turbine varies from the others since each wind turbine is exposed to different external conditions (like wind direction), does not have always the same production (sometimes some wind turbines are limited in producing in comparison of wind turbines in the same park) and each component of the different wind turbines doesn't have the same level of degradation. 
+Initially when we started to analyze the best way to predict a specific failure in a portfolio of parks, we took the more generic approach possible. This means that we first considered about combining in our dataset all the data of all the wind turbines of the same manufacturer and model in the prediction of a fault of that same manufacturer and model. A second approach, restricts the model to the wind turbines of the same park and that share the same manufacturer and model. Then after our first tests and after talking with the CGI experts and according to the feedback that a client of CGI RMS as given previously, we understand that this generic approach is not correct mainly due to this reason: even in the same park, each wind turbine varies from the others since each wind turbine is exposed to different external conditions (like wind direction), does not have always the same production (sometimes some wind turbines are limited in producing in comparison of wind turbines in the same park) and each component of the different wind turbines doesn't have the same level of degradation. 
 
 %DEPRECATED BECAUSE IT IS NOT 100% CORRECT
 %Secondly, if our model was built on a mixture of wind turbines each %prediction of a fault will only tell our client that a fault that is %concern a single component will occur on a possible subset of wind %turbines. This is not very useful for a maintenance point of view, since %the model does not indicate which specific wind turbines needs %maintenance.
@@ -234,11 +232,11 @@ After selecting the top faults, while the analysis was being made, we decided to
         CHF & 15 & 367 & 19 & 65772.6703 & 478232,528 \\ \hline
         PCA & 7 & 140 & 81 & 1805.2607 & 733797 \\ \hline
     \end{tabular}
-    \caption{SubsetFaults}
+    \caption{Subset Faults}
     \label{Subset of Faults with less occurences that are going to be analyzed}
 \end{table}
 
-According to the information of the signals available, provided in the dataset section, and the faults selected previously, in the Appendix X we can see the complete set of features available for each fault. These features are based on the first analysis presented in Section Dataset.
+According to the information of the signals available, provided in the dataset section, and the faults selected previously, in the Appendix 1 we can see the complete set of features available for each fault. These features are based on the first analysis presented in Section Dataset.
 
 For each of the faults presented in Table 5.3 and Table 5.4, we did an analysis on its distribution per month in order for us to understand the predictions that we should expect in each dataset used for training, validation and testing. That distribution information is presented in Table 5.5 and Table 5.6. In the Section Experimental Setup we will get into more detail in this step of distribution of the faults per each dataset.
 
