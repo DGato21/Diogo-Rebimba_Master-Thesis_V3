@@ -1,0 +1,29 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% results_discussion.tex
+%% NOVA thesis document file
+%%
+%% Chapter with Work Conclusions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE work_conclusions.tex}
+
+\chapter{Work Conclusions}
+\label{cha:Work Conclusions}
+
+\section{Work Conclusions}
+\label{sub:Work Conclusions/Work Conclusions}
+This master thesis work allow us to reach the goal initially created by CGI to understand the major steps and procedures to do in order to create a general experiment that allow us to construct a machine learning model that could predict a failure in a wind turbine. Although it was not possible to create a model that can predict all the fault scopes studied, for 3 of these scopes, (SCA 34 Fault 9112), (CHF 18 Fault 768) and (PCA 7 Fault 140), the result was good and in 5 other, (PCA 7 Fault 140), (CHF 18 Fault 768), (BNE 18 Fault 768), (PAP 35 Fault 8749), (SCA 34 Fault 9112), we had some predictions also. This conclusions give us good perspectives for the use of this experiment in the Failure Prediction tool in CGI RMS that will be use to predict these failures and to try and predict other failures that were not studied during this master thesis work.
+
+\section{Future Work}
+\label{sub:Work Conclusions/Future Work}
+After the conclusions presented in the previous section, we provide the following items to be studied later by CGI in order to improve the performance of the experiment presented:
+
+\begin{enumerate}
+    \item{Feature Importance:}
+Azure Machine Learning Studio presents a module named "Permutation Feature Importance" that have as an output a value associated with each feature representing the importance of that feature in the correct prediction of a failure. This allows to understand which features were more important in the correct prediction of the results. Doing an analysis on the outputs of this module will allow for each failure scope studied, to understand features that are not important and might be removed from the dataset and the features that are considered important and that might be more explored to improve the model performance.
+    \item{Dataset Size:}
+Despite the positive results that were obtained with the dataset that we had available, a dataset with more than a year will be important in order to improve the performance of our model.
+    \item{Running Summaries Features with multiple Windows:}
+In this master thesis work, in the feature engineering step we create the so called running summaries features with a single window. It will be important to do the same but with multiple windows (for example 6h, 12h, 24h, 72h). This way the models algorithms will be able to compare the behaviour of the feature not only in comparison with the value last 6h but also with higher windows, thus allowing to understand possible major changes in the feature.
+\end{enumerate} 
